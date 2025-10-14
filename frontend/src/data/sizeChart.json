@@ -1,0 +1,41 @@
+{
+  "title": "Size Chart Guide",
+  "description": "All measurements are in inches. For the best fit, please refer to this chart or opt for custom measurements.",
+  "sizes": [
+  {
+    "size": "S",
+    "bust": "32",
+    "length": "19",
+    "waist": "28",
+    "shoulder": "14"
+  },
+  {
+    "size": "M",
+    "bust": "34",
+    "length": "19",
+    "waist": "30",
+    "shoulder": "14.5"
+  },
+  {
+    "size": "L",
+    "bust": "36",
+    "length": "20",
+    "waist": "32",
+    "shoulder": "15"
+  },
+  {
+    "size": "XL",
+    "bust": "38",
+    "length": "20",
+    "waist": "34",
+    "shoulder": "15.5"
+  }
+],
+  "notes": [
+  "Bust: Measure around the fullest part of your bust, keeping the tape parallel to the floor",
+  "Length: Measure from the highest point of shoulder down to the hem of the garment",
+  "Waist: Measure around your natural waistline, keeping the tape comfortably loose",
+  "Shoulder: Measure from one shoulder point to the other across the back"
+],
+  "customMeasurementInfo": "For custom measurements, please provide accurate measurements following our guidelines. Our team will create a perfectly tailored piece for you."
+}

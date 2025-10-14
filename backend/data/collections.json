@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Rozrang",
+    "slug": "rozrang",
+    "description": "Elegant and professional attire for corporate settings. Perfect for meetings, presentations, and formal occasions.",
+    "thumbnail": "https://i.postimg.cc/XvC1r6vx/Collection-image-Rozrang.webp",
+    "featured": true,
+    "active": true,
+    "order": 1,
+    "__v": 0,
+    "createdAt": {
+      "$date": "2025-10-12T21:25:55.118Z"
+    },
+    "updatedAt": {
+      "$date": "2025-10-12T21:25:55.118Z"
+    }
+  }
+]

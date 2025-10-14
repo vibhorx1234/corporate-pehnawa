@@ -1,0 +1,97 @@
+/* File: ./frontend/src/components/common/Loader.css */
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+}
+
+.loader-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  z-index: var(--z-modal);
+  gap: var(--spacing-lg);
+}
+
+.loader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-small {
+  width: 30px;
+  height: 30px;
+}
+
+.loader-medium {
+  width: 50px;
+  height: 50px;
+}
+
+.loader-large {
+  width: 70px;
+  height: 70px;
+}
+
+.loader-ring {
+  position: absolute;
+  border: 3px solid transparent;
+  border-top-color: var(--primary-orange);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+.loader-small .loader-ring {
+  width: 30px;
+  height: 30px;
+}
+
+.loader-medium .loader-ring {
+  width: 50px;
+  height: 50px;
+}
+
+.loader-large .loader-ring {
+  width: 70px;
+  height: 70px;
+}
+
+.loader-ring:nth-child(2) {
+  width: 70%;
+  height: 70%;
+  animation-delay: -0.5s;
+  border-top-color: var(--primary-orange-light);
+}
+
+.loader-ring:nth-child(3) {
+  width: 40%;
+  height: 40%;
+  animation-delay: -1s;
+  border-top-color: var(--primary-orange-hover);
+}
+
+.loader-text {
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

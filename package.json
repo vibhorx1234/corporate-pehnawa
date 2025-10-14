@@ -1,0 +1,15 @@
+{
+  "name": "corporate-pehnawa",
+  "version": "1.0.0",
+  "description": "Corporate Pehnawa - Full Stack Application",
+  "scripts": {
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "cd backend && npm install",
+    "build-frontend": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

@@ -1,0 +1,165 @@
+[
+  {
+    "name": "White V-Neck Waistcoat",
+    "slug": "white-v-neck-waistcoat",
+    "description": "A classic white V-neck waistcoat featuring elegant craftsmanship and versatile styling. Perfect for formal occasions, weddings, and smart-casual events. Tailored fit with premium button detailing for a sophisticated look.",
+    "price": 1499,
+    "discountedPrice": 749,
+    "images": [
+      "https://i.postimg.cc/nrp3SdJz/20250907-025458321-i-OS.webp",
+      "https://i.postimg.cc/Zn4wsfSr/Draft-5.webp",
+      "https://i.postimg.cc/3NYtfLTj/IMG-1712.webp"
+    ],
+    "collection": {
+      "$oid": "68ec1ce3f1bb7b4ed429e169"
+    },
+    "featured": true,
+    "inStock": true,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "fabric": "Cotton",
+    "care": "Normal wash and dry clean",
+    "tags": [
+      "waistcoat",
+      "formal",
+      "white",
+      "v-neck"
+    ],
+    "order": 1
+  },
+  {
+    "name": "Pink Bandhani V-Neck Waistcoat",
+    "slug": "pink-bandhani-v-neck-waistcoat",
+    "description": "A vibrant pink waistcoat adorned with traditional Bandhani tie-dye patterns. This unique piece combines ethnic artistry with contemporary tailoring, making it ideal for festive occasions, celebrations, and cultural events. Stand out with authentic Indian craftsmanship.",
+    "price": 1499,
+    "discountedPrice": 749,
+    "images": [
+      "https://i.postimg.cc/T3LBD42S/20250907-101027.webp",
+      "https://i.postimg.cc/YqyJjH7f/20250907-101126.webp",
+      "https://i.postimg.cc/Nj9ZHzGC/IMG-8756.webp"
+    ],
+    "collection": {
+      "$oid": "68ec1ce3f1bb7b4ed429e169"
+    },
+    "featured": true,
+    "inStock": true,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "fabric": "Cotton",
+    "care": "Normal wash and dry clean",
+    "tags": [
+      "waistcoat",
+      "bandhani",
+      "pink",
+      "ethnic",
+      "festive"
+    ],
+    "order": 2
+  },
+  {
+    "name": "Orange V-Neck Waistcoat",
+    "slug": "orange-v-neck-waistcoat",
+    "description": "A bold orange V-neck waistcoat that brings energy and confidence to your wardrobe. Perfect for semi-formal gatherings, parties, and creative events. The vibrant hue and tailored cut ensure you make a memorable impression.",
+    "price": 1499,
+    "discountedPrice": 749,
+    "images": [
+      "https://i.postimg.cc/0yYdFYVm/Whats-App-Image-2025-10-02-at-19-02-40-c2b8b4d9.webp",
+      "https://i.postimg.cc/CxGHXGc8/Whats-App-Image-2025-10-02-at-19-14-20-412a9d4e.webp",
+      "https://i.postimg.cc/rw1C31fR/Whats-App-Image-2025-10-02-at-19-20-54-b470b0ee.webp"
+    ],
+    "collection": {
+      "$oid": "68ec1ce3f1bb7b4ed429e169"
+    },
+    "featured": false,
+    "inStock": true,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "fabric": "Cotton",
+    "care": "Normal wash and dry clean",
+    "tags": [
+      "waistcoat",
+      "orange",
+      "vibrant",
+      "party-wear"
+    ],
+    "order": 3
+  },
+  {
+    "name": "Indigo V-Neck Waistcoat",
+    "slug": "indigo-v-neck-waistcoat",
+    "description": "A sophisticated indigo V-neck waistcoat showcasing deep, rich color tones. Versatile enough for both formal and smart-casual settings, this piece offers timeless elegance with modern comfort. Ideal for evening events and professional gatherings.",
+    "price": 1499,
+    "discountedPrice": 749,
+    "images": [
+      "https://i.postimg.cc/fbgKfwHC/IMG-8606.webp",
+      "https://i.postimg.cc/tggk61zk/IMG-8616.webp",
+      "https://i.postimg.cc/ZqDcxTfM/IMG-8620.webp"
+    ],
+    "collection": {
+      "$oid": "68ec1ce3f1bb7b4ed429e169"
+    },
+    "featured": true,
+    "inStock": true,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "fabric": "Cotton",
+    "care": "Normal wash and dry clean",
+    "tags": [
+      "waistcoat",
+      "indigo",
+      "formal",
+      "classic"
+    ],
+    "order": 4
+  },
+  {
+    "name": "Blue Fish V-Neck Waistcoat",
+    "slug": "blue-fish-v-neck-waistcoat",
+    "description": "A distinctive blue waistcoat featuring unique fish-inspired patterns or motifs. This statement piece blends artistic design with refined tailoring, perfect for those who appreciate creative fashion. Great for themed events, parties, and making a style statement.",
+    "price": 1499,
+    "discountedPrice": 749,
+    "images": [
+      "https://i.postimg.cc/hPyfjfh5/20250907-065551.webp",
+      "https://i.postimg.cc/HssrdQW2/20250907-065605.webp",
+      "https://i.postimg.cc/J44sMb7T/20250907-065645.webp",
+      "https://i.postimg.cc/6p8TGtv9/Draft-1.webp"
+    ],
+    "collection": {
+      "$oid": "68ec1ce3f1bb7b4ed429e169"
+    },
+    "featured": false,
+    "inStock": true,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "fabric": "Cotton",
+    "care": "Normal wash and dry clean",
+    "tags": [
+      "waistcoat",
+      "blue",
+      "patterned",
+      "designer",
+      "unique"
+    ],
+    "order": 5
+  }
+]

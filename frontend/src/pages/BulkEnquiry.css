@@ -1,0 +1,109 @@
+/* File: ./frontend/src/pages/BulkEnquiry.css */
+
+.bulk-enquiry-page {
+  min-height: calc(100vh - 80px);
+  padding: var(--spacing-3xl) 0;
+}
+
+.bulk-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.bulk-title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.bulk-subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Benefits Section */
+.bulk-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.benefit-card {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+  border-color: var(--primary-orange);
+}
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--primary-orange);
+  margin: 0 auto var(--spacing-md);
+}
+
+.benefit-card h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.benefit-card p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Form Section */
+.bulk-form-section {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .bulk-benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bulk-enquiry-page {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .bulk-title {
+    font-size: var(--text-3xl);
+  }
+
+  .bulk-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .bulk-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .bulk-form-section {
+    padding: var(--spacing-lg);
+  }
+}

@@ -1,0 +1,44 @@
+/* File: ./frontend/src/App.css */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* Account for fixed navbar */
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color var(--transition-base), 
+              color var(--transition-base),
+              border-color var(--transition-base);
+}
+
+/* Hide scrollbar for all browsers */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Alternative: Keep scrolling functionality but hide scrollbar */
+html {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}

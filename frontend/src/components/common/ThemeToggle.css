@@ -1,0 +1,26 @@
+/* File: ./frontend/src/components/common/ThemeToggle.css */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary-orange);
+  color: var(--primary-white);
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+}

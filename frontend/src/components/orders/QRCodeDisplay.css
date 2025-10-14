@@ -1,0 +1,236 @@
+/* File: ./frontend/src/components/orders/QRCodeDisplay.css */
+
+.qr-code-display {
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, #fff5ed 0%, #ffe8d9 100%);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--primary-orange);
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.1);
+}
+
+[data-theme="dark"] .qr-code-display {
+  background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
+  border: 2px solid #ff8533;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.qr-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--primary-orange);
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .qr-title {
+  color: #ff8533;
+}
+
+.qr-subtitle {
+  font-size: var(--text-base);
+  color: #6b4423;
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .qr-subtitle {
+  color: #c9a882;
+}
+
+.qr-code-container {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.qr-code-wrapper {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  background-color: var(--primary-white);
+  border: 2px solid var(--primary-orange);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+}
+
+[data-theme="dark"] .qr-code-wrapper {
+  background-color: var(--primary-white);
+  border-color: #ff8533;
+  box-shadow: 0 2px 8px rgba(255, 133, 51, 0.3);
+}
+
+.qr-code-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-code-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  color: #8b4513;
+}
+
+[data-theme="dark"] .qr-code-placeholder {
+  color: #d4a574;
+}
+
+.qr-code-placeholder svg {
+  width: 80px;
+  height: 80px;
+}
+
+.qr-code-placeholder p {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.qr-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+[data-theme="dark"] .info-item {
+  background: rgba(61, 35, 24, 0.4);
+  border-color: rgba(255, 133, 51, 0.3);
+}
+
+.info-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.15);
+}
+
+[data-theme="dark"] .info-item:hover {
+  box-shadow: 0 4px 12px rgba(255, 133, 51, 0.2);
+}
+
+.info-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--primary-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .info-label {
+  color: #ff8533;
+}
+
+.info-value {
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: #6b4423;
+}
+
+[data-theme="dark"] .info-value {
+  color: #c9a882;
+}
+
+.info-value.amount {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--primary-orange);
+}
+
+[data-theme="dark"] .info-value.amount {
+  color: #ff8533;
+}
+
+.payment-instructions {
+  padding: var(--spacing-lg);
+  background-color: rgba(232, 120, 69, 0.15);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  border-radius: var(--radius-md);
+}
+
+[data-theme="dark"] .payment-instructions {
+  background-color: rgba(255, 133, 51, 0.2);
+  border-color: rgba(255, 133, 51, 0.4);
+}
+
+.payment-instructions h5 {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: #8b4513;
+  margin-bottom: var(--spacing-md);
+}
+
+[data-theme="dark"] .payment-instructions h5 {
+  color: #ffb366;
+}
+
+.payment-instructions ol {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  color: #6b4423;
+}
+
+[data-theme="dark"] .payment-instructions ol {
+  color: #c9a882;
+}
+
+.payment-instructions li {
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .qr-code-display {
+    padding: var(--spacing-lg);
+  }
+
+  .qr-code-container {
+    flex-direction: column;
+  }
+
+  .qr-code-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+  .qr-info {
+    width: 100%;
+  }
+
+  .payment-instructions {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .qr-code-display {
+    padding: var(--spacing-md);
+  }
+
+  .qr-code-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+}

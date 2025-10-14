@@ -1,0 +1,28 @@
+/* File: ./frontend/src/styles/theme.css */
+
+/* Light Theme (Default) */
+[data-theme="light"] {
+  --bg-primary: var(--light-bg);
+  --bg-secondary: var(--light-bg-secondary);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --border-color: var(--light-border);
+  --shadow-color: var(--light-shadow);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: var(--dark-bg);
+  --bg-secondary: var(--dark-bg-secondary);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-color: var(--dark-border);
+  --shadow-color: var(--dark-shadow);
+}
+
+/* Apply theme colors to body */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}

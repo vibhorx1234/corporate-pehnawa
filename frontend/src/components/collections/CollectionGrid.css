@@ -1,0 +1,60 @@
+/* File: ./frontend/src/components/collections/CollectionGrid.css */
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-2xl);
+  padding: 0 var(--spacing-lg);
+}
+
+.no-collections-message {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  background: linear-gradient(135deg, #fff5ed 0%, #ffe8d9 100%);
+  border: 2px solid var(--primary-orange);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.1);
+}
+
+[data-theme="dark"] .no-collections-message {
+  background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
+  border-color: #ff8533;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.no-collections-message p {
+  font-size: var(--text-lg);
+  color: #6b4423;
+  margin: 0;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .no-collections-message p {
+  color: #c9a882;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .no-collections-message {
+    padding: var(--spacing-2xl);
+  }
+
+  .no-collections-message p {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-grid {
+    padding: 0 var(--spacing-md);
+  }
+
+  .no-collections-message {
+    padding: var(--spacing-xl);
+  }
+}
