@@ -5,15 +5,15 @@
 const Contact = require('../models/Contact');
 const transporter = require('../config/nodemailer');
 
-// Send contact form email with optimized configuration
+// Send contact form email
 const sendContactEmail = async (contactData) => {
   // Verify connection before sending
   try {
-    console.log('Verifying transporter for contact email...');
+    console.log('Verifying Resend transporter for contact email...');
     await transporter.verify();
-    console.log('✅ Transporter verified for contact email');
+    console.log('✅ Resend transporter verified for contact email');
   } catch (error) {
-    console.error('❌ Transporter verification failed:', error.message);
+    console.error('❌ Resend transporter verification failed:', error.message);
     throw new Error('Email service connection failed. Please try again later.');
   }
 
@@ -79,25 +79,24 @@ const sendContactEmail = async (contactData) => {
   };
 
   try {
-    console.log('Attempting to send contact emails...');
+    console.log('Attempting to send contact emails via Resend...');
     
     // Send email to admin
     await transporter.sendMail(adminMailOptions);
-    console.log(`✅ Contact form notification sent to admin`);
+    console.log(`✅ Contact form notification sent to admin via Resend`);
     
     // Send confirmation email to customer
     await transporter.sendMail(customerMailOptions);
-    console.log(`✅ Contact confirmation email sent to ${contactData.email}`);
+    console.log(`✅ Contact confirmation email sent to ${contactData.email} via Resend`);
     
-    console.log('✅ Contact emails sent successfully');
+    console.log('✅ Contact emails sent successfully via Resend');
     
     return true;
   } catch (error) {
-    console.error('❌ Error sending contact emails:', error);
+    console.error('❌ Error sending contact emails via Resend:', error);
     console.error('Error details:', {
       message: error.message,
-      code: error.code,
-      command: error.command
+      name: error.name
     });
     
     throw error;
