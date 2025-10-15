@@ -1,21 +1,43 @@
-// ============================================
+// // ============================================
 // File: ./backend/src/controllers/contactController.js
 // ============================================
 
 const Contact = require('../models/Contact');
 const nodemailer = require('nodemailer');
 
-// Send contact form email
+// Send contact form email with optimized configuration
 const sendContactEmail = async (contactData) => {
-  const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
+  // Create a fresh transporter for each email (more reliable on Render)
+  const transporter = nodemailer.createTransporter({
+    host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+    port: parseInt(process.env.EMAIL_PORT) || 465,
     secure: process.env.EMAIL_SECURE === 'true',
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
     },
+    connectionTimeout: 60000, // 60 seconds
+    greetingTimeout: 60000,
+    socketTimeout: 60000,
+    pool: false, // Disable pooling for better reliability
+    tls: {
+      rejectUnauthorized: true,
+      minVersion: 'TLSv1.2',
+      ciphers: 'HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH:!DH:!kEDH'
+    },
+    requireTLS: false,
+    opportunisticTLS: true
   });
+
+  // Verify connection before sending (with retry logic)
+  try {
+    console.log('Verifying transporter for contact email...');
+    await transporter.verify();
+    console.log('✅ Transporter verified for contact email');
+  } catch (error) {
+    console.error('❌ Transporter verification failed:', error.message);
+    throw new Error('Email service connection failed. Please try again later.');
+  }
 
   // Email to admin
   const adminMailOptions = {
@@ -79,6 +101,8 @@ const sendContactEmail = async (contactData) => {
   };
 
   try {
+    console.log('Attempting to send contact emails...');
+    
     // Send email to admin
     await transporter.sendMail(adminMailOptions);
     console.log(`✅ Contact form notification sent to admin`);
@@ -87,9 +111,22 @@ const sendContactEmail = async (contactData) => {
     await transporter.sendMail(customerMailOptions);
     console.log(`✅ Contact confirmation email sent to ${contactData.email}`);
     
+    // Close transporter to free up resources
+    transporter.close();
+    console.log('✅ Transporter closed successfully');
+    
     return true;
   } catch (error) {
     console.error('❌ Error sending contact emails:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command
+    });
+    
+    // Close transporter even on error
+    transporter.close();
+    
     throw error;
   }
 };
@@ -98,6 +135,23 @@ const sendContactEmail = async (contactData) => {
 exports.createContact = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
+    
+    // Validate required fields
+    if (!name || !email || !subject || !message) {
+      return res.status(400).json({
+        success: false,
+        message: 'All fields are required'
+      });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid email format'
+      });
+    }
     
     // Save to database
     const contact = await Contact.create({
@@ -120,63 +174,7 @@ exports.createContact = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to send message. Please try again or contact us directly.',
-      error: error.message
+      error: process.env.NODE_ENV !== 'production' ? error.message : undefined
     });
   }
 };
-
-// Get all contact submissions (for admin)
-// exports.getAllContacts = async (req, res) => {
-//   try {
-//     const { status } = req.query;
-//     let query = {};
-    
-//     if (status) query.status = status;
-    
-//     const contacts = await Contact.find(query).sort({ createdAt: -1 });
-    
-//     res.status(200).json({
-//       success: true,
-//       count: contacts.length,
-//       data: contacts
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: 'Error fetching contacts',
-//       error: error.message
-//     });
-//   }
-// };
-
-// // Update contact status (for admin)
-// exports.updateContactStatus = async (req, res) => {
-//   try {
-//     const { status } = req.body;
-    
-//     const contact = await Contact.findByIdAndUpdate(
-//       req.params.id,
-//       { status },
-//       { new: true, runValidators: true }
-//     );
-    
-//     if (!contact) {
-//       return res.status(404).json({
-//         success: false,
-//         message: 'Contact not found'
-//       });
-//     }
-    
-//     res.status(200).json({
-//       success: true,
-//       message: 'Contact status updated successfully',
-//       data: contact
-//     });
-//   } catch (error) {
-//     res.status(400).json({
-//       success: false,
-//       message: 'Error updating contact status',
-//       error: error.message
-//     });
-//   }
-// };

@@ -1,10 +1,36 @@
 // File: ./backend/src/services/emailService.js
 
-const transporter = require('../config/nodemailer');
+const nodemailer = require('nodemailer');
 const path = require('path');
+
+// Create a fresh transporter for better reliability on Render
+const createTransporter = () => {
+  return nodemailer.createTransporter({
+    host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+    port: parseInt(process.env.EMAIL_PORT) || 465,
+    secure: process.env.EMAIL_SECURE === 'true',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD
+    },
+    connectionTimeout: 60000, // 60 seconds
+    greetingTimeout: 60000,
+    socketTimeout: 60000,
+    pool: false, // Disable pooling for better reliability
+    tls: {
+      rejectUnauthorized: true,
+      minVersion: 'TLSv1.2',
+      ciphers: 'HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH:!DH:!kEDH'
+    },
+    requireTLS: false,
+    opportunisticTLS: true
+  });
+};
 
 // Send order confirmation email to customer
 exports.sendOrderConfirmation = async (order) => {
+  const transporter = createTransporter();
+
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: order.email,
@@ -51,15 +77,32 @@ exports.sendOrderConfirmation = async (order) => {
   };
 
   try {
+    console.log('Verifying transporter for order confirmation...');
+    await transporter.verify();
+    console.log('✅ Transporter verified');
+
     await transporter.sendMail(mailOptions);
     console.log(`✅ Order confirmation email sent to ${order.email}`);
+    
+    // Close transporter
+    transporter.close();
   } catch (error) {
     console.error('❌ Error sending order confirmation email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command
+    });
+    
+    // Close transporter even on error
+    transporter.close();
   }
 };
 
 // Send order notification to admin with payment screenshot attached
 exports.sendOrderNotificationToAdmin = async (order) => {
+  const transporter = createTransporter();
+
   // Build attachments array
   const attachments = [];
   
@@ -82,10 +125,10 @@ exports.sendOrderNotificationToAdmin = async (order) => {
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: process.env.ADMIN_EMAIL,
-    subject: `🛍️ New Order Received - ${order.orderNumber}`,
+    subject: `🛒 New Order Received - ${order.orderNumber}`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #DD7351;">🛍️ New Order Received</h2>
+        <h2 style="color: #DD7351;">🛒 New Order Received</h2>
         
         <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
           <h3 style="margin-top: 0;">Order Details</h3>
@@ -139,16 +182,34 @@ exports.sendOrderNotificationToAdmin = async (order) => {
   };
 
   try {
+    console.log('Verifying transporter for admin notification...');
+    await transporter.verify();
+    console.log('✅ Transporter verified');
+
     await transporter.sendMail(mailOptions);
     console.log(`✅ Order notification email sent to admin with ${attachments.length > 0 ? 'payment screenshot attached' : 'no attachment'}`);
+    
+    // Close transporter
+    transporter.close();
   } catch (error) {
     console.error('❌ Error sending order notification email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command
+    });
+    
+    // Close transporter even on error
+    transporter.close();
+    
     throw error; // Rethrow to handle in controller if needed
   }
 };
 
 // Send order status update to customer
 exports.sendOrderStatusUpdate = async (order) => {
+  const transporter = createTransporter();
+
   const statusMessages = {
     confirmed: 'Your order has been confirmed and is being processed.',
     processing: 'Your order is currently being processed.',
@@ -189,147 +250,24 @@ exports.sendOrderStatusUpdate = async (order) => {
   };
 
   try {
+    console.log('Verifying transporter for order status update...');
+    await transporter.verify();
+    console.log('✅ Transporter verified');
+
     await transporter.sendMail(mailOptions);
     console.log(`✅ Order status update email sent to ${order.email}`);
+    
+    // Close transporter
+    transporter.close();
   } catch (error) {
     console.error('❌ Error sending order status update email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command
+    });
+    
+    // Close transporter even on error
+    transporter.close();
   }
 };
-
-// Send bulk enquiry confirmation to customer
-// exports.sendBulkEnquiryConfirmation = async (enquiry) => {
-//   const productsList = enquiry.products.map(item => 
-//     `<li>${item.productName} - Quantity: ${item.quantity}</li>`
-//   ).join('');
-
-//   const mailOptions = {
-//     from: process.env.EMAIL_FROM,
-//     to: enquiry.email,
-//     subject: `Bulk Enquiry Confirmation - ${enquiry.enquiryNumber}`,
-//     html: `
-//       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-//         <h2 style="color: #E87845;">Thank You for Your Bulk Enquiry!</h2>
-//         <p>Dear ${enquiry.contactPerson},</p>
-//         <p>We have received your bulk enquiry.</p>
-        
-//         <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-//           <h3 style="margin-top: 0;">Enquiry Details</h3>
-//           <p><strong>Enquiry Number:</strong> ${enquiry.enquiryNumber}</p>
-//           <p><strong>Company:</strong> ${enquiry.companyName}</p>
-//           <p><strong>Total Quantity:</strong> ${enquiry.totalQuantity}</p>
-          
-//           <h4>Products:</h4>
-//           <ul style="list-style-type: none; padding-left: 0;">
-//             ${productsList}
-//           </ul>
-//         </div>
-        
-//         <p>Our team will review your enquiry and get back to you within 24-48 hours with a detailed quotation.</p>
-        
-//         <p style="margin-top: 30px;">Best regards,<br>
-//         <strong>Corporate Pehnawa Team</strong></p>
-//       </div>
-//     `
-//   };
-
-//   try {
-//     await transporter.sendMail(mailOptions);
-//     console.log(`✅ Bulk enquiry confirmation email sent to ${enquiry.email}`);
-//   } catch (error) {
-//     console.error('❌ Error sending bulk enquiry confirmation email:', error);
-//   }
-// };
-
-// Send bulk enquiry notification to admin
-// exports.sendBulkEnquiryNotificationToAdmin = async (enquiry) => {
-//   const productsList = enquiry.products.map(item => {
-//     const sizesList = item.sizes && item.sizes.length > 0 
-//       ? item.sizes.map(s => `${s.size}: ${s.quantity}`).join(', ')
-//       : 'Not specified';
-//     return `<li>${item.productName} - Quantity: ${item.quantity} (Sizes: ${sizesList})</li>`;
-//   }).join('');
-
-//   const mailOptions = {
-//     from: process.env.EMAIL_FROM,
-//     to: process.env.ADMIN_EMAIL,
-//     subject: `New Bulk Enquiry - ${enquiry.enquiryNumber}`,
-//     html: `
-//       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-//         <h2 style="color: #E87845;">New Bulk Enquiry Received</h2>
-        
-//         <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-//           <h3 style="margin-top: 0;">Enquiry Details</h3>
-//           <p><strong>Enquiry Number:</strong> ${enquiry.enquiryNumber}</p>
-//           <p><strong>Company:</strong> ${enquiry.companyName}</p>
-//           <p><strong>Contact Person:</strong> ${enquiry.contactPerson}</p>
-//           <p><strong>Email:</strong> ${enquiry.email}</p>
-//           <p><strong>Phone:</strong> ${enquiry.phone}</p>
-//           <p><strong>Total Quantity:</strong> ${enquiry.totalQuantity}</p>
-          
-//           <h4>Products:</h4>
-//           <ul style="list-style-type: none; padding-left: 0;">
-//             ${productsList}
-//           </ul>
-//         </div>
-        
-//         ${enquiry.requirements ? `
-//         <div style="background-color: #e3f2fd; padding: 20px; border-radius: 5px; margin: 20px 0;">
-//           <h3 style="margin-top: 0;">Requirements</h3>
-//           <p>${enquiry.requirements}</p>
-//         </div>
-//         ` : ''}
-        
-//         ${enquiry.expectedDeliveryDate ? `
-//         <p><strong>Expected Delivery:</strong> ${new Date(enquiry.expectedDeliveryDate).toLocaleDateString()}</p>
-//         ` : ''}
-//       </div>
-//     `
-//   };
-
-//   try {
-//     await transporter.sendMail(mailOptions);
-//     console.log(`✅ Bulk enquiry notification email sent to admin`);
-//   } catch (error) {
-//     console.error('❌ Error sending bulk enquiry notification email:', error);
-//   }
-// };
-
-// Send bulk enquiry status update to customer
-// exports.sendBulkEnquiryStatusUpdate = async (enquiry) => {
-//   const statusMessages = {
-//     reviewed: 'Your bulk enquiry has been reviewed by our team.',
-//     quoted: 'We have prepared a quotation for your bulk enquiry. Our team will contact you soon.',
-//     accepted: 'Your bulk enquiry has been accepted. We will proceed with your order.',
-//     rejected: 'We regret to inform you that we cannot fulfill this bulk enquiry at this time.'
-//   };
-
-//   const mailOptions = {
-//     from: process.env.EMAIL_FROM,
-//     to: enquiry.email,
-//     subject: `Bulk Enquiry Status Update - ${enquiry.enquiryNumber}`,
-//     html: `
-//       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-//         <h2 style="color: #E87845;">Bulk Enquiry Status Update</h2>
-//         <p>Dear ${enquiry.contactPerson},</p>
-        
-//         <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-//           <p><strong>Enquiry Number:</strong> ${enquiry.enquiryNumber}</p>
-//           <p><strong>Status:</strong> <span style="color: #E87845; font-weight: bold;">${enquiry.status.toUpperCase()}</span></p>
-//           <p>${statusMessages[enquiry.status]}</p>
-//         </div>
-        
-//         <p>Thank you for choosing Corporate Pehnawa!</p>
-        
-//         <p style="margin-top: 30px;">Best regards,<br>
-//         <strong>Corporate Pehnawa Team</strong></p>
-//       </div>
-//     `
-//   };
-
-//   try {
-//     await transporter.sendMail(mailOptions);
-//     console.log(`✅ Bulk enquiry status update email sent to ${enquiry.email}`);
-//   } catch (error) {
-//     console.error('❌ Error sending bulk enquiry status update email:', error);
-//   }
-// };
