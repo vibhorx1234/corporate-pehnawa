@@ -3,33 +3,11 @@
 // ============================================
 
 const Contact = require('../models/Contact');
-const nodemailer = require('nodemailer');
+const transporter = require('../config/nodemailer');
 
 // Send contact form email with optimized configuration
 const sendContactEmail = async (contactData) => {
-  // Create a fresh transporter for each email (more reliable on Render)
-  const transporter = nodemailer.createTransporter({
-    host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.EMAIL_PORT) || 465,
-    secure: process.env.EMAIL_SECURE === 'true',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-    connectionTimeout: 60000, // 60 seconds
-    greetingTimeout: 60000,
-    socketTimeout: 60000,
-    pool: false, // Disable pooling for better reliability
-    tls: {
-      rejectUnauthorized: true,
-      minVersion: 'TLSv1.2',
-      ciphers: 'HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH:!DH:!kEDH'
-    },
-    requireTLS: false,
-    opportunisticTLS: true
-  });
-
-  // Verify connection before sending (with retry logic)
+  // Verify connection before sending
   try {
     console.log('Verifying transporter for contact email...');
     await transporter.verify();
@@ -111,9 +89,7 @@ const sendContactEmail = async (contactData) => {
     await transporter.sendMail(customerMailOptions);
     console.log(`✅ Contact confirmation email sent to ${contactData.email}`);
     
-    // Close transporter to free up resources
-    transporter.close();
-    console.log('✅ Transporter closed successfully');
+    console.log('✅ Contact emails sent successfully');
     
     return true;
   } catch (error) {
@@ -123,9 +99,6 @@ const sendContactEmail = async (contactData) => {
       code: error.code,
       command: error.command
     });
-    
-    // Close transporter even on error
-    transporter.close();
     
     throw error;
   }
