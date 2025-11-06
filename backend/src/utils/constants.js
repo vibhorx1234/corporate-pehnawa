@@ -20,7 +20,7 @@ exports.ORDER_STATUS = {
 // };
 
 // Size Options
-exports.SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+exports.SIZES = ['S', 'M', 'L', 'XL'];
 
 // Size Type
 exports.SIZE_TYPE = {

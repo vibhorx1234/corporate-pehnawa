@@ -62,38 +62,28 @@ exports.validateOrder = [
   body('sizeType')
     .isIn(['standard', 'custom']).withMessage('Invalid size type'),
   
+  // Conditional validation for standard size
+  body('standardSize')
+    .if(body('sizeType').equals('standard'))
+    .notEmpty().withMessage('Standard size is required when size type is standard')
+    .isIn(['S', 'M', 'L', 'XL']).withMessage('Invalid standard size'),
+  
+  // Conditional validation for custom measurements
+  body('customMeasurements.bust')
+    .if(body('sizeType').equals('custom'))
+    .notEmpty().withMessage('Bust measurement is required for custom size')
+    .isNumeric().withMessage('Bust must be a number')
+    .isFloat({ min: 20, max: 60 }).withMessage('Bust must be between 20 and 60 inches'),
+  
+  body('customMeasurements.waist')
+    .if(body('sizeType').equals('custom'))
+    .notEmpty().withMessage('Waist measurement is required for custom size')
+    .isNumeric().withMessage('Waist must be a number')
+    .isFloat({ min: 20, max: 50 }).withMessage('Waist must be between 20 and 50 inches'),
+  
   body('totalAmount')
     .isFloat({ min: 0 }).withMessage('Invalid total amount')
 ];
-
-// Bulk enquiry validation rules
-// exports.validateBulkEnquiry = [
-//   body('companyName')
-//     .trim()
-//     .notEmpty().withMessage('Company name is required')
-//     .isLength({ min: 2 }).withMessage('Company name must be at least 2 characters'),
-  
-//   body('contactPerson')
-//     .trim()
-//     .notEmpty().withMessage('Contact person name is required')
-//     .isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
-  
-//   body('email')
-//     .trim()
-//     .notEmpty().withMessage('Email is required')
-//     .isEmail().withMessage('Invalid email address'),
-  
-//   body('phone')
-//     .trim()
-//     .notEmpty().withMessage('Phone number is required')
-//     .matches(/^[6-9]\d{9}$/).withMessage('Invalid phone number'),
-  
-//   body('products')
-//     .isArray({ min: 1 }).withMessage('At least one product is required'),
-  
-//   body('totalQuantity')
-//     .isInt({ min: 1 }).withMessage('Total quantity must be at least 1')
-// ];
 
 // Collection validation rules
 exports.validateCollection = [

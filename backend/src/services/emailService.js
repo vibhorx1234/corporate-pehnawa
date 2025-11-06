@@ -3,20 +3,20 @@
 const nodemailer = require('nodemailer');
 const path = require('path');
 
-// Create a fresh transporter for better reliability on Render
+// Create transporter
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     host: process.env.EMAIL_HOST || 'smtp.gmail.com',
     port: parseInt(process.env.EMAIL_PORT) || 465,
-    secure: process.env.EMAIL_SECURE === 'true',
+    secure: process.env.EMAIL_SECURE === 'true' || true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD
     },
-    connectionTimeout: 60000, // 60 seconds
+    connectionTimeout: 60000,
     greetingTimeout: 60000,
     socketTimeout: 60000,
-    pool: false, // Disable pooling for better reliability
+    pool: false,
     tls: {
       rejectUnauthorized: true,
       minVersion: 'TLSv1.2',
@@ -54,9 +54,7 @@ exports.sendOrderConfirmation = async (order) => {
         <div style="background-color: #fff3e0; padding: 20px; border-radius: 5px; margin: 20px 0;">
           <h3 style="margin-top: 0;">Custom Measurements</h3>
           <p><strong>Bust:</strong> ${order.customMeasurements.bust} inches</p>
-          <p><strong>Length:</strong> ${order.customMeasurements.length} inches</p>
           <p><strong>Waist:</strong> ${order.customMeasurements.waist} inches</p>
-          <p><strong>Shoulder:</strong> ${order.customMeasurements.shoulder} inches</p>
         </div>
         ` : ''}
         
@@ -84,7 +82,6 @@ exports.sendOrderConfirmation = async (order) => {
     await transporter.sendMail(mailOptions);
     console.log(`✅ Order confirmation email sent to ${order.email}`);
     
-    // Close transporter
     transporter.close();
   } catch (error) {
     console.error('❌ Error sending order confirmation email:', error);
@@ -94,8 +91,8 @@ exports.sendOrderConfirmation = async (order) => {
       command: error.command
     });
     
-    // Close transporter even on error
     transporter.close();
+    throw error; // Rethrow to handle in controller
   }
 };
 
@@ -103,13 +100,10 @@ exports.sendOrderConfirmation = async (order) => {
 exports.sendOrderNotificationToAdmin = async (order) => {
   const transporter = createTransporter();
 
-  // Build attachments array
   const attachments = [];
   
-  // Add payment screenshot if it exists
   if (order.paymentScreenshot) {
     try {
-      // Get the absolute path to the file
       const screenshotPath = path.resolve(order.paymentScreenshot);
       
       attachments.push({
@@ -147,9 +141,7 @@ exports.sendOrderNotificationToAdmin = async (order) => {
         <div style="background-color: #fff3e0; padding: 20px; border-radius: 5px; margin: 20px 0;">
           <h3 style="margin-top: 0;">📏 Custom Measurements</h3>
           <p><strong>Bust:</strong> ${order.customMeasurements.bust} inches</p>
-          <p><strong>Length:</strong> ${order.customMeasurements.length} inches</p>
           <p><strong>Waist:</strong> ${order.customMeasurements.waist} inches</p>
-          <p><strong>Shoulder:</strong> ${order.customMeasurements.shoulder} inches</p>
         </div>
         ` : ''}
         
@@ -178,7 +170,7 @@ exports.sendOrderNotificationToAdmin = async (order) => {
         </div>
       </div>
     `,
-    attachments: attachments // Add attachments here
+    attachments: attachments
   };
 
   try {
@@ -189,7 +181,6 @@ exports.sendOrderNotificationToAdmin = async (order) => {
     await transporter.sendMail(mailOptions);
     console.log(`✅ Order notification email sent to admin with ${attachments.length > 0 ? 'payment screenshot attached' : 'no attachment'}`);
     
-    // Close transporter
     transporter.close();
   } catch (error) {
     console.error('❌ Error sending order notification email:', error);
@@ -199,10 +190,8 @@ exports.sendOrderNotificationToAdmin = async (order) => {
       command: error.command
     });
     
-    // Close transporter even on error
     transporter.close();
-    
-    throw error; // Rethrow to handle in controller if needed
+    throw error; // Rethrow to handle in controller
   }
 };
 
@@ -257,7 +246,6 @@ exports.sendOrderStatusUpdate = async (order) => {
     await transporter.sendMail(mailOptions);
     console.log(`✅ Order status update email sent to ${order.email}`);
     
-    // Close transporter
     transporter.close();
   } catch (error) {
     console.error('❌ Error sending order status update email:', error);
@@ -267,7 +255,6 @@ exports.sendOrderStatusUpdate = async (order) => {
       command: error.command
     });
     
-    // Close transporter even on error
     transporter.close();
   }
 };

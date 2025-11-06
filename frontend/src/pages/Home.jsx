@@ -49,7 +49,7 @@ const Home = () => {
       <section className="features-section">
         <div className="container">
           <h2 className="section-titlee text-center">Why Choose Corporate Pehnawa</h2>
-          
+
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">
@@ -57,33 +57,33 @@ const Home = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="feature-title">Premium Quality</h3>
+              <h3 className="feature-title">100% Cotton</h3>
               <p className="feature-description">
-                Handpicked fabrics and meticulous craftsmanship ensure long-lasting quality
+                Our waistcoats are made from soft, breathable 100% cotton with lining, so you feel as good as you look.
               </p>
             </div>
 
             <div className="feature-card">
               <div className="feature-icon">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="feature-title">Fast Delivery</h3>
+              <h3 className="feature-title">Affordability</h3>
               <p className="feature-description">
-                Quick processing and reliable shipping to get your order to you on time
+                Stylish uniforms at prices that fit every budget—quality without compromise.
               </p>
             </div>
 
             <div className="feature-card">
               <div className="feature-icon">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h3 className="feature-title">Custom Tailoring</h3>
+              <h3 className="feature-title">Size Inclusive</h3>
               <p className="feature-description">
-                Get the perfect fit with our custom measurement and tailoring services
+                A perfect fit for everyone! We offer custom sizing with a free 1-inch margin on both sides, at no extra cost.
               </p>
             </div>
 
@@ -95,7 +95,7 @@ const Home = () => {
               </div>
               <h3 className="feature-title">24/7 Support</h3>
               <p className="feature-description">
-                Our dedicated customer service team is always ready to assist you
+                Got questions? We're just a message away, anytime—through email or WhatsApp!
               </p>
             </div>
           </div>

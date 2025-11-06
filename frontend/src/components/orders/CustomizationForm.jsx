@@ -22,37 +22,21 @@ const CustomizationForm = ({ measurements, onChange, errors }) => {
       </div>
 
       <div className="measurements-grid">
-
         <div className="form-group">
-          <label htmlFor="hips">Bust *</label>
+          <label htmlFor="bust">Bust *</label>
           <input
             type="number"
             id="bust"
             name="bust"
             step="0.1"
             min="20"
+            max="60"
             value={measurements.bust}
             onChange={handleChange}
-            placeholder="e.g., 40"
+            placeholder="e.g., 36"
             className={errors?.bust ? 'error' : ''}
           />
-          {errors?.hips && <span className="error-text">{errors.bust}</span>}
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="chest">Length *</label>
-          <input
-            type="number"
-            id="length"
-            name="length"
-            step="0.1"
-            min="20"
-            value={measurements.length}
-            onChange={handleChange}
-            placeholder="e.g., 38.5"
-            className={errors?.length ? 'error' : ''}
-          />
-          {errors?.chest && <span className="error-text">{errors.length}</span>}
+          {errors?.bust && <span className="error-text">{errors.bust}</span>}
         </div>
 
         <div className="form-group">
@@ -63,29 +47,22 @@ const CustomizationForm = ({ measurements, onChange, errors }) => {
             name="waist"
             step="0.1"
             min="20"
+            max="50"
             value={measurements.waist}
             onChange={handleChange}
-            placeholder="e.g., 32"
+            placeholder="e.g., 30"
             className={errors?.waist ? 'error' : ''}
           />
           {errors?.waist && <span className="error-text">{errors.waist}</span>}
         </div>
+      </div>
 
-        <div className="form-group">
-          <label htmlFor="shoulder">Shoulder *</label>
-          <input
-            type="number"
-            id="shoulder"
-            name="shoulder"
-            step="0.1"
-            min="10"
-            value={measurements.shoulder}
-            onChange={handleChange}
-            placeholder="e.g., 17"
-            className={errors?.shoulder ? 'error' : ''}
-          />
-          {errors?.shoulder && <span className="error-text">{errors.shoulder}</span>}
-        </div>
+      <div className="measurement-tips">
+        <h4>Measurement Tips:</h4>
+        <ul>
+          <li><strong>Bust:</strong> Measure around the fullest part of your bust, keeping the tape parallel to the floor</li>
+          <li><strong>Waist:</strong> Measure around the narrowest part of your waist, typically above the belly button</li>
+        </ul>
       </div>
     </div>
   );

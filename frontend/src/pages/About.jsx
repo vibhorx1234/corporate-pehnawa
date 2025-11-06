@@ -2,47 +2,68 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { scrollToTop } from '../utils/helpers';
 import './About.css';
-import heroImage from '../assets/images/about-hero.webp';
 
 const About = () => {
   useEffect(() => {
     scrollToTop();
   }, []);
 
+  // Replace these URLs with your actual image URLs
+  const heroImageUrl = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop';
+  const ownerImageUrl = 'https://i.postimg.cc/76CyN0KM/radhika.jpg?w=400&h=500&fit=crop';
+
   return (
     <div className="about-page">
       {/* Hero Section */}
-      <section className="about-hero" style={{ backgroundImage: `url(${heroImage})` }}>
+      {/* <section className="about-hero" style={{ backgroundImage: `url(${heroImageUrl})` }}>
         <div className="hero-overlay"></div>
         <div className="container">
           <h1 className="about-title">About Corporate Pehnawa</h1>
           <p className="about-subtitle">
-            Redefining professional fashion with elegance, quality, and style
+            Corporate Pehnawa began with a simple thought — workwear shouldn't feel like a uniform.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Story Section */}
       <section className="about-section story-section">
         <div className="container">
-          <div className="section-content">
-            <h2>Our Story</h2>
-            <p>
-              Corporate Pehnawa was founded with a vision to bring premium, stylish, and 
-              comfortable clothing to professionals across India. We understand that what you 
-              wear speaks volumes about your personality and professionalism.
-            </p>
-            <p>
-              Our name combines the essence of corporate professionalism with "Pehnawa" (पहनावा), 
-              the Hindi word for attire, reflecting our commitment to serving the Indian market 
-              with authentic and contemporary fashion solutions.
-            </p>
+          <h2 className="story-main-title">Our Story</h2>
+          <div className="story-layout">
+            <div className="story-image-side">
+              <img 
+                src={ownerImageUrl}
+                alt="Radhika - Founder of Corporate Pehnawa" 
+                className="owner-image"
+              />
+            </div>
+            <div className="story-text-side">
+              <p>
+                Hi, I'm Radhika, a 21-year-old who once worked a typical 9–5 job and realised how limited corporate wear could be. The clothes looked formal, but they didn't feel like us — no comfort, no expression, no joy. I wanted to change that.
+              </p>
+              <p>
+                With no background in fashion or design, I started learning everything from scratch — from fabrics and stitching to fits and finishes. Out of that journey, Corporate Pehnawa was born: a homegrown brand inspired by modern workwear, comfort, and the everyday beauty of Jaipur.
+              </p>
+              <p>
+                Every piece we create is designed to be simple, versatile, and timeless — clothes you can wear from presentations to celebrations, feeling confident and comfortable all day long.
+              </p>
+              <p>
+                Corporate Pehnawa isn't just a brand; it's a dream stitched with purpose, passion, and a love for minimal design.
+              </p>
+              <p>
+                Thank you for being part of our story.
+              </p>
+              <p className="story-signature">
+                With all my thread and soul,<br />
+                Radhika
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="about-section mission-section">
+      {/* <section className="about-section mission-section">
         <div className="container">
           <div className="section-content">
             <h2>Our Mission</h2>
@@ -54,10 +75,10 @@ const About = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Values Section */}
-      <section className="values-section">
+      {/* <section className="values-section">
         <div className="container">
           <h2 className="section-title">Our Values</h2>
           <div className="values-grid">
@@ -102,7 +123,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="about-cta">
@@ -113,7 +134,7 @@ const About = () => {
             <Link to="/collections" className="btn btn-primary btn-lg">
               Shop Collections
             </Link>
-            <Link to="/contact" className="btn btn-secondary btn-lg">
+            <Link to="/contact" className="btn btn-primary btn-lg">
               Contact Us
             </Link>
           </div>

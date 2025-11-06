@@ -32,7 +32,7 @@
 
 [data-theme="dark"] .upload-area {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border-color: #ff8533;
+  border-color: #dd7351;
 }
 
 .upload-area:hover {
@@ -56,7 +56,7 @@
 }
 
 [data-theme="dark"] .upload-icon {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .upload-text {
@@ -75,7 +75,7 @@
 }
 
 [data-theme="dark"] .upload-link {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .upload-hint {
@@ -99,7 +99,7 @@
 
 [data-theme="dark"] .file-preview {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border-color: #ff8533;
+  border-color: #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -141,7 +141,7 @@
 }
 
 [data-theme="dark"] .file-icon {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .file-name {
@@ -242,7 +242,7 @@
 }
 
 [data-theme="dark"] .note-icon {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 /* Responsive */

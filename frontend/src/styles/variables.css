@@ -1,5 +1,7 @@
 /* File: ./frontend/src/styles/variables.css */
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
 :root {
   /* Primary Colors */
   --primary-orange: #DD7351;
@@ -25,7 +27,7 @@
   
   /* Typography */
   --font-primary: 'Inter', sans-serif;
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'poppins', serif;
   
   /* Font Sizes */
   --text-xs: 0.75rem;      /* 12px */

@@ -68,7 +68,7 @@ const sendContactEmail = async (contactData) => {
         
         <div style="margin-top: 30px; padding: 20px; background-color: #e8f5e9; border-radius: 5px;">
           <h4 style="margin-top: 0;">Need Immediate Assistance?</h4>
-          <p style="margin: 5px 0;"><strong>Phone:</strong> ${process.env.CONTACT_PHONE || '+91 XXXXX XXXXX'}</p>
+          <p style="margin: 5px 0;"><strong>Phone:</strong> ${process.env.CONTACT_PHONE || '+91 91662 13263'}</p>
           <p style="margin: 5px 0;"><strong>Email:</strong> ${process.env.ADMIN_EMAIL}</p>
         </div>
         

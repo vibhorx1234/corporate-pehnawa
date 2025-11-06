@@ -19,12 +19,12 @@ const ProductDetails = ({ product, onOrderClick, onSizeChartClick }) => {
       {/* Price Section */}
       <div className="price-section">
         <span className="price-current">{formatPrice(displayPrice)}</span>
-        {product.discountedPrice && (
+        {/* {product.discountedPrice && (
           <>
             <span className="price-original">{formatPrice(product.price)}</span>
             <span className="price-save">Save {formatPrice(product.price - product.discountedPrice)}</span>
           </>
-        )}
+        )} */}
       </div>
 
       {/* Description */}

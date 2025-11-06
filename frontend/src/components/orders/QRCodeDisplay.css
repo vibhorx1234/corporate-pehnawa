@@ -10,7 +10,7 @@
 
 [data-theme="dark"] .qr-code-display {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border: 2px solid #ff8533;
+  border: 2px solid #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -25,7 +25,7 @@
 }
 
 [data-theme="dark"] .qr-title {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .qr-subtitle {
@@ -63,7 +63,7 @@
 
 [data-theme="dark"] .qr-code-wrapper {
   background-color: var(--primary-white);
-  border-color: #ff8533;
+  border-color: #dd7351;
   box-shadow: 0 2px 8px rgba(255, 133, 51, 0.3);
 }
 
@@ -137,7 +137,7 @@
 }
 
 [data-theme="dark"] .info-label {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .info-value {
@@ -157,7 +157,7 @@
 }
 
 [data-theme="dark"] .info-value.amount {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .payment-instructions {

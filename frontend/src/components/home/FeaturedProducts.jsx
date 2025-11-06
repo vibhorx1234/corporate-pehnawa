@@ -38,12 +38,12 @@ const FeaturedProducts = () => {
       <div className="container">
         <div className="section-header">
           <h2 className="section-titlee">Featured Products</h2>
-          <p className="section-subtitle">
+          {/* <p className="section-subtitle">
             Discover our handpicked selection of premium fashion pieces
-          </p>
+          </p> */}
         </div>
 
-        <div className="products-grid">
+        <div className="products-gridd">
           {products.slice(0, 8).map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}

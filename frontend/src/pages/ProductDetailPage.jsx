@@ -115,12 +115,12 @@ const ProductDetailPage = () => {
             {/* Price */}
             <div className="product-price-section">
               <span className="current-price">{formatPrice(displayPrice)}</span>
-              {product.discountedPrice && (
+              {/* {product.discountedPrice && (
                 <>
                   <span className="original-price">{formatPrice(product.price)}</span>
                   <span className="save-amount">Save {formatPrice(product.price - product.discountedPrice)}</span>
                 </>
-              )}
+              )} */}
             </div>
 
             {/* Description */}

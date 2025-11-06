@@ -36,9 +36,9 @@ const OrderForm = ({ product }) => {
     standardSize: '',
     customMeasurements: {
       bust: '',
-      length: '',
+      // length: '',
       waist: '',
-      shoulder: ''
+      // shoulder: ''
     },
     totalAmount: product.discountedPrice || product.price,
     paymentScreenshot: null,
@@ -88,9 +88,9 @@ const OrderForm = ({ product }) => {
       standardSize: '',
       customMeasurements: {
         bust: '',
-        length: '',
+        // length: '',
         waist: '',
-        shoulder: ''
+        // shoulder: ''
       }
     }));
   };
