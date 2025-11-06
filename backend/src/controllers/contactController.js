@@ -1,6 +1,4 @@
-// ============================================
 // File: ./backend/src/controllers/contactController.js
-// ============================================
 
 const Contact = require('../models/Contact');
 const transporter = require('../config/nodemailer');
@@ -9,11 +7,11 @@ const transporter = require('../config/nodemailer');
 const sendContactEmail = async (contactData) => {
   // Verify connection before sending
   try {
-    console.log('Verifying Resend transporter for contact email...');
+    console.log('Verifying email transporter for contact email...');
     await transporter.verify();
-    console.log('✅ Resend transporter verified for contact email');
+    console.log('✅ Email transporter verified for contact email');
   } catch (error) {
-    console.error('❌ Resend transporter verification failed:', error.message);
+    console.error('❌ Email transporter verification failed:', error.message);
     throw new Error('Email service connection failed. Please try again later.');
   }
 
@@ -79,24 +77,25 @@ const sendContactEmail = async (contactData) => {
   };
 
   try {
-    console.log('Attempting to send contact emails via Resend...');
+    console.log('Attempting to send contact emails...');
     
     // Send email to admin
     await transporter.sendMail(adminMailOptions);
-    console.log(`✅ Contact form notification sent to admin via Resend`);
+    console.log(`✅ Contact form notification sent to admin`);
     
     // Send confirmation email to customer
     await transporter.sendMail(customerMailOptions);
-    console.log(`✅ Contact confirmation email sent to ${contactData.email} via Resend`);
+    console.log(`✅ Contact confirmation email sent to ${contactData.email}`);
     
-    console.log('✅ Contact emails sent successfully via Resend');
+    console.log('✅ Contact emails sent successfully');
     
     return true;
   } catch (error) {
-    console.error('❌ Error sending contact emails via Resend:', error);
+    console.error('❌ Error sending contact emails:', error);
     console.error('Error details:', {
       message: error.message,
-      name: error.name
+      name: error.name,
+      code: error.code
     });
     
     throw error;
@@ -133,8 +132,21 @@ exports.createContact = async (req, res) => {
       message
     });
     
+    console.log('✅ Contact saved to database:', contact._id);
+    
     // Send emails
-    await sendContactEmail({ name, email, subject, message });
+    try {
+      await sendContactEmail({ name, email, subject, message });
+      console.log('✅ Contact emails sent successfully');
+    } catch (emailError) {
+      console.error('⚠️ Email sending failed but contact was saved:', emailError.message);
+      // Still return success since we saved the contact
+      return res.status(201).json({
+        success: true,
+        message: 'Your message has been received. However, we encountered an issue sending the confirmation email. We will respond to your inquiry soon!',
+        data: contact
+      });
+    }
     
     res.status(201).json({
       success: true,
@@ -142,10 +154,82 @@ exports.createContact = async (req, res) => {
       data: contact
     });
   } catch (error) {
-    console.error('Error creating contact:', error);
+    console.error('❌ Error creating contact:', error);
     res.status(500).json({
       success: false,
       message: 'Failed to send message. Please try again or contact us directly.',
+      error: process.env.NODE_ENV !== 'production' ? error.message : undefined
+    });
+  }
+};
+
+// Get all contacts (admin only)
+exports.getAllContacts = async (req, res) => {
+  try {
+    const contacts = await Contact.find().sort({ createdAt: -1 });
+    
+    res.status(200).json({
+      success: true,
+      count: contacts.length,
+      data: contacts
+    });
+  } catch (error) {
+    console.error('❌ Error fetching contacts:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch contacts',
+      error: process.env.NODE_ENV !== 'production' ? error.message : undefined
+    });
+  }
+};
+
+// Get single contact by ID (admin only)
+exports.getContactById = async (req, res) => {
+  try {
+    const contact = await Contact.findById(req.params.id);
+    
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: 'Contact not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: contact
+    });
+  } catch (error) {
+    console.error('❌ Error fetching contact:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch contact',
+      error: process.env.NODE_ENV !== 'production' ? error.message : undefined
+    });
+  }
+};
+
+// Delete contact (admin only)
+exports.deleteContact = async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndDelete(req.params.id);
+    
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: 'Contact not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      message: 'Contact deleted successfully'
+    });
+  } catch (error) {
+    console.error('❌ Error deleting contact:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to delete contact',
       error: process.env.NODE_ENV !== 'production' ? error.message : undefined
     });
   }
