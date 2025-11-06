@@ -40,7 +40,7 @@ const Collections = () => {
         <div className="page-header">
           <h1 className="page-title">Our Collections</h1>
           <p className="page-subtitle">
-            Explore our curated collections of premium fashion designed for every professional
+            For people who believe workwear can be stylish, comfortable, & rooted in culture.
           </p>
         </div>
 

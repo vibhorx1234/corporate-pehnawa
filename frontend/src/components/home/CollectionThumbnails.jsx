@@ -37,7 +37,7 @@ const CollectionThumbnails = () => {
         <div className="section-header">
           <h2 className="section-titlee">Our Collections</h2>
           <p className="section-subtitle">
-            Explore our curated collections designed for every occasion
+            For people who believe workwear can be stylish, comfortable, & rooted in culture
           </p>
         </div>
 

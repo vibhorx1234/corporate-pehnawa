@@ -11,7 +11,7 @@ Corporate Pehnawa is a modern, minimalistic fashion brand website built with Rea
 - **Light & Dark Theme** - Seamless theme switching
 - **Collections & Products** - Hierarchical product organization
 - **Order System** - Complete order form with UPI payment integration
-- **Size Customization** - Standard sizes (XS-XXL) + custom measurements
+- **Size Customization** - Standard sizes (S-XL) + custom measurements
 - **Bulk Enquiry** - Multi-product selection for bulk orders
 - **Blog Platform** - Content management for fashion blogs
 - **Size Chart** - Interactive size guide

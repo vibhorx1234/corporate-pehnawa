@@ -10,7 +10,7 @@
 
 [data-theme="dark"] .customization-form {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border: 2px solid #ff8533;
+  border: 2px solid #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -26,7 +26,7 @@
 
 [data-theme="dark"] .measurement-info {
   background-color: rgba(255, 133, 51, 0.2);
-  border-left-color: #ff8533;
+  border-left-color: #dd7351;
 }
 
 .info-icon {
@@ -37,7 +37,7 @@
 }
 
 [data-theme="dark"] .info-icon {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .measurement-info p {
@@ -55,6 +55,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
 }
 
 .measurement-field {
@@ -98,7 +99,7 @@
 }
 
 [data-theme="dark"] .measurement-field input:focus {
-  border-color: #ff8533;
+  border-color: #dd7351;
   background-color: rgba(61, 35, 24, 0.7);
   box-shadow: 0 0 0 3px rgba(255, 133, 51, 0.15);
 }
@@ -111,6 +112,81 @@
   font-size: var(--text-xs);
   color: #dc2626;
   font-weight: 500;
+}
+
+/* Measurement Tips Section */
+.measurement-tips {
+  padding: var(--spacing-lg);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-lg);
+}
+
+[data-theme="dark"] .measurement-tips {
+  background-color: rgba(42, 26, 18, 0.6);
+  border: 1px solid rgba(255, 133, 51, 0.3);
+}
+
+.measurement-tips h4 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--primary-orange);
+  margin: 0 0 var(--spacing-md) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+[data-theme="dark"] .measurement-tips h4 {
+  color: #dd7351;
+}
+
+/* .measurement-tips h4::before {
+  content: "📏";
+  font-size: 1.2em;
+} */
+
+.measurement-tips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.measurement-tips li {
+  font-size: var(--text-sm);
+  color: #6b4423;
+  line-height: 1.6;
+  padding-left: var(--spacing-lg);
+  position: relative;
+}
+
+[data-theme="dark"] .measurement-tips li {
+  color: #c9a882;
+}
+
+.measurement-tips li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary-orange);
+  font-weight: bold;
+}
+
+[data-theme="dark"] .measurement-tips li::before {
+  color: #dd7351;
+}
+
+.measurement-tips li strong {
+  color: #8b4513;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .measurement-tips li strong {
+  color: #ffb366;
 }
 
 /* Responsive */
@@ -127,6 +203,18 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .measurement-tips {
+    padding: var(--spacing-md);
+  }
+
+  .measurement-tips h4 {
+    font-size: var(--text-sm);
+  }
+
+  .measurement-tips li {
+    font-size: var(--text-xs);
+  }
 }
 
 @media (max-width: 480px) {
@@ -136,5 +224,18 @@
 
   .measurement-info {
     padding: var(--spacing-sm);
+  }
+
+  .measurements-grid {
+    gap: var(--spacing-md);
+  }
+
+  .measurement-tips {
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  .measurement-tips h4::before {
+    font-size: 1em;
   }
 }

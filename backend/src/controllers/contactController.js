@@ -68,7 +68,7 @@ const sendContactEmail = async (contactData) => {
         
         <div style="margin-top: 30px; padding: 20px; background-color: #e8f5e9; border-radius: 5px;">
           <h4 style="margin-top: 0;">Need Immediate Assistance?</h4>
-          <p style="margin: 5px 0;"><strong>Phone:</strong> ${process.env.CONTACT_PHONE || '+91 XXXXX XXXXX'}</p>
+          <p style="margin: 5px 0;"><strong>Phone:</strong> ${process.env.CONTACT_PHONE || '+91 91662 13263'}</p>
           <p style="margin: 5px 0;"><strong>Email:</strong> ${process.env.ADMIN_EMAIL}</p>
         </div>
         
@@ -89,7 +89,11 @@ const sendContactEmail = async (contactData) => {
     await transporter.sendMail(customerMailOptions);
     console.log(`✅ Contact confirmation email sent to ${contactData.email} via Resend`);
     
+<<<<<<< HEAD
     console.log('✅ Contact emails sent successfully via Resend');
+=======
+    console.log('✅ Contact emails sent successfully');
+>>>>>>> 1341bba
     
     return true;
   } catch (error) {

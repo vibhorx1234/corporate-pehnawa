@@ -176,6 +176,57 @@ label {
 .gap-2 { gap: var(--spacing-md); }
 .gap-3 { gap: var(--spacing-lg); }
 
+/* Background Logo */
+.page-with-bg-logo {
+  position: relative;
+}
+
+.page-with-bg-logo::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 800px;
+  height: 80%;
+  background-image: url('../../public/assets/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* .page-with-bg-logo::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 800px;
+  height: 80%;
+  background-color: rgba(232, 120, 69);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 0;
+  pointer-events: none;
+} */
+
+[data-theme="dark"] .page-with-bg-logo::before {
+  opacity: 0.05;
+  filter: invert(1);
+}
+
+/* Ensure content stays above background */
+.page-with-bg-logo > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .grid-cols-2, .grid-cols-3, .grid-cols-4 {

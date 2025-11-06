@@ -38,11 +38,11 @@ const ProductCard = ({ product }) => {
         
         <div className="product-pricing">
           <span className="product-price">{formatPrice(displayPrice)}</span>
-          {product.discountedPrice && (
+          {/* {product.discountedPrice && (
             <span className="product-original-price">
               {formatPrice(product.price)}
             </span>
-          )}
+          )} */}
         </div>
       </div>
     </Link>

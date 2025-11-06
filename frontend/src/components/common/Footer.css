@@ -1,10 +1,13 @@
 /* File: ./frontend/src/components/common/Footer.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;600;700&display=swap');
+
 .footer {
   background: linear-gradient(135deg, #fff5ed 0%, #ffe8d9 100%);
   border-top: 2px solid var(--primary-orange);
   padding: var(--spacing-3xl) 0 var(--spacing-lg);
-  z-index: 10
+  position: relative;
+  z-index: 10;
 }
 
 /* Dark mode support */
@@ -37,7 +40,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
   margin-bottom: var(--spacing-sm);
 }
 
@@ -50,22 +52,22 @@
 .footer-logo-text-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .footer-logo .logo-text {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl);
-  font-weight: 700;
+  font-family: "IBM Plex Mono";
+  font-size: 16px;
+  font-weight: 600;
   color: var(--primary-orange);
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   line-height: 1;
 }
 
 .footer-logo .logo-hindi {
-  font-size: var(--text-lg);
+  font-family: "Inknut Antiqua";
+  font-size: 26px;
   font-weight: 600;
-  color: #8b4513;
+  color: #dd7351;
   line-height: 1;
 }
 
@@ -74,6 +76,7 @@
 }
 
 .footer-description {
+  font-family: "aptos-bold";
   color: #6b4423;
   font-size: var(--text-sm);
   line-height: 1.6;
@@ -107,6 +110,7 @@
 }
 
 .footer-link {
+  font-family: "aptos-bold";
   color: #6b4423;
   text-decoration: none;
   font-size: var(--text-sm);
@@ -143,6 +147,7 @@
 }
 
 .contact-label {
+  font-family: "aptos-bold";
   font-size: var(--text-xs);
   font-weight: 600;
   color: var(--primary-orange);
@@ -192,7 +197,7 @@
 }
 
 /* WhatsApp Button in Footer */
-.footer-whatsapp {
+/* .footer-whatsapp {
   margin-top: var(--spacing-sm);
 }
 
@@ -203,7 +208,6 @@
   gap: var(--spacing-sm);
   width: 100%;
   padding: var(--spacing-md);
-  /* background: #25D366; */
   color: var(--primary-orange);
   text-decoration: none;
   font-size: var(--text-sm);
@@ -215,7 +219,6 @@
 }
 
 .footer-whatsapp-button:hover {
-  /* background: #20BA5A; */
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(225, 102, 0, 0.4);
 }
@@ -227,7 +230,7 @@
 
 .footer-whatsapp-button span {
   color: var(--primary-orange);
-}
+} */
 
 /* Footer Bottom */
 .footer-bottom {
@@ -243,6 +246,7 @@
 }
 
 .footer-copyright {
+  font-family: "aptos-bold";
   color: #6b4423;
   font-size: var(--text-sm);
   margin: 0;
@@ -283,11 +287,14 @@
   }
 
   .footer-logo .logo-text {
-    font-size: var(--text-xl);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0px;
   }
 
   .footer-logo .logo-hindi {
-    font-size: var(--text-base);
+    font-size: 20px;
+    font-weight: 600;
   }
 
   .footer-top {
@@ -301,7 +308,7 @@
     text-align: center;
   }
 
-  .footer-whatsapp-button {
+  /* .footer-whatsapp-button {
     font-size: var(--text-xs);
     padding: var(--spacing-sm) var(--spacing-sm);
     width: 30%
@@ -310,5 +317,5 @@
   .footer-whatsapp-button svg {
     width: 18px;
     height: 18px;
-  }
+  } */
 }

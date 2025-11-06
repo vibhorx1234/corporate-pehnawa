@@ -7,15 +7,15 @@ const TrendingReels = () => {
   const shorts = [
     {
       id: 1,
-      videoId: 'lo8yRVTOdrE',
+      videoId: 'h2Kg3_D9gdI',
     },
     {
       id: 2,
-      videoId: 'sQssF7nz-m0',
+      videoId: 'pWLcc3rsh5U',
     },
     {
       id: 3,
-      videoId: 't7tVaY_MQ5Y', // Random YouTube short
+      videoId: 'sQssF7nz-m0',
     }
   ];
 
@@ -57,10 +57,10 @@ const TrendingReels = () => {
     <section className="trending-reels-section">
       <div className="container">
         <div className="trending-reels-header">
-          <h2 className="section-titlee">See What's Trending</h2>
-          <p className="section-subtitle">
+          <h2 className="section-titlee">See What's Trending to Talk of the Town</h2>
+          {/* <p className="section-subtitle">
             Watch our latest videos and stay connected with our community
-          </p>
+          </p> */}
         </div>
 
         <div className="trending-reels-grid">

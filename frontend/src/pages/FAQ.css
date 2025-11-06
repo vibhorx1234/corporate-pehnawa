@@ -3,6 +3,30 @@
 .faq-page {
   min-height: 100vh;
   padding: calc(var(--spacing-3xl)) 0 var(--spacing-3xl);
+  position: relative;
+}
+
+.faq-page::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 800px;
+  height: 80%;
+  background-image: url('../../public/assets/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .faq-page::before {
+  opacity: 0.05;
+  filter: invert(1);
 }
 
 /* Header Section */
@@ -10,6 +34,8 @@
   text-align: center;
   margin-bottom: var(--spacing-3xl);
   padding: 0 var(--spacing-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .faq-title {
@@ -22,6 +48,7 @@
 }
 
 .faq-subtitle {
+  font-family: "aptos-bold";
   font-size: var(--text-lg);
   color: #6b4423;
   max-width: 700px;
@@ -41,6 +68,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
+  position: relative;
+  z-index: 1;
 }
 
 /* FAQ Item */
@@ -55,7 +84,7 @@
 
 [data-theme="dark"] .faq-item {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border: 2px solid #ff8533;
+  border: 2px solid #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -93,7 +122,7 @@
 }
 
 [data-theme="dark"] .faq-number {
-  background: #ff8533;
+  background: #dd7351;
   box-shadow: 0 2px 8px rgba(255, 133, 51, 0.4);
 }
 
@@ -112,6 +141,7 @@
 
 /* FAQ Answer */
 .faq-answer {
+  font-family: "aptos-bold";
   font-size: var(--text-base);
   color: #6b4423;
   line-height: 1.8;
@@ -133,11 +163,13 @@
   max-width: 800px;
   margin: 0 auto;
   box-shadow: 0 4px 16px rgba(255, 102, 0, 0.15);
+  position: relative;
+  z-index: 1;
 }
 
 [data-theme="dark"] .faq-contact {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border: 2px solid #ff8533;
+  border: 2px solid #dd7351;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -150,7 +182,7 @@
 }
 
 [data-theme="dark"] .faq-contact-title {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .faq-contact-text {
@@ -195,17 +227,15 @@
   height: 24px;
 }
 
-.faq-contact-btn.whatsapp {
-  /* background: #25D366; */
+/* .faq-contact-btn.whatsapp {
   color: var(--primary-orange);
-  border: 2px solid var(--primary-orange)
+  border: 2px solid var(--primary-orange);
 }
 
 .faq-contact-btn.whatsapp:hover {
-  /* background: #20BA5A; */
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(225, 102, 0, 0.4);
-}
+} */
 
 .faq-contact-btn.contact {
   background: var(--primary-orange);
@@ -213,13 +243,13 @@
 }
 
 [data-theme="dark"] .faq-contact-btn.contact {
-  background: #ff8533;
+  background: #dd7351;
 }
 
-[data-theme="dark"] .faq-contact-btn.whatsapp {
-  color: #ff8533;
-  border: 2px solid #ff8533
-}
+/* [data-theme="dark"] .faq-contact-btn.whatsapp {
+  color: #dd7351;
+  border: 2px solid #dd7351;
+} */
 
 .faq-contact-btn.contact:hover {
   background: var(--primary-orange-hover);
@@ -232,11 +262,11 @@
   box-shadow: 0 4px 12px rgba(255, 133, 51, 0.5);
 }
 
-[data-theme="dark"] .faq-contact-btn.whatsapp:hover {
+/* [data-theme="dark"] .faq-contact-btn.whatsapp:hover {
   border: 2px solid var(--primary-orange);
   color: var(--primary-orange);
   box-shadow: 0 4px 12px rgba(255, 133, 51, 0.5);
-}
+} */
 
 /* Responsive */
 @media (max-width: 768px) {

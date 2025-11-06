@@ -5,35 +5,39 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Priya Sharma',
+      name: 'Gaural Gupta',
       role: 'Fashion Enthusiast',
       avatar: 'P',
       rating: 5,
-      text: 'Absolutely love the quality of ethnic wear from Corporate Pehnawa! The fabrics are premium and the designs are stunning. Perfect fit and timely delivery. Highly recommended!',
+      image: 'https://i.postimg.cc/qRW1H34g/gaural.jpg?w=400&h=400&fit=crop',
+      text: 'I loved the print and the colors. And the fabric felt so smooth and comfortable on my skin. My friends were also so excited to see this unique piece! Keep it coming, team Corporate Pehnawa! 💙',
     },
     {
       id: 2,
-      name: 'Anjali Verma',
+      name: 'Amisha Ajith',
       role: 'Working Professional',
       avatar: 'A',
       rating: 5,
-      text: 'Ordered traditional outfits for our office festival. The bulk order process was smooth and the pricing was very competitive. The team was super helpful throughout!',
+      image: 'https://i.postimg.cc/LXGxF125/amisha.jpg?w=400&h=400&fit=crop',
+      text: 'Heyy beautiful!🌻 I tried out the pehnawa and absolutely fell in love with it! It was a perfect fit🫶🏻 Very light and comfortable and the pockets are a dream come true...very handy! I will share the photos soon♥ Thank youu so much... I\'m really looking forward to adding more to my wardrobe!',
     },
     {
       id: 3,
-      name: 'Sneha Reddy',
+      name: 'Pratishtha Pabuwal',
       role: 'Boutique Owner',
-      avatar: 'S',
+      avatar: 'P',
       rating: 5,
-      text: 'Corporate Pehnawa has become my go-to place for ethnic wear. The collection is diverse, quality is consistent, and customer service is excellent. Very satisfied with every purchase!',
+      image: 'https://i.postimg.cc/sXMTLcdp/pratishtha.jpg?w=400&h=400&fit=crop',
+      text: 'I am just in awe with the beautiful beautiful collection and All the best! I want to buy more. So awaited for more new collection ❤',
     },
     {
       id: 4,
-      name: 'Kavya Patel',
+      name: 'Rashi Agarwal',
       role: 'Event Planner',
-      avatar: 'K',
+      avatar: 'R',
       rating: 5,
-      text: 'Bought multiple ethnic outfits for a wedding event. The craftsmanship is amazing and all the pieces looked absolutely gorgeous. Best place for traditional Indian wear!',
+      image: 'https://i.postimg.cc/k4LTPbqY/rashi.jpg?w=400&h=400&fit=crop',
+      text: 'I ordered a printed waistcoat from Corporate Pehnawa, and I\'m absolutely thrilled with it! 💫 The design is stunning, the fabric feels premium, and the stitching is flawless. It fits perfectly and adds such an elegant touch to my outfit. I\'ve received so many compliments every time I\'ve worn it!',
     },
   ];
 
@@ -41,7 +45,7 @@ const Testimonials = () => {
     <section className="testimonials-section">
       <div className="container">
         <div className="testimonials-header">
-          <h2 className="section-titlee">What Our Girls Say</h2>
+          <h2 className="section-titlee">Pehnawa Stories</h2>
           <p className="section-subtitle">
             Don't just take our word for it - hear from our satisfied customers
           </p>
@@ -59,6 +63,15 @@ const Testimonials = () => {
                 >
                   <path d="M10 16.5c0-3.866 3.134-7 7-7h1.5a1.5 1.5 0 000-3H17c-5.523 0-10 4.477-10 10v11a1.5 1.5 0 001.5 1.5h9a1.5 1.5 0 001.5-1.5v-9a1.5 1.5 0 00-1.5-1.5h-7.5v-.5zm17 0c0-3.866 3.134-7 7-7h1.5a1.5 1.5 0 000-3H34c-5.523 0-10 4.477-10 10v11a1.5 1.5 0 001.5 1.5h9a1.5 1.5 0 001.5-1.5v-9a1.5 1.5 0 00-1.5-1.5h-7.5v-.5z" />
                 </svg>
+              </div>
+
+              {/* Testimonial Image */}
+              <div className="testimonial-image-container">
+                <img 
+                  src={testimonial.image} 
+                  alt={`${testimonial.name}'s testimonial`}
+                  className="testimonial-image"
+                />
               </div>
 
               <p className="testimonial-text">{testimonial.text}</p>

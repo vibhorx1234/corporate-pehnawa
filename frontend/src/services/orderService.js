@@ -32,9 +32,9 @@ export const createOrder = async (orderData) => {
     } else if (orderData.sizeType === 'custom') {
       // FIXED: Append custom measurements individually
       formData.append('customMeasurements[bust]', orderData.customMeasurements.bust || '');
-      formData.append('customMeasurements[length]', orderData.customMeasurements.length || '');
+      // formData.append('customMeasurements[length]', orderData.customMeasurements.length || '');
       formData.append('customMeasurements[waist]', orderData.customMeasurements.waist || '');
-      formData.append('customMeasurements[shoulder]', orderData.customMeasurements.shoulder || '');
+      // formData.append('customMeasurements[shoulder]', orderData.customMeasurements.shoulder || '');
     }
     
     formData.append('totalAmount', orderData.totalAmount);

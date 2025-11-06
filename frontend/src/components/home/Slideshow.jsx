@@ -1,7 +1,9 @@
+// File: ./frontend/src/components/home/Slideshow.jsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Slideshow.css';
-import videoSrc from '../../assets/videos/hero-video.mp4';
+import videoSrc from '../../assets/videos/home-hero-video.mp4';
 
 const Slideshow = () => {
   const videoUrl = videoSrc;
@@ -24,10 +26,13 @@ const Slideshow = () => {
           
           <div className="slide-overlay"></div>
           <div className="slide-content">
-            <h1 className="slide-title">Elevate Your Professional Style</h1>
-            <p className="slide-subtitle">Premium corporate fashion for the modern professional</p>
+            <h1 className="slide-title">
+              <span className="line1">Your Wardrobe Partner</span>
+              <span className="line2">For Work & Beyond</span>
+            </h1>
+            {/* <p className="slide-subtitle">Premium corporate fashion for the modern professional</p> */}
             <Link to="/collections" className="btn btn-primary btn-lg">
-              Shop Collections
+              Shop Now
             </Link>
           </div>
         </div>

@@ -17,7 +17,7 @@
 
 [data-theme="dark"] .form-section {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border: 2px solid #ff8533;
+  border: 2px solid #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -35,7 +35,7 @@
 }
 
 [data-theme="dark"] .form-section-title {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .form-group {
@@ -98,7 +98,7 @@
 [data-theme="dark"] .form-group input:focus,
 [data-theme="dark"] .form-group select:focus,
 [data-theme="dark"] .form-group textarea:focus {
-  border-color: #ff8533;
+  border-color: #dd7351;
   background-color: rgba(61, 35, 24, 0.7);
   box-shadow: 0 0 0 3px rgba(255, 133, 51, 0.15);
 }
@@ -177,7 +177,7 @@
 }
 
 [data-theme="dark"] .radio-label:hover {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .radio-label input[type="radio"] {
@@ -187,7 +187,7 @@
 }
 
 [data-theme="dark"] .radio-label input[type="radio"] {
-  accent-color: #ff8533;
+  accent-color: #dd7351;
 }
 
 .radio-label span {
@@ -211,7 +211,7 @@
 }
 
 [data-theme="dark"] .submit-btn {
-  background: #ff8533;
+  background: #dd7351;
   box-shadow: 0 2px 8px rgba(255, 133, 51, 0.4);
 }
 
@@ -249,7 +249,7 @@
 
 [data-theme="dark"] .success-container {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border: 2px solid #ff8533;
+  border: 2px solid #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -273,7 +273,7 @@
 }
 
 [data-theme="dark"] .success-container h3 {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .success-container p {

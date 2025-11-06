@@ -9,13 +9,13 @@ export const API_ENDPOINTS = {
   collections: '/collections',
   products: '/products',
   orders: '/orders',
-  blogs: '/blogs',
+  // blogs: '/blogs',
   contact: '/contact',
   // bulkEnquiry: '/bulk-enquiry',
 };
 
 // Size Options
-export const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+export const SIZES = ['S', 'M', 'L', 'XL'];
 
 // Order Status
 export const ORDER_STATUS = {
@@ -46,7 +46,7 @@ export const SIZE_TYPE = {
 export const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Collections', path: '/collections' },
-  { name: 'Blog', path: '/blog' },
+  // { name: 'Blog', path: '/blog' },
   // { name: 'Bulk Enquiry', path: '/bulk-enquiry' },
   { name: 'FAQs', path: '/faq' },
   { name: 'About', path: '/about' },

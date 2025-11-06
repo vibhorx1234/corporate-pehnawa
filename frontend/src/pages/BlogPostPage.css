@@ -4,10 +4,34 @@
   min-height: 100vh;
   padding: calc(var(--spacing-2xl)) 0 var(--spacing-3xl);
   background: var(--primary-white);
+  position: relative;
+}
+
+.blog-post-page::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 800px;
+  height: 80%;
+  background-image: url('../../public/assets/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
 }
 
 [data-theme="dark"] .blog-post-page {
   background: #0f0a08;
+}
+
+[data-theme="dark"] .blog-post-page::before {
+  opacity: 0.05;
+  filter: invert(1);
 }
 
 .blog-post {
@@ -22,7 +46,7 @@
 
 [data-theme="dark"] .blog-post {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border-color: #ff8533;
+  border-color: #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -45,7 +69,7 @@
 }
 
 [data-theme="dark"] .post-category {
-  background-color: #ff8533;
+  background-color: #dd7351;
 }
 
 .post-title {
@@ -59,7 +83,7 @@
 }
 
 [data-theme="dark"] .post-title {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .post-meta {
@@ -109,7 +133,7 @@
 }
 
 [data-theme="dark"] .post-tag {
-  color: #ff8533;
+  color: #dd7351;
   background-color: rgba(255, 133, 51, 0.2);
   border-color: rgba(255, 133, 51, 0.4);
 }
@@ -126,7 +150,7 @@
 }
 
 [data-theme="dark"] .post-featured-image {
-  border-color: #ff8533;
+  border-color: #dd7351;
   box-shadow: 0 4px 12px rgba(255, 133, 51, 0.3);
 }
 
@@ -208,7 +232,7 @@
 }
 
 [data-theme="dark"] .post-content a {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .post-content a:hover {
@@ -247,7 +271,7 @@
 }
 
 [data-theme="dark"] .post-content blockquote {
-  border-left-color: #ff8533;
+  border-left-color: #dd7351;
   color: #c9a882;
   background: rgba(61, 35, 24, 0.4);
 }
@@ -263,7 +287,7 @@
 
 [data-theme="dark"] .post-content code {
   background: rgba(255, 133, 51, 0.2);
-  color: #ff8533;
+  color: #dd7351;
 }
 
 .post-content pre {
@@ -294,7 +318,7 @@
 }
 
 [data-theme="dark"] .blog-navigation {
-  border-top-color: #ff8533;
+  border-top-color: #dd7351;
 }
 
 .back-to-blog {
@@ -313,7 +337,7 @@
 }
 
 [data-theme="dark"] .back-to-blog {
-  background: #ff8533;
+  background: #dd7351;
   box-shadow: 0 2px 8px rgba(255, 133, 51, 0.4);
 }
 

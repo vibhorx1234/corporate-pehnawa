@@ -4,10 +4,34 @@
   min-height: 100vh;
   padding: calc(var(--spacing-3xl)) 0 var(--spacing-3xl);
   background: var(--primary-white);
+  position: relative;
+}
+
+.order-page::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 800px;
+  height: 80%;
+  background-image: url('../../public/assets/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
 }
 
 [data-theme="dark"] .order-page {
   background: #0f0a08;
+}
+
+[data-theme="dark"] .order-page::before {
+  opacity: 0.05;
+  filter: invert(1);
 }
 
 .order-container {
@@ -28,7 +52,7 @@
 }
 
 [data-theme="dark"] .section-heading {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 /* Product Summary */
@@ -48,7 +72,7 @@
 
 [data-theme="dark"] .summary-card {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border-color: #ff8533;
+  border-color: #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -102,7 +126,7 @@
 }
 
 [data-theme="dark"] .summary-price {
-  color: #ff8533;
+  color: #dd7351;
 }
 
 /* Order Notes */
@@ -116,7 +140,7 @@
 
 [data-theme="dark"] .order-notes {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border-color: #ff8533;
+  border-color: #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -152,7 +176,6 @@
 /* Order Form Section */
 .order-form-section {
   background: linear-gradient(135deg, #fff5ed 0%, #ffe8d9 100%);
-  /* border: 2px solid var(--primary-orange); */
   border-radius: var(--radius-lg);
   padding: var(--spacing-2xl);
   box-shadow: 0 4px 12px rgba(255, 102, 0, 0.1);
@@ -160,7 +183,7 @@
 
 [data-theme="dark"] .order-form-section {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
-  border-color: #ff8533;
+  border-color: #dd7351;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -208,7 +231,7 @@
 }
 
 [data-theme="dark"] .error-container .btn {
-  background: #ff8533;
+  background: #dd7351;
   box-shadow: 0 2px 8px rgba(255, 133, 51, 0.4);
 }
 

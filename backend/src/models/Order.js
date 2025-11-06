@@ -56,9 +56,7 @@ const orderSchema = new mongoose.Schema({
   },
   customMeasurements: {
     bust: { type: Number },
-    length: { type: Number },
-    waist: { type: Number },
-    shoulder: { type: Number }
+    waist: { type: Number }
   },
   
   // Payment Information
@@ -67,8 +65,8 @@ const orderSchema = new mongoose.Schema({
     required: [true, 'Total amount is required']
   },
   paymentScreenshot: {
-    type: String,
-    required: [true, 'Payment screenshot is required']
+    type: String
+    // Removed required validation to handle in controller
   },
   
   // Order Status
@@ -91,6 +89,21 @@ const orderSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true
+});
+
+// Validate custom measurements if sizeType is custom
+orderSchema.pre('validate', function(next) {
+  if (this.sizeType === 'custom') {
+    if (!this.customMeasurements || !this.customMeasurements.bust || !this.customMeasurements.waist) {
+      next(new Error('Bust and waist measurements are required for custom size'));
+    }
+  }
+  
+  if (this.sizeType === 'standard' && !this.standardSize) {
+    next(new Error('Standard size is required when size type is standard'));
+  }
+  
+  next();
 });
 
 // Generate order number before saving

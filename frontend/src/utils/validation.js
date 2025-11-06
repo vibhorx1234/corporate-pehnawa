@@ -51,17 +51,18 @@ export const validateOrderForm = (formData) => {
       errors.standardSize = 'Please select a size';
     }
   } else if (formData.sizeType === 'custom') {
+    // Bust validation
     if (!formData.customMeasurements?.bust || formData.customMeasurements.bust < 20) {
-      errors.chest = 'Please enter valid bust measurement';
+      errors.bust = 'Please enter valid bust measurement (minimum 20 inches)';
+    } else if (formData.customMeasurements.bust > 60) {
+      errors.bust = 'Bust measurement cannot exceed 60 inches';
     }
-    if (!formData.customMeasurements?.length || formData.customMeasurements.length < 20) {
-      errors.length = 'Please enter valid length measurement';
-    }
+    
+    // Waist validation
     if (!formData.customMeasurements?.waist || formData.customMeasurements.waist < 20) {
-      errors.waist = 'Please enter valid waist measurement';
-    }
-    if (!formData.customMeasurements?.shoulder || formData.customMeasurements.shoulder < 10) {
-      errors.shoulder = 'Please enter valid shoulder measurement';
+      errors.waist = 'Please enter valid waist measurement (minimum 20 inches)';
+    } else if (formData.customMeasurements.waist > 50) {
+      errors.waist = 'Waist measurement cannot exceed 50 inches';
     }
   }
 
@@ -75,49 +76,6 @@ export const validateOrderForm = (formData) => {
     errors
   };
 };
-
-// Validate bulk enquiry form
-// export const validateBulkEnquiryForm = (formData) => {
-//   const errors = {};
-
-//   // Company Name
-//   if (!formData.companyName || formData.companyName.trim().length < 2) {
-//     errors.companyName = 'Company name must be at least 2 characters long';
-//   }
-
-//   // Contact Person
-//   if (!formData.contactPerson || formData.contactPerson.trim().length < 2) {
-//     errors.contactPerson = 'Contact person name must be at least 2 characters long';
-//   }
-
-//   // Email
-//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   if (!formData.email || !emailRegex.test(formData.email)) {
-//     errors.email = 'Please enter a valid email address';
-//   }
-
-//   // Phone
-//   const phoneRegex = /^[6-9]\d{9}$/;
-//   if (!formData.phone || !phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
-//     errors.phone = 'Please enter a valid 10-digit phone number';
-//   }
-
-//   // Products
-//   if (!formData.products || formData.products.length === 0) {
-//     errors.products = 'Please select at least one product';
-//   } else {
-//     formData.products.forEach((product, index) => {
-//       if (!product.quantity || product.quantity < 1) {
-//         errors[`product_${index}_quantity`] = 'Quantity must be at least 1';
-//       }
-//     });
-//   }
-
-//   return {
-//     isValid: Object.keys(errors).length === 0,
-//     errors
-//   };
-// };
 
 // Validate contact form
 export const validateContactForm = (formData) => {
