@@ -1,11 +1,14 @@
-// File: ./frontend/src/context/ThemeContext.jsx
-
 import React, { createContext, useState, useEffect } from 'react';
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') {
+      return 'light'; // Default for SSR/build
+    }
+    
     // Check if user has a saved preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
@@ -21,11 +24,15 @@ export const ThemeProvider = ({ children }) => {
     // Apply theme to document
     document.documentElement.setAttribute('data-theme', theme);
     // Save to localStorage
-    localStorage.setItem('theme', theme);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('theme', theme);
+    }
   }, [theme]);
 
   useEffect(() => {
     // Listen for system theme changes
+    if (typeof window === 'undefined') return;
+    
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
     const handleSystemThemeChange = (e) => {
