@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
         )}
       </div>
 
-      <div className="product-info">
+      <div className="product-infoo">
         {product.collection && (
           <p className="product-collection">{product.collection.name}</p>
         )}

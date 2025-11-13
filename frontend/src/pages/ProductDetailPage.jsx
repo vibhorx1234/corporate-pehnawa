@@ -5,7 +5,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getProductBySlug } from '../services/productService';
 import SizeChart from '../components/products/SizeChart';
 import Loader from '../components/common/Loader';
-import { formatPrice, calculateDiscount, scrollToTop } from '../utils/helpers';
+import { formatPrice, scrollToTop } from '../utils/helpers';
 import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
@@ -16,6 +16,7 @@ const ProductDetailPage = () => {
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   useEffect(() => {
     scrollToTop();
@@ -41,11 +42,14 @@ const ProductDetailPage = () => {
     }
   };
 
+  const toggleDropdown = (section) => {
+    setOpenDropdown(openDropdown === section ? null : section);
+  };
+
   if (loading) return <Loader fullScreen />;
   if (error) return <div className="error-message">{error}</div>;
   if (!product) return <div className="error-message">Product not found</div>;
 
-  const discount = calculateDiscount(product.price, product.discountedPrice);
   const displayPrice = product.discountedPrice || product.price;
 
   return (
@@ -59,8 +63,8 @@ const ProductDetailPage = () => {
           {product.collection && (
             <>
               <span className="breadcrumb-separator">/</span>
-              <Link 
-                to={`/collections/${product.collection.slug}`} 
+              <Link
+                to={`/collections/${product.collection.slug}`}
                 className="breadcrumb-link"
               >
                 {product.collection.name}
@@ -73,91 +77,52 @@ const ProductDetailPage = () => {
 
         {/* Product Details */}
         <div className="product-detail-container">
-          {/* Image Gallery */}
+          {/* Left Side - Image Gallery (Sticky) */}
           <div className="product-gallery">
+            {/* Thumbnail Images */}
+            <div className="image-thumbnails">
+              {product.images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`${product.name} ${index + 1}`}
+                  className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
+                  onClick={() => setSelectedImage(index)}
+                />
+              ))}
+            </div>
+
+            {/* Main Image */}
             <div className="main-image">
-              <img 
-                src={product.images[selectedImage]} 
+              <img
+                src={product.images[selectedImage]}
                 alt={product.name}
                 className="product-main-img"
               />
-              {discount > 0 && (
-                <span className="discount-badge">{discount}% OFF</span>
-              )}
               {!product.inStock && (
                 <div className="stock-overlay">
                   <span>Out of Stock</span>
                 </div>
               )}
             </div>
-            {product.images.length > 1 && (
-              <div className="image-thumbnails">
-                {product.images.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`${product.name} ${index + 1}`}
-                    className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
-                    onClick={() => setSelectedImage(index)}
-                  />
-                ))}
-              </div>
-            )}
           </div>
 
-          {/* Product Info */}
+          {/* Right Side - Product Info (Scrollable) */}
           <div className="product-info">
-            {product.collection && (
-              <p className="product-collection-name">{product.collection.name}</p>
-            )}
             <h1 className="product-name">{product.name}</h1>
 
             {/* Price */}
             <div className="product-price-section">
               <span className="current-price">{formatPrice(displayPrice)}</span>
-              {/* {product.discountedPrice && (
-                <>
-                  <span className="original-price">{formatPrice(product.price)}</span>
-                  <span className="save-amount">Save {formatPrice(product.price - product.discountedPrice)}</span>
-                </>
-              )} */}
             </div>
 
-            {/* Description */}
-            <div className="product-description">
-              <h3>Description</h3>
-              <p>{product.description}</p>
-            </div>
-
-            {/* Product Details */}
-            <div className="product-details">
-              {product.fabric && (
-                <div className="detail-item">
-                  <span className="detail-label">Fabric:</span>
-                  <span className="detail-value">{product.fabric}</span>
-                </div>
-              )}
-              {product.care && (
-                <div className="detail-item">
-                  <span className="detail-label">Care:</span>
-                  <span className="detail-value">{product.care}</span>
-                </div>
-              )}
-              {product.sizes && product.sizes.length > 0 && (
-                <div className="detail-item">
-                  <span className="detail-label">Available Sizes:</span>
-                  <span className="detail-value">{product.sizes.join(', ')}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Size Chart Button */}
-            <button 
-              className="btn btn-secondary size-chart-btn"
-              onClick={() => setShowSizeChart(true)}
-            >
-              View Size Chart
-            </button>
+            {/* Available Sizes */}
+            {product.sizes && product.sizes.length > 0 && (
+              <div className="available-sizes">
+                <span className="size-label">Available Sizes:</span>
+                <span className="size-value">{product.sizes.join(', ')}</span>
+              </div>
+            )}
 
             {/* Order Button */}
             <button
@@ -165,28 +130,82 @@ const ProductDetailPage = () => {
               onClick={handleOrderClick}
               disabled={!product.inStock}
             >
-              {product.inStock ? 'Place Order' : 'Out of Stock'}
+              {product.inStock ? 'Buy it now' : 'Out of Stock'}
             </button>
 
-            {/* Additional Info */}
-            <div className="additional-info">
-              <div className="info-item">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Premium Quality Fabric</span>
+            {/* Size Chart Button */}
+            <button
+              className="btn btn-secondary size-chart-btn"
+              onClick={() => setShowSizeChart(true)}
+            >
+              Size chart
+            </button>
+
+            {/* Features - Single Full Width Image */}
+            <div className="product-features">
+              <img src="https://i.postimg.cc/NFDQFFsh/icon1.png" alt="Feature Icon 1" className="feature-iconn" />
+              <img src="https://i.postimg.cc/mkjTkkLf/icon2.png" alt="Feature Icon 2" className="feature-iconn" />
+              <img src="https://i.postimg.cc/KjfmjjGh/icon3.png" alt="Feature Icon 3" className="feature-iconn" />
+            </div>
+
+            {/* Dropdown Sections */}
+            <div className="dropdown-sections">
+              {/* Description */}
+              <div className="dropdown-section">
+                <button
+                  className={`dropdown-header ${openDropdown === 'description' ? 'open' : ''}`}
+                  onClick={() => toggleDropdown('description')}
+                >
+                  <h3>Description</h3>
+                  <svg className="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                  </svg>
+                </button>
+                {openDropdown === 'description' && (
+                  <div className="dropdown-content">
+                    <h4 className="description-main-heading">Upgrade your style with our Pehnawa!</h4>
+                    <p>{product.description}</p>
+                    {product.fabric && (
+                      <p><strong>Fabric:</strong> {product.fabric}</p>
+                    )}
+                  </div>
+                )}
               </div>
-              <div className="info-item">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>Fast Delivery</span>
+
+              {/* Wash Care */}
+              <div className="dropdown-section">
+                <button
+                  className={`dropdown-header ${openDropdown === 'care' ? 'open' : ''}`}
+                  onClick={() => toggleDropdown('care')}
+                >
+                  <h3>Wash Care</h3>
+                  <svg className="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                  </svg>
+                </button>
+                {openDropdown === 'care' && (
+                  <div className="dropdown-content">
+                    <p>{product.care || "Since it's crafted with natural colors and hand-printed, please hand wash with mild detergent to ensure longer-lasting beauty."}</p>
+                  </div>
+                )}
               </div>
-              <div className="info-item">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
-                <span>Custom Tailoring Available</span>
+
+              {/* Returns/Exchanges */}
+              <div className="dropdown-section">
+                <button
+                  className={`dropdown-header ${openDropdown === 'returns' ? 'open' : ''}`}
+                  onClick={() => toggleDropdown('returns')}
+                >
+                  <h3>Returns/Exchanges</h3>
+                  <svg className="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                  </svg>
+                </button>
+                {openDropdown === 'returns' && (
+                  <div className="dropdown-content">
+                    <p>Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange. (Just keep an unboxing video handy)</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

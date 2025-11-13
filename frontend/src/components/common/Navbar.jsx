@@ -14,17 +14,17 @@ const Navbar = () => {
   // Auto-detect system theme
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     // Set initial theme
     setTheme(mediaQuery.matches ? 'dark' : 'light');
-    
+
     // Listen for theme changes
     const handleThemeChange = (e) => {
       setTheme(e.matches ? 'dark' : 'light');
     };
-    
+
     mediaQuery.addEventListener('change', handleThemeChange);
-    
+
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleThemeChange);
   }, [setTheme]);
@@ -53,39 +53,159 @@ const Navbar = () => {
     ),
     facebook: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" strokeWidth="0">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
       </svg>
     )
   };
 
   return (
-    <nav className="navbar">
-      <div className="container navbar-container">
-        <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          <img src={logo} alt="Corporate Pahanava Logo" className="logo-image" />
-          <div className="logo-text-container">
-            <span className="logo-text">Corporate</span>
-            <span className="logo-hindi">पहनावा</span>
+    <>
+      {/* Moving Text Banner */}
+      <div className="moving-banner">
+        <div className="banner-content">
+          <div className="banner-track">
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
+            <span className="banner-text">
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+            </span>
           </div>
-        </Link>
+        </div>
+      </div>
 
-        <ul className={`navbar-menu ${isOpen ? 'active' : ''}`}>
-          {NAV_LINKS.map((link) => (
-            <li key={link.path} className="navbar-item">
-              <NavLink
-                to={link.path}
-                className={({ isActive }) =>
-                  isActive ? 'navbar-link active' : 'navbar-link'
-                }
-                onClick={closeMenu}
-              >
-                {link.name}
-              </NavLink>
+      <nav className="navbar">
+        <div className="container navbar-container">
+          <Link to="/" className="navbar-logo" onClick={closeMenu}>
+            <img src={logo} alt="Corporate Pahanava Logo" className="logo-image" />
+            <div className="logo-text-container">
+              <span className="logo-text">Corporate</span>
+              <span className="logo-hindi">पहनावा</span>
+            </div>
+          </Link>
+
+          <ul className={`navbar-menu ${isOpen ? 'active' : ''}`}>
+            {NAV_LINKS.map((link) => (
+              <li key={link.path} className="navbar-item">
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive ? 'navbar-link active' : 'navbar-link'
+                  }
+                  onClick={closeMenu}
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
+
+            <li className="navbar-item mobile-social">
+              <div className="social-links">
+                {SOCIAL_LINKS.facebook && (
+                  <a
+                    href={SOCIAL_LINKS.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link"
+                    aria-label="Facebook"
+                  >
+                    {socialIcons.facebook}
+                  </a>
+                )}
+                {SOCIAL_LINKS.instagram && (
+                  <a
+                    href={SOCIAL_LINKS.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link"
+                    aria-label="Instagram"
+                  >
+                    {socialIcons.instagram}
+                  </a>
+                )}
+                {SOCIAL_LINKS.youtube && (
+                  <a
+                    href={SOCIAL_LINKS.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link"
+                    aria-label="YouTube"
+                  >
+                    {socialIcons.youtube}
+                  </a>
+                )}
+              </div>
             </li>
-          ))}
-          
-          <li className="navbar-item mobile-social">
-            <div className="social-links">
+          </ul>
+
+          <div className="navbar-actions">
+            <div className="social-links desktop-social">
               {SOCIAL_LINKS.facebook && (
                 <a
                   href={SOCIAL_LINKS.facebook}
@@ -120,58 +240,20 @@ const Navbar = () => {
                 </a>
               )}
             </div>
-          </li>
-        </ul>
 
-        <div className="navbar-actions">
-          <div className="social-links desktop-social">
-            {SOCIAL_LINKS.facebook && (
-              <a
-                href={SOCIAL_LINKS.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                aria-label="Facebook"
-              >
-                {socialIcons.facebook}
-              </a>
-            )}
-            {SOCIAL_LINKS.instagram && (
-              <a
-                href={SOCIAL_LINKS.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                aria-label="Instagram"
-              >
-                {socialIcons.instagram}
-              </a>
-            )}
-            {SOCIAL_LINKS.youtube && (
-              <a
-                href={SOCIAL_LINKS.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                aria-label="YouTube"
-              >
-                {socialIcons.youtube}
-              </a>
-            )}
+            <button
+              className={`navbar-toggle ${isOpen ? 'active' : ''}`}
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
-          
-          <button
-            className={`navbar-toggle ${isOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 

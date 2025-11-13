@@ -146,11 +146,11 @@
   gap: 4px;
 }
 
-.contact-label {
+.contact-labell {
   font-family: "aptos-bold";
   font-size: var(--text-xs);
   font-weight: 600;
-  color: var(--primary-orange);
+  color: #8b4513;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }

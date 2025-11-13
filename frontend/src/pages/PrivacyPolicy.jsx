@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
             <p className="policy-subtitle">
               Your privacy is important to us. This policy outlines how we collect, use, and protect your information.
             </p>
-            <p className="last-updated">Last Updated: November 2024</p>
+            <p className="last-updated">Last Updated: November 2025</p>
           </header>
 
           {/* Introduction */}

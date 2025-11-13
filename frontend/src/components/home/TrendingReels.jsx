@@ -57,7 +57,7 @@ const TrendingReels = () => {
     <section className="trending-reels-section">
       <div className="container">
         <div className="trending-reels-header">
-          <h2 className="section-titlee">See What's Trending to Talk of the Town</h2>
+          <h2 className="section-titlee">Talk of the town</h2>
           {/* <p className="section-subtitle">
             Watch our latest videos and stay connected with our community
           </p> */}

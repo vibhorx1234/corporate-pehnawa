@@ -76,7 +76,7 @@ const Contact = () => {
 
         <div className="contact-container">
           <div className="contact-info-section">
-            <h2>Contact Information</h2>
+            <h2>Contact information</h2>
 
             <div className="info-cards">
               <div className="info-card">
@@ -119,7 +119,7 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="social-section">
-              <h3>Follow Us</h3>
+              <h3>Follow us</h3>
               <div className="social-links">
                 <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
                   <svg fill="currentColor" viewBox="0 0 24 24">
@@ -141,6 +141,7 @@ const Contact = () => {
 
             {/* WhatsApp Button */}
             <div className="social-section">
+              <h3>Connect with us</h3>
               <a 
                 href="https://wa.me/919166213263?text=Hi%20Corporate%20Pehnawa%2C%20I%20have%20a%20question" 
                 target="_blank" 
@@ -156,7 +157,7 @@ const Contact = () => {
           </div>
 
           <div className="contact-form-section">
-            <h2>Send Us a Message</h2>
+            <h2>Send us a message</h2>
 
             {successMessage && (
               <div className="success-alert">
@@ -166,7 +167,7 @@ const Contact = () => {
 
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
-                <label htmlFor="name">Your Name *</label>
+                <label htmlFor="name">Your name *</label>
                 <input
                   type="text"
                   id="name"
@@ -179,7 +180,7 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email Address *</label>
+                <label htmlFor="email">Email address *</label>
                 <input
                   type="email"
                   id="email"

@@ -37,7 +37,7 @@ const FeaturedProducts = () => {
     <section className="featured-products">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-titlee">Featured Products</h2>
+          <h2 className="section-titlee">Featured products</h2>
           {/* <p className="section-subtitle">
             Discover our handpicked selection of premium fashion pieces
           </p> */}

@@ -48,7 +48,7 @@ const Home = () => {
       {/* Why Choose Us Section */}
       <section className="features-section">
         <div className="container">
-          <h2 className="section-titlee text-center">Why Choose Corporate Pehnawa</h2>
+          <h2 className="section-titlee text-center">Why choose Corporate Pehnawa</h2>
 
           <div className="features-grid">
             <div className="feature-card">

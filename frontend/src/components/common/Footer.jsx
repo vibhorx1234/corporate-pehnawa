@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="footer-column">
-            <h4 className="footer-heading">Quick Links</h4>
+            <h4 className="footer-heading">Quick links</h4>
             <ul className="footer-links">
               {NAV_LINKS.map((link) => (
                 <li key={link.path}>
@@ -44,22 +44,22 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="footer-column">
-            <h4 className="footer-heading">Contact Us</h4>
+            <h4 className="footer-heading">Contact us</h4>
             <ul className="footer-contact">
               <li>
-                <span className="contact-label">Email:</span>
+                <span className="contact-labell">Email:</span>
                 <a href={`mailto:${CONTACT_INFO.email}`} className="footer-link">
                   {CONTACT_INFO.email}
                 </a>
               </li>
               <li>
-                <span className="contact-label">Phone:</span>
+                <span className="contact-labell">Phone:</span>
                 <a href={`tel:${CONTACT_INFO.phone}`} className="footer-link">
                   {CONTACT_INFO.phone}
                 </a>
               </li>
               <li>
-                <span className="contact-label">Address:</span>
+                <span className="contact-labell">Address:</span>
                 <span className="footer-link">{CONTACT_INFO.address}</span>
               </li>
             </ul>
@@ -67,7 +67,7 @@ const Footer = () => {
 
           {/* Social Media */}
           <div className="footer-column">
-            <h4 className="footer-heading">Follow Us</h4>
+            <h4 className="footer-heading">Connect with us</h4>
             <div className="footer-social">
               <a
                 href={SOCIAL_LINKS.facebook}
@@ -102,10 +102,6 @@ const Footer = () => {
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                 </svg>
               </a>
-            </div>
-
-            {/* WhatsApp Button in Footer */}
-            <div className="footer-social">
               <a 
                 href="https://wa.me/919166213263?text=Hi%20Corporate%20Pehnawa%2C%20I%20have%20a%20question" 
                 target="_blank" 

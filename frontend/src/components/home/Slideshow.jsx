@@ -27,8 +27,8 @@ const Slideshow = () => {
           <div className="slide-overlay"></div>
           <div className="slide-content">
             <h1 className="slide-title">
-              <span className="line1">Your Wardrobe Partner</span>
-              <span className="line2">For Work & Beyond</span>
+              <span className="line1">Your wardrobe partner for</span>
+              <span className="line2">work & beyond</span>
             </h1>
             {/* <p className="slide-subtitle">Premium corporate fashion for the modern professional</p> */}
             <Link to="/collections" className="btn btn-primary btn-lg">

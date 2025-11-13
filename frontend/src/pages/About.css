@@ -84,7 +84,7 @@
 .about-section::before {
   content: '';
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
@@ -163,11 +163,12 @@
 .story-text-side {
   font-family: "aptos-bold";
   background: linear-gradient(135deg, #fff5ed 0%, #ffe8d9 100%);
-  border: 2px solid var(--primary-orange);
+  /* border: 2px solid var(--primary-orange); */
   border-radius: var(--radius-lg);
   padding: var(--spacing-2xl);
   box-shadow: 0 4px 12px rgba(255, 102, 0, 0.1);
 }
+
 
 [data-theme="dark"] .story-text-side {
   background: linear-gradient(135deg, #2a1a12 0%, #3d2318 100%);
@@ -534,8 +535,7 @@
   }
 
   .story-image-side {
-    position: relative;
-    top: 0;
+    position: static;
     max-width: 300px;
     margin: 0 auto;
   }

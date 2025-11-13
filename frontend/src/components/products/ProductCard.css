@@ -172,7 +172,7 @@
 }
 
 /* Product Info */
-.product-info {
+.product-infoo {
   padding: 20px 18px 22px;
   display: flex;
   flex-direction: column;
@@ -195,7 +195,7 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
-  color: var(--pc-text-primary);
+  color: #6b4423;
   margin: 0;
   letter-spacing: 0.3px;
   transition: color 0.3s ease;
@@ -207,6 +207,10 @@
 
 .product-card:hover .product-namee {
   color: var(--pc-primary-color);
+}
+
+[data-theme="dark"] .product-namee {
+  color: #dd7351;
 }
 
 /* Pricing */
@@ -221,8 +225,12 @@
   font-family: 'poppins', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: var(--pc-text-primary);
+  color: #6b4423;
   letter-spacing: 0.3px;
+}
+
+[data-theme="dark"] .product-price {
+  color: #dd7351;
 }
 
 .product-original-price {
@@ -236,7 +244,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .product-info {
+  .product-infoo {
     padding: 16px 14px 18px;
   }
 

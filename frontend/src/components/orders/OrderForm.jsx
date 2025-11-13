@@ -165,10 +165,10 @@ const OrderForm = ({ product }) => {
 
       {/* Customer Information */}
       <div className="form-section">
-        <h3 className="form-section-title">Customer Information</h3>
+        <h3 className="form-section-title">Customer information</h3>
         
         <div className="form-group">
-          <label htmlFor="customerName">Full Name *</label>
+          <label htmlFor="customerName">Full name *</label>
           <input
             type="text"
             id="customerName"
@@ -182,7 +182,7 @@ const OrderForm = ({ product }) => {
 
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="email">Email Address *</label>
+            <label htmlFor="email">Email address *</label>
             <input
               type="email"
               id="email"
@@ -195,7 +195,7 @@ const OrderForm = ({ product }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">Phone Number *</label>
+            <label htmlFor="phone">Phone number *</label>
             <input
               type="tel"
               id="phone"
@@ -212,10 +212,10 @@ const OrderForm = ({ product }) => {
 
       {/* Delivery Address */}
       <div className="form-section">
-        <h3 className="form-section-title">Delivery Address</h3>
+        <h3 className="form-section-title">Delivery address</h3>
         
         <div className="form-group">
-          <label htmlFor="street">Street Address *</label>
+          <label htmlFor="street">Street address *</label>
           <input
             type="text"
             id="street"
@@ -285,7 +285,7 @@ const OrderForm = ({ product }) => {
 
       {/* Order Details */}
       <div className="form-section">
-        <h3 className="form-section-title">Order Details</h3>
+        <h3 className="form-section-title">Order details</h3>
         
         <div className="form-group">
           <label htmlFor="quantity">Quantity *</label>
@@ -305,13 +305,13 @@ const OrderForm = ({ product }) => {
       {/* Size Selection */}
       <div className="form-section">
         <div className="size-section-header">
-          <h3 className="form-section-title">Size Selection</h3>
+          <h3 className="form-section-title">Size selection</h3>
           <button
             type="button"
             className="btn btn-secondary btn-sm"
             onClick={() => setShowSizeChart(true)}
           >
-            View Size Chart
+            View size chart
           </button>
         </div>
 
@@ -324,7 +324,7 @@ const OrderForm = ({ product }) => {
               checked={formData.sizeType === SIZE_TYPE.STANDARD}
               onChange={handleSizeTypeChange}
             />
-            <span>Standard Size</span>
+            <span>Standard size</span>
           </label>
 
           <label className="radio-label">
@@ -335,13 +335,13 @@ const OrderForm = ({ product }) => {
               checked={formData.sizeType === SIZE_TYPE.CUSTOM}
               onChange={handleSizeTypeChange}
             />
-            <span>Custom Measurements</span>
+            <span>Custom measurements</span>
           </label>
         </div>
 
         {formData.sizeType === SIZE_TYPE.STANDARD ? (
           <div className="form-group">
-            <label htmlFor="standardSize">Select Size *</label>
+            <label htmlFor="standardSize">Select size *</label>
             <select
               id="standardSize"
               name="standardSize"
@@ -379,7 +379,7 @@ const OrderForm = ({ product }) => {
 
       {/* Additional Notes */}
       <div className="form-section">
-        <h3 className="form-section-title">Additional Notes (Optional)</h3>
+        <h3 className="form-section-title">Additional notes (Optional)</h3>
         <div className="form-group">
           <textarea
             id="notes"

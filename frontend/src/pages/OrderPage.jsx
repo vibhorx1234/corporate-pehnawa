@@ -72,7 +72,7 @@ const OrderPage = () => {
 
             {/* Important Notes */}
             <div className="order-notes">
-              <h3>Important Information</h3>
+              <h3>Important information</h3>
               <ul>
                 <li>Please ensure all details are correct before submitting</li>
                 <li>Upload payment screenshot after making UPI payment</li>
@@ -85,7 +85,7 @@ const OrderPage = () => {
 
           {/* Order Form */}
           <div className="order-form-section">
-            <h2 className="section-heading">Order Details</h2>
+            <h2 className="section-heading">Order details</h2>
             <OrderForm product={product} />
           </div>
         </div>

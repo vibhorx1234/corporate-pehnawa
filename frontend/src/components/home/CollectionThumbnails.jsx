@@ -35,10 +35,10 @@ const CollectionThumbnails = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <h2 className="section-titlee">Our Collections</h2>
-          <p className="section-subtitle">
+          <h2 className="section-titlee">Our collections</h2>
+          {/* <p className="section-subtitle">
             For people who believe workwear can be stylish, comfortable, & rooted in culture
-          </p>
+          </p> */}
         </div>
 
         {/* Collections Grid */}
@@ -73,7 +73,7 @@ const CollectionThumbnails = () => {
         {/* View All Button */}
         <div className="section-footer">
           <Link to="/collections" className="btn btn-secondary btn-lg">
-            View All Collections
+            View all collections
           </Link>
         </div>
       </div>

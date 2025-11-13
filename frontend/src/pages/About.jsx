@@ -53,7 +53,7 @@ const About = () => {
               <p>
                 Thank you for being part of our story.
               </p>
-              <p className="story-signature">
+              <p>
                 With all my thread and soul,<br />
                 Radhika
               </p>
@@ -128,14 +128,14 @@ const About = () => {
       {/* CTA Section */}
       <section className="about-cta">
         <div className="container">
-          <h2>Ready to Elevate Your Professional Wardrobe?</h2>
+          <h2>Ready to elevate your professional wardrobe?</h2>
           <p>Explore our collections and find the perfect outfit for every occasion</p>
           <div className="cta-buttons">
             <Link to="/collections" className="btn btn-primary btn-lg">
-              Shop Collections
+              Shop collections
             </Link>
             <Link to="/contact" className="btn btn-primary btn-lg">
-              Contact Us
+              Contact us
             </Link>
           </div>
         </div>
