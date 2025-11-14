@@ -27,14 +27,10 @@ app.post('/send-email', async (req, res) => {
 
   console.log(toEmail,subject,content)
 
-  // Simple validation
-  if (!toEmail || !subject || !content) {
-    return res.status(400).send('Missing required fields: toEmail, subject, or content');
-  }
 
   // 5. Define the email options
   const mailOptions = {
-    from: `"Your Server Name" <${process.env.EMAIL_USER}>`, // Sender address (must be your Gmail)
+    from: `"Corporate Pehnawa" <${process.env.EMAIL_USER}>`, // Sender address (must be your Gmail)
     to: toEmail, // Recipient's email address
     subject: subject, // Subject line
     html: content, // Plain text body
