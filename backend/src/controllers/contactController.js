@@ -1,94 +1,124 @@
-// File: ./backend/src/controllers/contactController.js
+const dotenv = require('dotenv');
+dotenv.config();
+
+
 
 const Contact = require('../models/Contact');
-const transporter = require('../config/nodemailer');
+
+const EMAIL_API_ENDPOINT = 'https://corporate-pehnawa.vercel.app/send-email';
+
+/**
+ * Helper function to send an email using the external API endpoint.
+ * @param {string} toEmail - The recipient's email address.
+ * @param {string} subject - The subject of the email.
+ * @param {string} content - The HTML content of the email.
+ */
+const sendEmailViaApi = async (toEmail, subject, content) => {
+  const requestBody = {
+    toEmail: toEmail,
+    subject: subject,
+    content: content
+  };
+
+  try {
+    console.log(`Sending email to ${toEmail} via external API...`);
+    
+    const response = await fetch(EMAIL_API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody)
+    });
+    console.log(requestBody)
+    // Check for HTTP errors (e.g., 400, 500)
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`API returned status ${response.status}: ${errorText}`);
+    }
+
+    console.log(`✅ Email sent successfully to ${toEmail}`);
+    return;
+  } catch (error) {
+    console.error('❌ Error sending email via external API:', error.message);
+    throw error;
+  }
+};
 
 // Send contact form email
 const sendContactEmail = async (contactData) => {
-  // Verify connection before sending
-  try {
-    console.log('Verifying email transporter for contact email...');
-    await transporter.verify();
-    console.log('✅ Email transporter verified for contact email');
-  } catch (error) {
-    console.error('❌ Email transporter verification failed:', error.message);
-    throw new Error('Email service connection failed. Please try again later.');
-  }
-
-  // Email to admin
-  const adminMailOptions = {
-    from: process.env.EMAIL_FROM,
-    to: process.env.ADMIN_EMAIL,
-    subject: `New Contact Form Submission: ${contactData.subject}`,
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #DD7351;">New Contact Form Submission</h2>
-        
-        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-          <h3 style="margin-top: 0;">Contact Details</h3>
-          <p><strong>Name:</strong> ${contactData.name}</p>
-          <p><strong>Email:</strong> ${contactData.email}</p>
-          <p><strong>Subject:</strong> ${contactData.subject}</p>
-        </div>
-        
-        <div style="background-color: #e8f5e9; padding: 20px; border-radius: 5px; margin: 20px 0;">
-          <h3 style="margin-top: 0;">Message</h3>
-          <p style="white-space: pre-wrap;">${contactData.message}</p>
-        </div>
-        
-        <p><strong>Received at:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
-        
-        <div style="margin-top: 30px; padding: 15px; background-color: #fff3e0; border-left: 4px solid #DD7351;">
-          <p style="margin: 0;"><strong>Reply to this customer at:</strong> ${contactData.email}</p>
-        </div>
+  // Email to admin - HTML content
+  const adminHtmlContent = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #DD7351;">New Contact Form Submission</h2>
+      
+      <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h3 style="margin-top: 0;">Contact Details</h3>
+        <p><strong>Name:</strong> ${contactData.name}</p>
+        <p><strong>Email:</strong> ${contactData.email}</p>
+        <p><strong>Subject:</strong> ${contactData.subject}</p>
       </div>
-    `
-  };
-
-  // Confirmation email to customer
-  const customerMailOptions = {
-    from: process.env.EMAIL_FROM,
-    to: contactData.email,
-    subject: 'Thank you for contacting Corporate Pehnawa',
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #DD7351;">Thank You for Contacting Us!</h2>
-        <p>Dear ${contactData.name},</p>
-        <p>We have received your message and will get back to you as soon as possible.</p>
-        
-        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-          <h3 style="margin-top: 0;">Your Message</h3>
-          <p><strong>Subject:</strong> ${contactData.subject}</p>
-          <p style="white-space: pre-wrap;">${contactData.message}</p>
-        </div>
-        
-        <p>Our team typically responds within 24-48 hours during business days.</p>
-        
-        <div style="margin-top: 30px; padding: 20px; background-color: #e8f5e9; border-radius: 5px;">
-          <h4 style="margin-top: 0;">Need Immediate Assistance?</h4>
-          <p style="margin: 5px 0;"><strong>Phone:</strong> ${process.env.CONTACT_PHONE || '+91 91662 13263'}</p>
-          <p style="margin: 5px 0;"><strong>Email:</strong> ${process.env.ADMIN_EMAIL}</p>
-        </div>
-        
-        <p style="margin-top: 30px;">Best regards,<br>
-        <strong>Corporate Pehnawa Team</strong></p>
+      
+      <div style="background-color: #e8f5e9; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h3 style="margin-top: 0;">Message</h3>
+        <p style="white-space: pre-wrap;">${contactData.message}</p>
       </div>
-    `
-  };
+      
+      <p><strong>Received at:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+      
+      <div style="margin-top: 30px; padding: 15px; background-color: #fff3e0; border-left: 4px solid #DD7351;">
+        <p style="margin: 0;"><strong>Reply to this customer at:</strong> ${contactData.email}</p>
+      </div>
+    </div>
+  `;
+
+  // Confirmation email to customer - HTML content
+  const customerHtmlContent = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #DD7351;">Thank You for Contacting Us!</h2>
+      <p>Dear ${contactData.name},</p>
+      <p>We have received your message and will get back to you as soon as possible.</p>
+      
+      <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h3 style="margin-top: 0;">Your Message</h3>
+        <p><strong>Subject:</strong> ${contactData.subject}</p>
+        <p style="white-space: pre-wrap;">${contactData.message}</p>
+      </div>
+      
+      <p>Our team typically responds within 24-48 hours during business days.</p>
+      
+      <div style="margin-top: 30px; padding: 20px; background-color: #e8f5e9; border-radius: 5px;">
+        <h4 style="margin-top: 0;">Need Immediate Assistance?</h4>
+        <p style="margin: 5px 0;"><strong>Phone:</strong> ${process.env.CONTACT_PHONE || '+91 91662 13263'}</p>
+        <p style="margin: 5px 0;"><strong>Email:</strong> ${process.env.ADMIN_EMAIL}</p>
+      </div>
+      
+      <p style="margin-top: 30px;">Best regards,<br>
+      <strong>Corporate Pehnawa Team</strong></p>
+    </div>
+  `;
 
   try {
     console.log('Attempting to send contact emails...');
     
+
     // Send email to admin
-    await transporter.sendMail(adminMailOptions);
+    await sendEmailViaApi(
+      process.env.ADMIN_EMAIL,
+      `New Contact Form Submission: ${contactData.subject}`,
+      adminHtmlContent
+    );
     console.log(`✅ Contact form notification sent to admin`);
-    
+    console.log("------------",contactData)
     // Send confirmation email to customer
-    await transporter.sendMail(customerMailOptions);
+    await sendEmailViaApi(
+      contactData.email,
+      'Thank you for contacting Corporate Pehnawa',
+      customerHtmlContent
+    );
     console.log(`✅ Contact confirmation email sent to ${contactData.email}`);
     
     console.log('✅ Contact emails sent successfully');
-    
     return true;
   } catch (error) {
     console.error('❌ Error sending contact emails:', error);

@@ -37,7 +37,7 @@ app.post('/send-email', async (req, res) => {
     from: `"Your Server Name" <${process.env.EMAIL_USER}>`, // Sender address (must be your Gmail)
     to: toEmail, // Recipient's email address
     subject: subject, // Subject line
-    text: content, // Plain text body
+    html: content, // Plain text body
     // html: "<b>Hello world?</b>", // You can also send HTML content
   };
 
