@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
           {/* Introduction */}
           <section className="policy-section">
             <p className="policy-intro">
-              Thank you for visiting <strong>Corporatepehnawa.com</strong>. We value your trust and are committed to protecting your privacy and personal data. This Privacy Policy outlines how we collect, use, share, and protect the personal information you provide when interacting with Corporate Pehnawa. By using our website, you agree to the terms outlined below.
+              Thank you for visiting <strong>corporatepehnawa.com</strong>. We value your trust and are committed to protecting your privacy and personal data. This Privacy Policy outlines how we collect, use, share, and protect the personal information you provide when interacting with Corporate Pehnawa. By using our website, you agree to the terms outlined below.
             </p>
           </section>
 

@@ -141,8 +141,8 @@
 .navbar-link {
   color: #6b4423;
   text-decoration: none;
-  font-size: var(--text-base);
-  font-weight: 500;
+  font-size: var(--text-lg);
+  font-weight: 700;
   padding: var(--spacing-sm) var(--spacing-md);
   transition: color var(--transition-fast);
   position: relative;

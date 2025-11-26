@@ -45,7 +45,7 @@ const Testimonials = () => {
     <section className="testimonials-section">
       <div className="container">
         <div className="testimonials-header">
-          <h2 className="section-titlee">Pehnawa stories</h2>
+          <h2 className="section-titlee">Pehnawa Stories</h2>
           {/* <p className="section-subtitle">
             Don't just take our word for it - hear from our satisfied customers
           </p> */}

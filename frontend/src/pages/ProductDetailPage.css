@@ -455,6 +455,9 @@
   font-family: "aptos";
   padding: 0 var(--spacing-lg) var(--spacing-lg);
   animation: slideDown 0.3s ease-out;
+  /* white-space: pre-line;*/
+  white-space: pre-wrap;
+  /* padding-left: 32px; */
 }
 
 .description-main-heading {

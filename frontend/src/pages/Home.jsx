@@ -71,7 +71,7 @@ const Home = () => {
               </div>
               <h3 className="feature-title">Affordability</h3>
               <p className="feature-description">
-                Stylish uniforms at prices that fit every budget—quality without compromise.
+                Stylish pieces at prices that fit every budget without compromising on the quality.
               </p>
             </div>
 

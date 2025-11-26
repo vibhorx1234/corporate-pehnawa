@@ -1,5 +1,3 @@
-// File: ./frontend/src/pages/FAQ.jsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './FAQ.css';
@@ -9,7 +7,7 @@ const FAQ = () => {
     {
       id: 1,
       question: "How do I place an order?",
-      answer: "We'd love to create your Corporate Pehnawa! Just DM/WhatsApp us your chosen print + size, and once payment is done, we'll start crafting it for you. Your piece will be shipped in 4-6 business days 💖 Every order means the world to us as a small, growing brand!"
+      answer: "You can place your order directly on our <strong>website</strong>, or simply DM us on <strong>Instagram</strong> or <strong>WhatsApp</strong> with your chosen print + size. Once payment is done, we'll craft and ship your order within <strong>4–6 business days</strong> ✨<br><br>Thank you for supporting our small, growing brand! 🌸"
     },
     {
       id: 2,
@@ -29,7 +27,7 @@ const FAQ = () => {
     {
       id: 5,
       question: "Can I return/exchange?",
-      answer: "Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange. (Just keep an unboxing video handy 🪄)"
+      answer: "Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange (just keep an unboxing video handy 🪄)."
     }
   ];
 
@@ -53,7 +51,7 @@ const FAQ = () => {
                 <span className="faq-number">{faq.id}</span>
                 <h3>{faq.question}</h3>
               </div>
-              <p className="faq-answer">{faq.answer}</p>
+              <p className="faq-answer" dangerouslySetInnerHTML={{ __html: faq.answer }}></p>
             </div>
           ))}
         </div>
