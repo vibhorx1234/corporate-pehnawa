@@ -372,6 +372,13 @@ const OrderForm = ({ product }) => {
         )}
       </div>
 
+      <div className="form-section">
+        <h3 className="form-section-title">Payment</h3>
+        
+        <QRCodeDisplay amount={formData.totalAmount} />
+
+      </div>
+
       {/* Additional Notes */}
       <div className="form-section">
         <h3 className="form-section-title">Additional notes (Optional)</h3>
