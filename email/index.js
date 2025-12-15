@@ -23,7 +23,7 @@ app.post('/send-email', async (req, res) => {
   // Extract data from the request body
   const { toEmail, subject, content, attachments } = req.body; // Added attachments
 
-  console.log(toEmail, subject, content);
+  console.log(toEmail, subject || '(No subject)', content);
   if (attachments) {
     console.log('Attachments:', attachments.length, 'file(s)');
   }
@@ -32,7 +32,7 @@ app.post('/send-email', async (req, res) => {
   const mailOptions = {
     from: `"Corporate Pehnawa" <${process.env.EMAIL_USER}>`,
     to: toEmail,
-    subject: subject,
+    subject: subject || 'No Subject', // Fallback if subject is empty
     html: content,
   };
 

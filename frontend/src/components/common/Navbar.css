@@ -51,7 +51,7 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-25%); /* Move by 1/4 since we have 4 copies */
+    transform: translateX(-12%); /* Move by 1/4 since we have 4 copies */
   }
 }
 

@@ -128,11 +128,11 @@ const About = () => {
       {/* CTA Section */}
       <section className="about-cta">
         <div className="container">
-          <h2>Ready to elevate your professional wardrobe?</h2>
+          <h2>Grab your Pehnawa now!</h2>
           <p>Explore our collections and find the perfect outfit for every occasion</p>
           <div className="cta-buttons">
             <Link to="/collections" className="btn btn-primary btn-lg">
-              Shop collections
+              View Collections
             </Link>
             <Link to="/contact" className="btn btn-primary btn-lg">
               Contact us

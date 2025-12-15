@@ -31,7 +31,7 @@ export const validateOrderForm = (formData) => {
   if (!formData.address?.state || formData.address.state.trim().length < 2) {
     errors.state = 'Please enter a valid state';
   }
-  
+
   const pincodeRegex = /^[1-9][0-9]{5}$/;
   if (!formData.address?.pincode || !pincodeRegex.test(formData.address.pincode)) {
     errors.pincode = 'Please enter a valid 6-digit pincode';
@@ -57,18 +57,13 @@ export const validateOrderForm = (formData) => {
     } else if (formData.customMeasurements.bust > 60) {
       errors.bust = 'Bust measurement cannot exceed 60 inches';
     }
-    
+
     // Waist validation
     if (!formData.customMeasurements?.waist || formData.customMeasurements.waist < 20) {
       errors.waist = 'Please enter valid waist measurement (minimum 20 inches)';
     } else if (formData.customMeasurements.waist > 50) {
       errors.waist = 'Waist measurement cannot exceed 50 inches';
     }
-  }
-
-  // Payment screenshot
-  if (!formData.paymentScreenshot) {
-    errors.paymentScreenshot = 'Please upload payment screenshot';
   }
 
   return {
@@ -92,8 +87,8 @@ export const validateContactForm = (formData) => {
     errors.email = 'Please enter a valid email address';
   }
 
-  // Subject
-  if (!formData.subject || formData.subject.trim().length < 3) {
+  // Subject (Optional)
+  if (formData.subject && formData.subject.trim().length > 0 && formData.subject.trim().length < 3) {
     errors.subject = 'Subject must be at least 3 characters long';
   }
 

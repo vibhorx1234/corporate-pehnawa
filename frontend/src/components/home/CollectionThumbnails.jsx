@@ -35,7 +35,7 @@ const CollectionThumbnails = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <h2 className="section-titlee">Our collections</h2>
+          <h2 className="section-titlee">Our Collections</h2>
           {/* <p className="section-subtitle">
             For people who believe workwear can be stylish, comfortable, & rooted in culture
           </p> */}

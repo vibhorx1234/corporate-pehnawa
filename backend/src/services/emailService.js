@@ -1,4 +1,3 @@
-const fs = require('fs').promises;
 const path = require('path');
 
 const EMAIL_API_ENDPOINT = 'https://corporate-pehnawa.vercel.app/send-email';
@@ -93,7 +92,7 @@ exports.sendOrderConfirmation = async (order) => {
     );
 };
 
-// Send order notification to admin with payment screenshot attached
+// Send order notification to admin
 exports.sendOrderNotificationToAdmin = async (order) => {
     const htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -134,48 +133,16 @@ exports.sendOrderNotificationToAdmin = async (order) => {
           </div>
           ` : ''}
           
-          <div style="background-color: #fff9c4; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #fbc02d;">
-            <h3 style="margin-top: 0;">💳 Payment Verification</h3>
-            <p><strong>Payment Screenshot:</strong> ${order.paymentScreenshot ? 'Attached to this email' : 'Not uploaded'}</p>
-            <p style="font-size: 14px; color: #666;">Please verify the payment and update the order status accordingly.</p>
-          </div>
-          
           <div style="margin-top: 30px; text-align: center;">
             <p style="color: #666; font-size: 14px;">This is an automated notification from Corporate Pehnawa Order System</p>
           </div>
         </div>
     `;
 
-    // Prepare attachment if payment screenshot exists
-    let attachments = null;
-    if (order.paymentScreenshot) {
-        try {
-            // Read the file and convert to base64
-            const fileBuffer = await fs.readFile(order.paymentScreenshot);
-            const base64Content = fileBuffer.toString('base64');
-            
-            // Get file extension
-            const fileExtension = path.extname(order.paymentScreenshot);
-            const filename = `payment-screenshot-${order.orderNumber}${fileExtension}`;
-            
-            attachments = [{
-                filename: filename,
-                content: base64Content,
-                encoding: 'base64'
-            }];
-            
-            console.log(`✅ Payment screenshot prepared for attachment: ${filename}`);
-        } catch (error) {
-            console.error('❌ Error reading payment screenshot:', error.message);
-            // Continue without attachment if file read fails
-        }
-    }
-
     await sendEmailViaApi(
         process.env.ADMIN_EMAIL,
         `🛒 New Order Received - ${order.orderNumber}`,
         htmlContent,
-        attachments // Pass the attachments
     );
 };
 

@@ -229,22 +229,19 @@
 
 /* Product Features - Three Icons in a Row */
 .product-features {
-  /* margin-bottom: var(--spacing-sm); */
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: var(--spacing-md); */
-  /* padding: var(--spacing-md); */
-  /* background: rgba(255, 255, 255, 0.3); */
-  /* border: 1px solid rgba(255, 102, 0, 0.1); */
-  /* border-radius: var(--radius-md); */
+  gap: var(--spacing-md);
 }
 
-/* [data-theme="dark"] .product-features {
-  background: rgba(61, 35, 24, 0.2);
-  border-color: rgba(255, 133, 51, 0.2);
-} */
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
 
 .feature-iconn {
   width: 80px;
@@ -264,12 +261,24 @@
   transform: scale(1.05);
 }
 
+.feature-text {
+  font-family: "aptos-bold";
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: #6b4423;
+  text-align: center;
+}
+
+[data-theme="dark"] .feature-text {
+  color: #c9a882;
+}
+
 /* Available Sizes */
 .available-sizes {
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
   padding: var(--spacing-md);
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 102, 0, 0.2);
@@ -294,9 +303,10 @@
 
 .size-value {
   font-family: "aptos";
+  font-size: var(--text-2xl);
   color: var(--primary-orange);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 [data-theme="dark"] .size-value {
@@ -351,7 +361,7 @@
   font-family: "aptos-bold";
   width: 100%;
   padding: var(--spacing-md) var(--spacing-xl);
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
   font-weight: 500;
   color: var(--primary-orange);
   background: transparent;
@@ -360,7 +370,6 @@
   cursor: pointer;
   transition: all var(--transition-base);
   margin-bottom: var(--spacing-xl);
-  text-decoration: underline;
 }
 
 [data-theme="dark"] .size-chart-btn {
@@ -455,15 +464,12 @@
   font-family: "aptos";
   padding: 0 var(--spacing-lg) var(--spacing-lg);
   animation: slideDown 0.3s ease-out;
-  /* white-space: pre-line;*/
   white-space: pre-wrap;
-  /* padding-left: 32px; */
 }
 
 .description-main-heading {
   font-family: 'poppins';
   font-size: var(--text-4xl);
-  /* font-style: italic; */
   font-weight: 700;
   color: var(--primary-orange);
   margin: 0 0 var(--spacing-lg) 0;
@@ -597,7 +603,7 @@
 /* Mobile Tablets and Small iPads */
 @media (max-width: 768px) {
   .product-detail-page {
-    padding: calc(125px) 0 var(--spacing-2xl); /* Adjusted for navbar + banner */
+    padding: calc(125px) 0 var(--spacing-2xl);
   }
 
   .product-detail-container {
@@ -648,11 +654,6 @@
     width: 70px;
     height: 70px;
   }
-
-  /* .product-features {
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
-  } */
 }
 
 /* iPad Mini and Small Tablets */
@@ -704,9 +705,11 @@
   }
 
   .product-features {
-    /* gap: var(--spacing-xs);
-    padding: var(--spacing-xs); */
     justify-content: space-around;
+  }
+
+  .feature-text {
+    font-size: 10px;
   }
 }
 
@@ -717,10 +720,9 @@
     height: 45px;
   }
 
-  /* .product-features {
-    gap: 6px;
-    padding: 8px;
-  } */
+  .feature-text {
+    font-size: 9px;
+  }
 }
 
 /* Extra small screens */
@@ -730,8 +732,7 @@
     height: 40px;
   }
 
-  /* .product-features {
-    gap: 4px;
-    padding: 6px;
-  } */
+  .feature-text {
+    font-size: 8px;
+  }
 }

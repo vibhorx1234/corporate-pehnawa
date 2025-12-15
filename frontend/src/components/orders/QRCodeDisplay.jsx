@@ -53,8 +53,6 @@ const QRCodeDisplay = ({ amount }) => {
           <li>Open any UPI app (Google Pay, PhonePe, Paytm, etc.)</li>
           <li>Scan the QR code above</li>
           <li>Verify the amount and complete the payment</li>
-          <li>Take a screenshot of the payment confirmation</li>
-          <li>Upload the screenshot below</li>
         </ol>
       </div>
     </div>

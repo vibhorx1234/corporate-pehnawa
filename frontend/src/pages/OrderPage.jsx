@@ -75,7 +75,6 @@ const OrderPage = () => {
               <h3>Important information</h3>
               <ul>
                 <li>Please ensure all details are correct before submitting</li>
-                <li>Upload payment screenshot after making UPI payment</li>
                 <li>You will receive order confirmation via email</li>
                 <li>Custom measurements take 7-10 business days</li>
                 <li>Standard sizes are shipped within 3-5 business days</li>

@@ -43,11 +43,6 @@ export const createOrder = async (orderData) => {
       formData.append('notes', orderData.notes);
     }
     
-    // Append payment screenshot file
-    if (orderData.paymentScreenshot) {
-      formData.append('paymentScreenshot', orderData.paymentScreenshot);
-    }
-    
     const response = await axios.post(
       `${API_BASE_URL}${API_ENDPOINTS.orders}`,
       formData,

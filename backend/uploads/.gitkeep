@@ -1,4 +1,0 @@
-# File: ./backend/uploads/.gitkeep
-
-# This file keeps the uploads directory in git
-# The actual uploaded files will be ignored by .gitignore

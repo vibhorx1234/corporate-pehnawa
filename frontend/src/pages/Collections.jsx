@@ -38,7 +38,7 @@ const Collections = () => {
       <div className="container">
         {/* Page Header */}
         <div className="page-header">
-          <h1 className="page-title">Our collections</h1>
+          <h1 className="page-title">Our Collections</h1>
           {/* <p className="page-subtitle">
             For people who believe workwear can be stylish, comfortable, & rooted in culture.
           </p> */}

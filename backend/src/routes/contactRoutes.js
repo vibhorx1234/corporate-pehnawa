@@ -21,9 +21,8 @@ const validateContact = [
     .isEmail().withMessage('Invalid email address'),
   
   body('subject')
-    .trim()
-    .notEmpty().withMessage('Subject is required')
-    .isLength({ min: 3 }).withMessage('Subject must be at least 3 characters'),
+  .optional({ checkFalsy: true }) // Makes it optional
+  .isLength({ min: 3 }).withMessage('Subject must be at least 3 characters long'),
   
   body('message')
     .trim()

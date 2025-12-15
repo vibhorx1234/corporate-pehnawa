@@ -18,14 +18,14 @@ const Footer = () => {
           <div className="footer-column">
             <div className="footer-logo">
               <img src={logo} alt="Corporate Pahanava Logo" className="footer-logo-image" />
-              <div className="footer-logo-text-container">
+              {/* <div className="footer-logo-text-container">
                 <span className="logo-text">Corporate</span>
                 <span className="logo-hindi">पहनावा</span>
-              </div>
+              </div> */}
             </div>
-            <p className="footer-description">
+            {/* <p className="footer-description">
               Premium fashion for professionals. Elevate your corporate style with our exclusive collections of formal wear, business casual, and traditional attire.
-            </p>
+            </p> */}
           </div>
 
           {/* Quick Links */}
@@ -59,7 +59,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <span className="contact-labell">Address:</span>
+                <span className="contact-labell">Location:</span>
                 <span className="footer-link">{CONTACT_INFO.address}</span>
               </li>
             </ul>

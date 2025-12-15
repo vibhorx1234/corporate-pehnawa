@@ -6,7 +6,6 @@ import { createOrder } from '../../services/orderService';
 import { validateOrderForm } from '../../utils/validation';
 import CustomizationForm from './CustomizationForm';
 import QRCodeDisplay from './QRCodeDisplay';
-import FileUpload from './FileUpload';
 import SizeChart from '../products/SizeChart';
 import { SIZES, SIZE_TYPE } from '../../utils/constants';
 import './OrderForm.css';
@@ -41,7 +40,6 @@ const OrderForm = ({ product }) => {
       // shoulder: ''
     },
     totalAmount: product.discountedPrice || product.price,
-    paymentScreenshot: null,
     notes: ''
   });
 
@@ -72,13 +70,25 @@ const OrderForm = ({ product }) => {
   };
 
   const handleQuantityChange = (e) => {
-    const quantity = parseInt(e.target.value) || 1;
-    const price = product.discountedPrice || product.price;
-    setFormData(prev => ({
-      ...prev,
-      quantity,
-      totalAmount: price * quantity
-    }));
+    const value = e.target.value;
+    // Allow empty string for editing
+    if (value === '') {
+      setFormData(prev => ({
+        ...prev,
+        quantity: ''
+      }));
+      return;
+    }
+
+    const quantity = parseInt(value);
+    if (!isNaN(quantity) && quantity >= 1) {
+      const price = product.discountedPrice || product.price;
+      setFormData(prev => ({
+        ...prev,
+        quantity,
+        totalAmount: price * quantity
+      }));
+    }
   };
 
   const handleSizeTypeChange = (e) => {
@@ -105,11 +115,7 @@ const OrderForm = ({ product }) => {
   const handleFileChange = (file) => {
     setFormData(prev => ({
       ...prev,
-      paymentScreenshot: file
     }));
-    if (errors.paymentScreenshot) {
-      setErrors(prev => ({ ...prev, paymentScreenshot: '' }));
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -127,9 +133,9 @@ const OrderForm = ({ product }) => {
       setLoading(true);
       setErrors({});
       const response = await createOrder(formData);
-      
+
       setSuccessMessage(`Order placed successfully! Your order number is ${response.data.orderNumber}`);
-      
+
       // Redirect to home after 3 seconds
       setTimeout(() => {
         navigate('/');
@@ -166,7 +172,7 @@ const OrderForm = ({ product }) => {
       {/* Customer Information */}
       <div className="form-section">
         <h3 className="form-section-title">Customer information</h3>
-        
+
         <div className="form-group">
           <label htmlFor="customerName">Full name *</label>
           <input
@@ -213,7 +219,7 @@ const OrderForm = ({ product }) => {
       {/* Delivery Address */}
       <div className="form-section">
         <h3 className="form-section-title">Delivery address</h3>
-        
+
         <div className="form-group">
           <label htmlFor="street">Street address *</label>
           <input
@@ -286,14 +292,15 @@ const OrderForm = ({ product }) => {
       {/* Order Details */}
       <div className="form-section">
         <h3 className="form-section-title">Order details</h3>
-        
+
         <div className="form-group">
           <label htmlFor="quantity">Quantity *</label>
           <input
-            type="number"
+            type="text"
             id="quantity"
             name="quantity"
-            min="1"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={formData.quantity}
             onChange={handleQuantityChange}
             className={errors.quantity ? 'error' : ''}
@@ -363,18 +370,6 @@ const OrderForm = ({ product }) => {
             errors={errors}
           />
         )}
-      </div>
-
-      {/* Payment */}
-      <div className="form-section">
-        <h3 className="form-section-title">Payment</h3>
-        
-        <QRCodeDisplay amount={formData.totalAmount} />
-        
-        <FileUpload
-          onFileSelect={handleFileChange}
-          error={errors.paymentScreenshot}
-        />
       </div>
 
       {/* Additional Notes */}

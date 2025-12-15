@@ -44,35 +44,20 @@ const parseFormData = (body) => {
 
 // Create new order
 exports.createOrder = async (req, res) => {
-  let createdOrder = null;
-  
   try {
     console.log('📥 Received order request');
-    
-    // Check if payment screenshot is uploaded
-    if (!req.file) {
-      console.error('❌ No payment screenshot uploaded');
-      return res.status(400).json({
-        success: false,
-        message: 'Payment screenshot is required'
-      });
-    }
-    
-    console.log('✅ Payment screenshot received:', req.file.filename);
     
     // Parse FormData
     const parsedBody = parseFormData(req.body);
     console.log('📝 Parsed body:', JSON.stringify(parsedBody, null, 2));
     
     const orderData = {
-      ...parsedBody,
-      paymentScreenshot: req.file.path
+      ...parsedBody
     };
     
     console.log('💾 Creating order with data:', JSON.stringify(orderData, null, 2));
     
     const order = await Order.create(orderData);
-    createdOrder = order; // Store reference for cleanup if needed
     console.log('✅ Order created successfully:', order._id);
     
     const populatedOrder = await Order.findById(order._id).populate('product');

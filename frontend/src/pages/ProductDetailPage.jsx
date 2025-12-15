@@ -130,7 +130,7 @@ const ProductDetailPage = () => {
               onClick={handleOrderClick}
               disabled={!product.inStock}
             >
-              {product.inStock ? 'Buy it now' : 'Out of Stock'}
+              {product.inStock ? 'Buy now' : 'Out of Stock'}
             </button>
 
             {/* Size Chart Button */}
@@ -142,11 +142,26 @@ const ProductDetailPage = () => {
             </button>
 
             {/* Features - Single Full Width Image */}
-            <div className="product-features">
+            {/* <div className="product-features">
               <img src="https://i.postimg.cc/NFDQFFsh/icon1.png" alt="Feature Icon 1" className="feature-iconn" />
               <img src="https://i.postimg.cc/mkjTkkLf/icon2.png" alt="Feature Icon 2" className="feature-iconn" />
               <img src="https://i.postimg.cc/KjfmjjGh/icon3.png" alt="Feature Icon 3" className="feature-iconn" />
-            </div>
+            </div> */}
+            {/* Features - Single Full Width Image */}
+<div className="product-features">
+  <div className="feature-item">
+    <img src="https://i.ibb.co/sdhtTzbH/breathable.png" alt="Feature Icon 1" className="feature-iconn" />
+    <span className="feature-text">Breathable</span>
+  </div>
+  <div className="feature-item">
+    <img src="https://i.ibb.co/mCCfZWCM/women-owned.png" alt="Feature Icon 3" className="feature-iconn" />
+    <span className="feature-text">Women - Owned</span>
+  </div>
+  <div className="feature-item">
+    <img src="https://i.ibb.co/VW1c2RzT/custom-sizing.png" alt="Feature Icon 2" className="feature-iconn" />
+    <span className="feature-text">Custom Sizing</span>
+  </div>
+</div>
 
             {/* Dropdown Sections */}
             <div className="dropdown-sections">
@@ -163,7 +178,7 @@ const ProductDetailPage = () => {
                 </button>
                 {openDropdown === 'description' && (
                   <div className="dropdown-content">
-                    <h4 className="description-main-heading">Upgrade your style with our Pehnawa!</h4>
+                    {/* <h4 className="description-main-heading">Upgrade your style with our Pehnawa!</h4> */}
                     <p>{product.description}</p>
                     {product.fabric && (
                       <p><strong>Fabric:</strong> {product.fabric}</p>
@@ -203,7 +218,7 @@ const ProductDetailPage = () => {
                 </button>
                 {openDropdown === 'returns' && (
                   <div className="dropdown-content">
-                    <p>Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange. (Just keep an unboxing video handy)</p>
+                    <p>Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange (just keep an unboxing video handy 🪄)</p>
                   </div>
                 )}
               </div>

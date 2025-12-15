@@ -115,7 +115,7 @@ const TermsOfService = () => {
               <li>Digital Wallets</li> */}
             </ul>
             <p className="warning-text">
-              <strong>Important:</strong> Corporate Pehnawa reserves the right to cancel any order if payment is not completed or verified. Proof of payment (screenshot) must be provided for UPI transactions.
+              <strong>Important:</strong> Corporate Pehnawa reserves the right to cancel any order if payment is not completed or verified.
             </p>
           </section>
 

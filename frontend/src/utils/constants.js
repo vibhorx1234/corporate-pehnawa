@@ -66,9 +66,3 @@ export const CONTACT_INFO = {
   phone: '+91 91662 13263',
   address: 'Jaipur, Rajasthan, India'
 };
-
-// Max file size for uploads (5MB)
-export const MAX_FILE_SIZE = 5 * 1024 * 1024;
-
-// Allowed file types for payment screenshot
-export const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];

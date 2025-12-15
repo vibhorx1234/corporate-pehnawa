@@ -64,10 +64,6 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Total amount is required']
   },
-  paymentScreenshot: {
-    type: String
-    // Removed required validation to handle in controller
-  },
   
   // Order Status
   status: {

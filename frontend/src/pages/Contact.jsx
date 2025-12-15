@@ -111,7 +111,7 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div className="info-details">
-                  <h3>Address</h3>
+                  <h3>Location</h3>
                   <p>{CONTACT_INFO.address}</p>
                 </div>
               </div>
@@ -167,7 +167,7 @@ const Contact = () => {
 
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
-                <label htmlFor="name">Your name *</label>
+                <label htmlFor="name">Your Name *</label>
                 <input
                   type="text"
                   id="name"
@@ -180,7 +180,7 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email address *</label>
+                <label htmlFor="email">Email Address *</label>
                 <input
                   type="email"
                   id="email"
@@ -193,7 +193,7 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Subject *</label>
+                <label htmlFor="subject">Subject (Optional)</label>
                 <input
                   type="text"
                   id="subject"

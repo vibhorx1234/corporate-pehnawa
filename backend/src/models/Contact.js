@@ -19,7 +19,7 @@ const contactSchema = new mongoose.Schema({
   },
   subject: {
     type: String,
-    required: [true, 'Subject is required'],
+    required: [false, 'Subject is optional'],
     trim: true
   },
   message: {

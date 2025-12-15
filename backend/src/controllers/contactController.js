@@ -56,7 +56,7 @@ const sendContactEmail = async (contactData) => {
         <h3 style="margin-top: 0;">Contact Details</h3>
         <p><strong>Name:</strong> ${contactData.name}</p>
         <p><strong>Email:</strong> ${contactData.email}</p>
-        <p><strong>Subject:</strong> ${contactData.subject}</p>
+        <p><strong>Subject:</strong> ${contactData.subject || '(Not provided)'}</p>
       </div>
       
       <div style="background-color: #e8f5e9; padding: 20px; border-radius: 5px; margin: 20px 0;">
@@ -81,7 +81,7 @@ const sendContactEmail = async (contactData) => {
       
       <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
         <h3 style="margin-top: 0;">Your Message</h3>
-        <p><strong>Subject:</strong> ${contactData.subject}</p>
+        <p><strong>Subject:</strong> ${contactData.subject || '(Not provided)'}</p>
         <p style="white-space: pre-wrap;">${contactData.message}</p>
       </div>
       
@@ -104,10 +104,10 @@ const sendContactEmail = async (contactData) => {
 
     // Send email to admin
     await sendEmailViaApi(
-      process.env.ADMIN_EMAIL,
-      `New Contact Form Submission: ${contactData.subject}`,
-      adminHtmlContent
-    );
+  process.env.ADMIN_EMAIL,
+  `New Contact Form Submission: ${contactData.subject || 'No Subject'}`,
+  adminHtmlContent
+);
     console.log(`✅ Contact form notification sent to admin`);
     console.log("------------",contactData)
     // Send confirmation email to customer
@@ -138,12 +138,12 @@ exports.createContact = async (req, res) => {
     const { name, email, subject, message } = req.body;
     
     // Validate required fields
-    if (!name || !email || !subject || !message) {
-      return res.status(400).json({
-        success: false,
-        message: 'All fields are required'
-      });
-    }
+    if (!name || !email || !message) {
+  return res.status(400).json({
+    success: false,
+    message: 'Name, email, and message are required'
+  });
+}
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

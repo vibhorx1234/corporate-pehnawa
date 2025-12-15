@@ -65,76 +65,76 @@ const Navbar = () => {
         <div className="banner-content">
           <div className="banner-track">
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
             <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
             </span>
           </div>
         </div>
