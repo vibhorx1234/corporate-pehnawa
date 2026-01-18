@@ -18,7 +18,7 @@ const Testimonials = () => {
       role: 'Working Professional',
       avatar: 'A',
       rating: 5,
-      image: 'https://cdn.jumpshare.com/preview/H77erTjKb0gB_8KFwcKSD5804ZpkIZsuELN-Nx-zvkZrD9k-az6_tlKmR2Toop54SOYO7dDgxJcRej8nyRY3s87hjEo0EaXf7zah27dPgZ0',
+      image: 'https://i.postimg.cc/8C0pTJwZ/amisha.jpg?w=400&h=400&fit=crop',
       text: 'Heyy beautiful!🌻 I tried out the pehnawa and absolutely fell in love with it! It was a perfect fit🫶🏻 Very light and comfortable and the pockets are a dream come true...very handy! I will share the photos soon♥ Thank youu so much... I\'m really looking forward to adding more to my wardrobe!',
     },
     {
@@ -27,7 +27,7 @@ const Testimonials = () => {
       role: 'Boutique Owner',
       avatar: 'P',
       rating: 5,
-      image: 'https://cdn.jumpshare.com/preview/5SouXumn_26H2xVDPl1mJrR9FE2jGkgCnYZ9Cz8Nb367nyuGNn0NGlVZwNDbjkvSSOYO7dDgxJcRej8nyRY3s62sgJZqw_ZYYjMo6nK8fVo',
+      image: 'https://i.postimg.cc/65fBy1YR/pratishtha.jpg?w=400&h=400&fit=crop',
       text: 'I am just in awe with the beautiful beautiful collection and All the best! I want to buy more. So awaited for more new collection ❤',
     },
     {
@@ -36,7 +36,7 @@ const Testimonials = () => {
       role: 'Event Planner',
       avatar: 'R',
       rating: 5,
-      image: 'https://cdn.jumpshare.com/preview/dmFxXYVz1KX0Wn24kG-Q9QIsMZH1tU8Fz-PFqVzIsjCsR_PrBPvvjb-cUtetzVTISOYO7dDgxJcRej8nyRY3s95onG16D6GWKsLmV8kzcUI',
+      image: 'https://i.postimg.cc/4NQXmFBc/rashi.jpg?w=400&h=400&fit=crop',
       text: 'I ordered a printed waistcoat from Corporate Pehnawa, and I\'m absolutely thrilled with it! 💫 The design is stunning, the fabric feels premium, and the stitching is flawless. It fits perfectly and adds such an elegant touch to my outfit. I\'ve received so many compliments every time I\'ve worn it!',
     },
   ];
