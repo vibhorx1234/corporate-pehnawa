@@ -218,7 +218,7 @@ const ProductDetailPage = () => {
                 </button>
                 {openDropdown === 'returns' && (
                   <div className="dropdown-content">
-                    <p>Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange (just keep an unboxing video handy 🪄)</p>
+                    <p>Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange (just keep an unboxing video handy 🪄).</p>
                   </div>
                 )}
               </div>
