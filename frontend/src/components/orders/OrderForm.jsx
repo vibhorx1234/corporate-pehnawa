@@ -82,13 +82,17 @@ const OrderForm = ({ product }) => {
 
     const quantity = parseInt(value);
     if (!isNaN(quantity) && quantity >= 1) {
-      const price = product.discountedPrice || product.price;
-      setFormData(prev => ({
-        ...prev,
-        quantity,
-        totalAmount: price * quantity
-      }));
-    }
+  const price = product.discountedPrice || product.price;
+
+  const totalAmount =
+    quantity === 3 ? 1999 : price * quantity;
+
+  setFormData(prev => ({
+    ...prev,
+    quantity,
+    totalAmount
+  }));
+}
   };
 
   const handleSizeTypeChange = (e) => {
