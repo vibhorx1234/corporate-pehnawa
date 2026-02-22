@@ -83,7 +83,7 @@ const Home = () => {
               </div>
               <h3 className="feature-title">Size Inclusive</h3>
               <p className="feature-description">
-                A perfect fit for everyone! We offer a 1-inch margin on both sides and custom sizing at no extra charge
+                A perfect fit for everyone! We offer a 1-inch margin on both sides and custom sizing at no extra charge.
               </p>
             </div>
 

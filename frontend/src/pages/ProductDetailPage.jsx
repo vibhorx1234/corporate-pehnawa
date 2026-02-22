@@ -6,6 +6,8 @@ import { getProductBySlug } from '../services/productService';
 import SizeChart from '../components/products/SizeChart';
 import Loader from '../components/common/Loader';
 import { formatPrice, scrollToTop } from '../utils/helpers';
+import FeaturedProducts from '../components/home/FeaturedProducts';
+import Testimonials from '../components/home/Testimonials';
 import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
@@ -116,13 +118,13 @@ const ProductDetailPage = () => {
               <span className="current-price">{formatPrice(displayPrice)}</span>
             </div>
 
-            {/* Available Sizes */}
-            {product.sizes && product.sizes.length > 0 && (
-              <div className="available-sizes">
+            <div className="available-sizes">
+              <div className="size-info">
                 <span className="size-label">Available Sizes:</span>
                 <span className="size-value">{product.sizes.join(', ')}</span>
               </div>
-            )}
+              <p className="custom-size-msg">Didn't find your size? Don't worry babe, we'll craft it for you 🧵</p>
+            </div>
 
             {/* Order Button */}
             <button
@@ -143,25 +145,19 @@ const ProductDetailPage = () => {
 
             {/* Features - Single Full Width Image */}
             {/* <div className="product-features">
-              <img src="https://i.postimg.cc/NFDQFFsh/icon1.png" alt="Feature Icon 1" className="feature-iconn" />
-              <img src="https://i.postimg.cc/mkjTkkLf/icon2.png" alt="Feature Icon 2" className="feature-iconn" />
-              <img src="https://i.postimg.cc/KjfmjjGh/icon3.png" alt="Feature Icon 3" className="feature-iconn" />
+              <div className="feature-item">
+                <img src="https://i.ibb.co/sdhtTzbH/breathable.png" alt="Feature Icon 1" className="feature-iconn" />
+                <span className="feature-text">Breathable</span>
+              </div>
+              <div className="feature-item">
+                <img src="https://i.ibb.co/mCCfZWCM/women-owned.png" alt="Feature Icon 3" className="feature-iconn" />
+                <span className="feature-text">Women - Owned</span>
+              </div>
+              <div className="feature-item">
+                <img src="https://i.ibb.co/VW1c2RzT/custom-sizing.png" alt="Feature Icon 2" className="feature-iconn" />
+                <span className="feature-text">Custom Sizing</span>
+              </div>
             </div> */}
-            {/* Features - Single Full Width Image */}
-<div className="product-features">
-  <div className="feature-item">
-    <img src="https://i.ibb.co/sdhtTzbH/breathable.png" alt="Feature Icon 1" className="feature-iconn" />
-    <span className="feature-text">Breathable</span>
-  </div>
-  <div className="feature-item">
-    <img src="https://i.ibb.co/mCCfZWCM/women-owned.png" alt="Feature Icon 3" className="feature-iconn" />
-    <span className="feature-text">Women - Owned</span>
-  </div>
-  <div className="feature-item">
-    <img src="https://i.ibb.co/VW1c2RzT/custom-sizing.png" alt="Feature Icon 2" className="feature-iconn" />
-    <span className="feature-text">Custom Sizing</span>
-  </div>
-</div>
 
             {/* Dropdown Sections */}
             <div className="dropdown-sections">
@@ -218,7 +214,7 @@ const ProductDetailPage = () => {
                 </button>
                 {openDropdown === 'returns' && (
                   <div className="dropdown-content">
-                    <p>Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange (just keep an unboxing video handy 🪄)</p>
+                    <p>Since every piece is made to order, we don't accept returns or cancellations. But if you receive a wrong or a damaged piece, we'll make it right with an exchange (just keep an unboxing video handy 🪄).</p>
                   </div>
                 )}
               </div>
@@ -229,7 +225,14 @@ const ProductDetailPage = () => {
 
       {/* Size Chart Modal */}
       <SizeChart isOpen={showSizeChart} onClose={() => setShowSizeChart(false)} />
+
+      <FeaturedProducts />
+
+      <Testimonials />
     </div>
+
+    
+
   );
 };
 

@@ -1,18 +1,38 @@
-[
-  {
-    "name": "Rozrang",
-    "slug": "rozrang",
-    "description": "Elegant and professional attire for corporate settings. Perfect for meetings, presentations, and formal occasions.",
-    "thumbnail": "https://i.postimg.cc/XvC1r6vx/Collection-image-Rozrang.webp",
-    "featured": true,
-    "active": true,
-    "order": 1,
-    "__v": 0,
-    "createdAt": {
-      "$date": "2025-10-12T21:25:55.118Z"
-    },
-    "updatedAt": {
-      "$date": "2025-10-12T21:25:55.118Z"
-    }
+[{
+  "_id": {
+    "$oid": "68ed5fc50549905ef2cc44ff"
+  },
+  "name": "Rozrang",
+  "slug": "rozrang",
+  "description": "Affordable. Versatile. Yours, everyday. 💼💖",
+  "thumbnail": "https://i.postimg.cc/XvC1r6vx/Collection-image-Rozrang.webp",
+  "featured": true,
+  "active": true,
+  "order": 1,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-10-12T21:25:55.118Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-12T21:25:55.118Z"
   }
-]
+},
+{
+  "_id": {
+    "$oid": "6989e22f3295730e650acba6"
+  },
+  "name": "Adaah",
+  "slug": "adaah",
+  "description": "For the IDGAF in you.💅🔥",
+  "thumbnail": "https://i.postimg.cc/x1pP2MnM/Collection-image-(Adaah).png",
+  "featured": true,
+  "active": true,
+  "order": 2,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-02-09T19:05:00.118Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-09T19:05:00.118Z"
+  }
+}]

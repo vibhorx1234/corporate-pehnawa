@@ -83,12 +83,17 @@ const OrderForm = ({ product }) => {
     const quantity = parseInt(value);
     if (!isNaN(quantity) && quantity >= 1) {
       const price = product.discountedPrice || product.price;
+
+      const totalAmount =
+        quantity === 3 ? 1999 : price * quantity;
+
       setFormData(prev => ({
         ...prev,
         quantity,
-        totalAmount: price * quantity
+        totalAmount
       }));
     }
+
   };
 
   const handleSizeTypeChange = (e) => {
@@ -374,7 +379,7 @@ const OrderForm = ({ product }) => {
 
       <div className="form-section">
         <h3 className="form-section-title">Payment</h3>
-        
+
         <QRCodeDisplay amount={formData.totalAmount} />
 
       </div>

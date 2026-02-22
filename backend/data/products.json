@@ -1,165 +1,394 @@
-[
-  {
-    "name": "White V-Neck Waistcoat",
-    "slug": "white-v-neck-waistcoat",
-    "description": "A classic white V-neck waistcoat featuring elegant craftsmanship and versatile styling. Perfect for formal occasions, weddings, and smart-casual events. Tailored fit with premium button detailing for a sophisticated look.",
-    "price": 1499,
-    "discountedPrice": 749,
-    "images": [
-      "https://i.postimg.cc/nrp3SdJz/20250907-025458321-i-OS.webp",
-      "https://i.postimg.cc/Zn4wsfSr/Draft-5.webp",
-      "https://i.postimg.cc/3NYtfLTj/IMG-1712.webp"
-    ],
-    "collection": {
-      "$oid": "68ec1ce3f1bb7b4ed429e169"
-    },
-    "featured": true,
-    "inStock": true,
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "fabric": "Cotton",
-    "care": "Normal wash and dry clean",
-    "tags": [
-      "waistcoat",
-      "formal",
-      "white",
-      "v-neck"
-    ],
-    "order": 1
+[{
+  "_id": {
+    "$oid": "68ed37300549905ef2cc44f8"
   },
-  {
-    "name": "Pink Bandhani V-Neck Waistcoat",
-    "slug": "pink-bandhani-v-neck-waistcoat",
-    "description": "A vibrant pink waistcoat adorned with traditional Bandhani tie-dye patterns. This unique piece combines ethnic artistry with contemporary tailoring, making it ideal for festive occasions, celebrations, and cultural events. Stand out with authentic Indian craftsmanship.",
-    "price": 1499,
-    "discountedPrice": 749,
-    "images": [
-      "https://i.postimg.cc/T3LBD42S/20250907-101027.webp",
-      "https://i.postimg.cc/YqyJjH7f/20250907-101126.webp",
-      "https://i.postimg.cc/Nj9ZHzGC/IMG-8756.webp"
-    ],
-    "collection": {
-      "$oid": "68ec1ce3f1bb7b4ed429e169"
-    },
-    "featured": true,
-    "inStock": true,
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "fabric": "Cotton",
-    "care": "Normal wash and dry clean",
-    "tags": [
-      "waistcoat",
-      "bandhani",
-      "pink",
-      "ethnic",
-      "festive"
-    ],
-    "order": 2
+  "name": "White V-Neck Waistcoat",
+  "slug": "white-v-neck-waistcoat",
+  "description": "A fresh floral waistcoat that feels like a good mood you can wear. Light, comfy, and just the right pop of charm for workdays or weekend coffee runs.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/Zn4wsfSr/Draft-5.webp",
+    "https://i.ibb.co/yn3FCk4D/purvi2.jpg",
+    "https://i.postimg.cc/3NYtfLTj/IMG-1712.webp"
+  ],
+  "collection": {
+    "$oid": "68ed5fc50549905ef2cc44ff"
   },
-  {
-    "name": "Orange V-Neck Waistcoat",
-    "slug": "orange-v-neck-waistcoat",
-    "description": "A bold orange V-neck waistcoat that brings energy and confidence to your wardrobe. Perfect for semi-formal gatherings, parties, and creative events. The vibrant hue and tailored cut ensure you make a memorable impression.",
-    "price": 1499,
-    "discountedPrice": 749,
-    "images": [
-      "https://i.postimg.cc/0yYdFYVm/Whats-App-Image-2025-10-02-at-19-02-40-c2b8b4d9.webp",
-      "https://i.postimg.cc/CxGHXGc8/Whats-App-Image-2025-10-02-at-19-14-20-412a9d4e.webp",
-      "https://i.postimg.cc/rw1C31fR/Whats-App-Image-2025-10-02-at-19-20-54-b470b0ee.webp"
-    ],
-    "collection": {
-      "$oid": "68ec1ce3f1bb7b4ed429e169"
-    },
-    "featured": false,
-    "inStock": true,
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "fabric": "Cotton",
-    "care": "Normal wash and dry clean",
-    "tags": [
-      "waistcoat",
-      "orange",
-      "vibrant",
-      "party-wear"
-    ],
-    "order": 3
+  "featured": true,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "formal",
+    "white",
+    "v-neck"
+  ],
+  "order": 2
+},
+{
+  "_id": {
+    "$oid": "68ed37300549905ef2cc44f9"
   },
-  {
-    "name": "Indigo V-Neck Waistcoat",
-    "slug": "indigo-v-neck-waistcoat",
-    "description": "A sophisticated indigo V-neck waistcoat showcasing deep, rich color tones. Versatile enough for both formal and smart-casual settings, this piece offers timeless elegance with modern comfort. Ideal for evening events and professional gatherings.",
-    "price": 1499,
-    "discountedPrice": 749,
-    "images": [
-      "https://i.postimg.cc/fbgKfwHC/IMG-8606.webp",
-      "https://i.postimg.cc/tggk61zk/IMG-8616.webp",
-      "https://i.postimg.cc/ZqDcxTfM/IMG-8620.webp"
-    ],
-    "collection": {
-      "$oid": "68ec1ce3f1bb7b4ed429e169"
-    },
-    "featured": true,
-    "inStock": true,
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "fabric": "Cotton",
-    "care": "Normal wash and dry clean",
-    "tags": [
-      "waistcoat",
-      "indigo",
-      "formal",
-      "classic"
-    ],
-    "order": 4
+  "name": "Pink Bandhani V-Neck Waistcoat",
+  "slug": "pink-bandhani-v-neck-waistcoat",
+  "description": "A vibrant Bandhani waistcoat that brings instant festive flair to your look. Ideal for office wali Diwali, casual celebrations, or whenever you’re feeling a little extra in the best way.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/Nj9ZHzGC/IMG-8756.webp",
+    "https://i.postimg.cc/T3LBD42S/20250907-101027.webp",
+    "https://i.postimg.cc/YqyJjH7f/20250907-101126.webp"
+  ],
+  "collection": {
+    "$oid": "68ed5fc50549905ef2cc44ff"
   },
-  {
-    "name": "Blue Fish V-Neck Waistcoat",
-    "slug": "blue-fish-v-neck-waistcoat",
-    "description": "A distinctive blue waistcoat featuring unique fish-inspired patterns or motifs. This statement piece blends artistic design with refined tailoring, perfect for those who appreciate creative fashion. Great for themed events, parties, and making a style statement.",
-    "price": 1499,
-    "discountedPrice": 749,
-    "images": [
-      "https://i.postimg.cc/hPyfjfh5/20250907-065551.webp",
-      "https://i.postimg.cc/HssrdQW2/20250907-065605.webp",
-      "https://i.postimg.cc/J44sMb7T/20250907-065645.webp",
-      "https://i.postimg.cc/6p8TGtv9/Draft-1.webp"
-    ],
-    "collection": {
-      "$oid": "68ec1ce3f1bb7b4ed429e169"
-    },
-    "featured": false,
-    "inStock": true,
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "fabric": "Cotton",
-    "care": "Normal wash and dry clean",
-    "tags": [
-      "waistcoat",
-      "blue",
-      "patterned",
-      "designer",
-      "unique"
-    ],
-    "order": 5
-  }
-]
+  "featured": false,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "bandhani",
+    "pink",
+    "ethnic",
+    "festive"
+  ],
+  "order": 4
+},
+{
+  "_id": {
+    "$oid": "68ed37300549905ef2cc44fa"
+  },
+  "name": "Orange V-Neck Waistcoat",
+  "slug": "orange-v-neck-waistcoat",
+  "description": "A warm, cheerful waistcoat with a playful print — the perfect piece for conferences and city adventures.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/0yYdFYVm/Whats-App-Image-2025-10-02-at-19-02-40-c2b8b4d9.webp",
+    "https://i.postimg.cc/rw1C31fR/Whats-App-Image-2025-10-02-at-19-20-54-b470b0ee.webp",
+    "https://i.postimg.cc/CxGHXGc8/Whats-App-Image-2025-10-02-at-19-14-20-412a9d4e.webp"
+  ],
+  "collection": {
+    "$oid": "68ed5fc50549905ef2cc44ff"
+  },
+  "featured": false,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "orange",
+    "vibrant",
+    "party-wear"
+  ],
+  "order": 5
+},
+{
+  "_id": {
+    "$oid": "68ed37300549905ef2cc44fb"
+  },
+  "name": "Indigo V-Neck Waistcoat",
+  "slug": "indigo-v-neck-waistcoat",
+  "description": "An indigo waistcoat with bold, geometric detailing in pure cotton. When your schedule’s full of plans — from presentations to parties — this waistcoat keeps up in style.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/fbgKfwHC/IMG-8606.webp",
+    "https://i.postimg.cc/tggk61zk/IMG-8616.webp",
+    "https://i.postimg.cc/ZqDcxTfM/IMG-8620.webp"
+  ],
+  "collection": {
+    "$oid": "68ed5fc50549905ef2cc44ff"
+  },
+  "featured": false,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "indigo",
+    "formal",
+    "classic"
+  ],
+  "order": 3
+},
+{
+  "_id": {
+    "$oid": "68ed37300549905ef2cc44fc"
+  },
+  "name": "Blue Fish V-Neck Waistcoat",
+  "slug": "blue-fish-v-neck-waistcoat",
+  "description": "A quirky blue waistcoat with playful fish motifs on soft, breathable cotton. Perfect for days when you want your outfit to spark a smile (and a few compliments too!).",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/6p8TGtv9/Draft-1.webp",
+    "https://i.postimg.cc/hPyfjfh5/20250907-065551.webp",
+    "https://i.postimg.cc/J44sMb7T/20250907-065645.webp",
+    "https://i.postimg.cc/HssrdQW2/20250907-065605.webp"
+  ],
+  "collection": {
+    "$oid": "68ed5fc50549905ef2cc44ff"
+  },
+  "featured": true,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "blue",
+    "patterned",
+    "designer",
+    "unique"
+  ],
+  "order": 1
+},
+{
+  "_id": {
+    "$oid": "6989e49c3295730e650acbae"
+  },
+  "name": "White Halter Neck Waistcoat",
+  "slug": "white-halter-neck-waistcoat",
+  "description": "Soft look, strong energy. For when you’re calm on the outside and unbothered on the inside.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/X7wSHNcS/IMG-8226.jpg",
+    "https://i.postimg.cc/pXDbGVYR/IMG-8239.jpg",
+    "https://i.postimg.cc/bwpXKXL4/IMG-8270.jpg"
+  ],
+  "collection": {
+    "$oid": "6989e22f3295730e650acba6"
+  },
+  "featured": false,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "cotton",
+    "white",
+    "backless top",
+    "Elephant print"
+  ],
+  "order": 2
+},
+{
+  "_id": {
+    "$oid": "6989e49c3295730e650acbaf"
+  },
+  "name": "Brown Halter Neck Waistcoat",
+  "slug": "brown-halter-neck-waistcoat",
+  "description": "Earthy, easy, and quietly confident. For days when you’re feeling calm and unbothered.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/YCMcJcbK/IMG-8282.jpg",
+    "https://i.postimg.cc/P5TGBG2P/IMG-8289.jpg",
+    "https://i.postimg.cc/jStVGVZw/IMG-8321.jpg"
+  ],
+  "collection": {
+    "$oid": "6989e22f3295730e650acba6"
+  },
+  "featured": true,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "cotton",
+    "Coffee Brown",
+    "backless top",
+    "Everyday wear"
+  ],
+  "order": 3
+},
+{
+  "_id": {
+    "$oid": "6989e49c3295730e650acbab"
+  },
+  "name": "Maroon Square Neck Waistcoat",
+  "slug": "maroon-square-neck-waistcoat",
+  "description": "A maroon that feels confident, not loud. Made for days you choose boldness with ease and let it come naturally.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/hP9Wy48r/IMG-1577.jpg",
+    "https://i.postimg.cc/4NzkL4vj/IMG-6850.jpg",
+    "https://i.postimg.cc/W41B1MBX/IMG-20251217-WA0049.jpg"
+  ],
+  "collection": {
+    "$oid": "6989e22f3295730e650acba6"
+  },
+  "featured": true,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "cotton",
+    "maroon",
+    "corporate wear",
+    "tops"
+  ],
+  "order": 6
+},
+{
+  "_id": {
+    "$oid": "6989e49c3295730e650acbad"
+  },
+  "name": "Black Halter Neck Waistcoat",
+  "slug": "black-halter-neck-waistcoat",
+  "description": "A sharp black halter that doesn’t try to fit in—and doesn’t need to. Perfect for days you mean business, but still dress like you run the room.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/fRC4sHrK/IMG-8408.jpg",
+    "https://i.postimg.cc/HkzGmShr/IMG-8380.jpg",
+    "https://i.postimg.cc/t4k0brMx/IMG-8387.jpg"
+  ],
+  "collection": {
+    "$oid": "6989e22f3295730e650acba6"
+  },
+  "featured": true,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "cotton",
+    "Black",
+    "backless top",
+    "summer wear"
+  ],
+  "order": 1
+},
+{
+  "_id": {
+    "$oid": "6989e49c3295730e650acbac"
+  },
+  "name": "Indigo Square Neck Waistcoat",
+  "slug": "indigo-square-neck-waistcoat",
+  "description": "Deep indigo with an effortless, grounded vibe. Easy to style, hard to ignore—this one moves with your mood, not trends.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/Dzw9wrVh/IMG-20251217-WA0302(1).jpg",
+    "https://i.postimg.cc/KjTSyx6y/20260126-133419.jpg",
+    "https://i.postimg.cc/fT4QfSdR/20260126-133517.jpg"
+  ],
+  "collection": {
+    "$oid": "6989e22f3295730e650acba6"
+  },
+  "featured": false,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "cotton",
+    "Indigo",
+    "office fit",
+    "cycle"
+  ],
+  "order": 4
+},
+{
+  "_id": {
+    "$oid": "6989e49c3295730e650acbaa"
+  },
+  "name": "Beige Square Neck Waistcoat",
+  "slug": "beige-square-neck-waistcoat",
+  "description": "Soft beige for the ones who know neutral doesn’t mean boring. Understated, versatile, and very chic.",
+  "price": 749,
+  "discountedPrice": 749,
+  "images": [
+    "https://i.postimg.cc/5tKZYX1V/IMG-20251217-WA0322(1).jpg",
+    "https://i.postimg.cc/R0ZkZ7rB/IMG-20251217-WA0311.jpg",
+    "https://i.postimg.cc/TY8vJ5bg/IMG-1498.jpg"
+  ],
+  "collection": {
+    "$oid": "6989e22f3295730e650acba6"
+  },
+  "featured": true,
+  "inStock": true,
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "fabric": "100% Cotton",
+  "care": "●    Regular hand or machine wash with cold water.\n●    Use mild detergent — air dry recommended.\n●    Iron on low heat for best look.",
+  "tags": [
+    "waistcoat",
+    "cotton",
+    "beige",
+    "office wear",
+    "everyday wear"
+  ],
+  "order": 5
+}]

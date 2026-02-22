@@ -273,16 +273,33 @@
   color: #c9a882;
 }
 
-/* Available Sizes */
 .available-sizes {
   display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
+  flex-direction: column;
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
   padding: var(--spacing-md);
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 102, 0, 0.2);
   border-radius: var(--radius-md);
+}
+
+.size-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.custom-size-msg {
+  font-family: "aptos";
+  font-size: var(--text-sm);
+  color: #8b4513;
+  margin: 0;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .custom-size-msg {
+  color: #c9a882;
 }
 
 [data-theme="dark"] .available-sizes {
