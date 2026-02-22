@@ -123,7 +123,7 @@ const ProductDetailPage = () => {
                 <span className="size-label">Available Sizes:</span>
                 <span className="size-value">{product.sizes.join(', ')}</span>
               </div>
-              <p className="custom-size-msg">Didn't find your size? Don't worry babe, we'll craft it for you 🧵</p>
+              <p className="custom-size-msg">Didn't find your size? Don't worry babe, we'll craft it for you 🧵👸</p>
             </div>
 
             {/* Order Button */}
