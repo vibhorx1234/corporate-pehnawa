@@ -152,12 +152,17 @@ exports.verifyPayment = async (req, res) => {
 
     const totalAmount = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    if (!req.user.phone && shippingAddress?.phone) {
+      req.user.phone = shippingAddress.phone;
+      await req.user.save();
+    }
+
     // ── 5. Persist order ──────────────────────────────────────────────────────
     const order = await Order.create({
       user: req.user._id,
       customerName: req.user.name,
       email: req.user.email,
-      phone: req.user.phone,
+      phone: phoneNumber,
       items,
       shippingAddress,
       totalAmount,
