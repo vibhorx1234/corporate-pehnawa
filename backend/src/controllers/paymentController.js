@@ -162,7 +162,7 @@ exports.verifyPayment = async (req, res) => {
       user: req.user._id,
       customerName: req.user.name,
       email: req.user.email,
-      phone: phoneNumber,
+      phone: req.user.phone,
       items,
       shippingAddress,
       totalAmount,
