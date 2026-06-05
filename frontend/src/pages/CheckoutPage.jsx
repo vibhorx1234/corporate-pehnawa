@@ -91,6 +91,8 @@ const CheckoutPage = () => {
       }
 
       const shippingAddress = {
+        recipientName: selectedAddress.recipientName,
+        phone: selectedAddress.phone,
         street: selectedAddress.street,
         city: selectedAddress.city,
         state: selectedAddress.state,
@@ -247,7 +249,7 @@ const CheckoutPage = () => {
               <div className={[
                 'stepper-step',
                 step === i ? 'stepper-step--active' : '',
-                step > i  ? 'stepper-step--done'   : '',
+                step > i ? 'stepper-step--done' : '',
               ].join(' ').trim()}>
                 <span className="stepper-num">{step > i ? '✓' : i + 1}</span>
                 <span className="stepper-label">{s}</span>
