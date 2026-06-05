@@ -12,7 +12,7 @@ const GoogleAuthSuccess = () => {
     if (!token) { navigate('/login?error=google_failed'); return; }
 
     loginWithToken(token)
-      .then(() => navigate('/account', { replace: true }))
+      .then(() => navigate('/', { replace: true }))
       .catch(() => navigate('/login?error=google_failed'));
   }, []);
 

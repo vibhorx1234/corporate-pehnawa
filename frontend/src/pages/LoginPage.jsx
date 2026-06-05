@@ -11,7 +11,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate('/account', { replace: true });
+    if (isAuthenticated) navigate('/', { replace: true });
   }, [isAuthenticated, navigate]);
 
   return (
