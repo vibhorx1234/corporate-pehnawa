@@ -1,8 +1,15 @@
-// File: ./frontend/src/pages/ProductDetailPage.jsx
+// File: ./frontend/src/pages/ProductDetailPage.jsx  (MODIFIED)
+// Changes from original:
+//   1. Removed handleOrderClick (no longer navigates to /order/:id)
+//   2. ProductDetails component now receives onSizeChartClick prop
+//      (Add to Cart / Buy Now are handled internally inside ProductDetails)
+//   3. All original image gallery, breadcrumb, dropdown sections, layout UNCHANGED
+//   4. SizeChart modal wiring is unchanged
 
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getProductBySlug } from '../services/productService';
+import ProductDetails from '../components/products/ProductDetails';
 import SizeChart from '../components/products/SizeChart';
 import Loader from '../components/common/Loader';
 import { formatPrice, scrollToTop } from '../utils/helpers';
@@ -12,7 +19,6 @@ import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { productSlug } = useParams();
-  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,12 +44,6 @@ const ProductDetailPage = () => {
     }
   };
 
-  const handleOrderClick = () => {
-    if (product) {
-      navigate(`/order/${product._id}`);
-    }
-  };
-
   const toggleDropdown = (section) => {
     setOpenDropdown(openDropdown === section ? null : section);
   };
@@ -52,12 +52,11 @@ const ProductDetailPage = () => {
   if (error) return <div className="error-message">{error}</div>;
   if (!product) return <div className="error-message">Product not found</div>;
 
-  const displayPrice = product.discountedPrice || product.price;
-
   return (
     <div className="product-detail-page">
       <div className="container">
-        {/* Breadcrumb */}
+
+        {/* Breadcrumb — unchanged */}
         <nav className="breadcrumb">
           <Link to="/" className="breadcrumb-link">Home</Link>
           <span className="breadcrumb-separator">/</span>
@@ -77,11 +76,11 @@ const ProductDetailPage = () => {
           <span className="breadcrumb-current">{product.name}</span>
         </nav>
 
-        {/* Product Details */}
+        {/* Product Details layout — unchanged */}
         <div className="product-detail-container">
-          {/* Left Side - Image Gallery (Sticky) */}
+
+          {/* Left Side - Image Gallery (Sticky) — unchanged */}
           <div className="product-gallery">
-            {/* Thumbnail Images */}
             <div className="image-thumbnails">
               {product.images.map((image, index) => (
                 <img
@@ -94,7 +93,6 @@ const ProductDetailPage = () => {
               ))}
             </div>
 
-            {/* Main Image */}
             <div className="main-image">
               <img
                 src={product.images[selectedImage]}
@@ -109,59 +107,18 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          {/* Right Side - Product Info (Scrollable) */}
+          {/* Right Side - Product Info
+              CHANGED: replaced inline JSX with ProductDetails component.
+              Size selection, Add to Cart, Buy Now are all inside ProductDetails now. */}
           <div className="product-info">
-            <h1 className="product-name">{product.name}</h1>
+            <ProductDetails
+              product={product}
+              onSizeChartClick={() => setShowSizeChart(true)}
+            />
 
-            {/* Price */}
-            <div className="product-price-section">
-              <span className="current-price">{formatPrice(displayPrice)}</span>
-            </div>
-
-            <div className="available-sizes">
-              <div className="size-info">
-                <span className="size-label">Available Sizes:</span>
-                <span className="size-value">{product.sizes.join(', ')}</span>
-              </div>
-              <p className="custom-size-msg">Didn't find your size? Don't worry babe, we'll craft it for you 🧵👸</p>
-            </div>
-
-            {/* Order Button */}
-            <button
-              className="btn btn-primary btn-lg order-btn"
-              onClick={handleOrderClick}
-              disabled={!product.inStock}
-            >
-              {product.inStock ? 'Buy now' : 'Out of Stock'}
-            </button>
-
-            {/* Size Chart Button */}
-            <button
-              className="btn btn-secondary size-chart-btn"
-              onClick={() => setShowSizeChart(true)}
-            >
-              Size chart
-            </button>
-
-            {/* Features - Single Full Width Image */}
-            {/* <div className="product-features">
-              <div className="feature-item">
-                <img src="https://i.ibb.co/sdhtTzbH/breathable.png" alt="Feature Icon 1" className="feature-iconn" />
-                <span className="feature-text">Breathable</span>
-              </div>
-              <div className="feature-item">
-                <img src="https://i.ibb.co/mCCfZWCM/women-owned.png" alt="Feature Icon 3" className="feature-iconn" />
-                <span className="feature-text">Women - Owned</span>
-              </div>
-              <div className="feature-item">
-                <img src="https://i.ibb.co/VW1c2RzT/custom-sizing.png" alt="Feature Icon 2" className="feature-iconn" />
-                <span className="feature-text">Custom Sizing</span>
-              </div>
-            </div> */}
-
-            {/* Dropdown Sections */}
+            {/* Dropdown Sections — unchanged */}
             <div className="dropdown-sections">
-              {/* Description */}
+
               <div className="dropdown-section">
                 <button
                   className={`dropdown-header ${openDropdown === 'description' ? 'open' : ''}`}
@@ -174,7 +131,6 @@ const ProductDetailPage = () => {
                 </button>
                 {openDropdown === 'description' && (
                   <div className="dropdown-content">
-                    {/* <h4 className="description-main-heading">Upgrade your style with our Pehnawa!</h4> */}
                     <p>{product.description}</p>
                     {product.fabric && (
                       <p><strong>Fabric:</strong> {product.fabric}</p>
@@ -183,7 +139,6 @@ const ProductDetailPage = () => {
                 )}
               </div>
 
-              {/* Wash Care */}
               <div className="dropdown-section">
                 <button
                   className={`dropdown-header ${openDropdown === 'care' ? 'open' : ''}`}
@@ -201,7 +156,6 @@ const ProductDetailPage = () => {
                 )}
               </div>
 
-              {/* Returns/Exchanges */}
               <div className="dropdown-section">
                 <button
                   className={`dropdown-header ${openDropdown === 'returns' ? 'open' : ''}`}
@@ -218,21 +172,19 @@ const ProductDetailPage = () => {
                   </div>
                 )}
               </div>
+
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* Size Chart Modal */}
+      {/* Size Chart Modal — unchanged */}
       <SizeChart isOpen={showSizeChart} onClose={() => setShowSizeChart(false)} />
 
       <FeaturedProducts />
-
       <Testimonials />
     </div>
-
-    
-
   );
 };
 

@@ -319,3 +319,79 @@
     margin: 0 var(--spacing-md);
   }
 }
+
+/* File: OrderPage.css — APPEND these rules at the bottom of your existing file.
+   Do not replace. All original styles are preserved. */
+
+/* ── Logged-in user redirect card ─────────────────────────────────────────── */
+
+.op-redirect-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-lg);
+  max-width: 480px;
+  margin: var(--spacing-3xl) auto;
+  padding: var(--spacing-2xl);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+.op-redirect-icon {
+  font-size: 52px;
+  line-height: 1;
+}
+
+.op-redirect-card h2 {
+  font-size: var(--text-2xl);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.op-redirect-card p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.op-redirect-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Guest sign-in nudge ───────────────────────────────────────────────────── */
+
+.op-signin-nudge {
+  background: rgba(221, 115, 81, 0.06);
+  border: 1px solid rgba(221, 115, 81, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.op-signin-nudge p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.op-signin-nudge a {
+  color: var(--primary-orange);
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .op-redirect-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .op-redirect-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

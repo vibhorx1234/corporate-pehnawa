@@ -1,16 +1,19 @@
-// File: ./frontend/src/pages/OrderPage.jsx
+// File: ./frontend/src/pages/OrderPage.jsx  (MODIFIED)
 
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getProductById } from '../services/productService';
 import OrderForm from '../components/orders/OrderForm';
 import Loader from '../components/common/Loader';
+import useAuth from '../hooks/useAuth';
 import { formatPrice, scrollToTop } from '../utils/helpers';
 import './OrderPage.css';
 
 const OrderPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const { isAuthenticated, loading: authLoading } = useAuth();
+
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,7 +36,8 @@ const OrderPage = () => {
     }
   };
 
-  if (loading) return <Loader fullScreen />;
+  if (loading || authLoading) return <Loader fullScreen />;
+
   if (error) {
     return (
       <div className="error-container">
@@ -44,20 +48,54 @@ const OrderPage = () => {
       </div>
     );
   }
+
   if (!product) return <div className="error-message">Product not found</div>;
 
+  // ── Logged-in users: redirect them to the proper cart flow ──────────────
+  // They should use "Add to Cart" / "Buy Now" on the product page instead.
+  if (isAuthenticated) {
+    const productSlug = product.slug;
+    return (
+      <div className="order-page">
+        <div className="container">
+          <div className="op-redirect-card">
+            <div className="op-redirect-icon">🛒</div>
+            <h2>Use the Cart for a Better Experience</h2>
+            <p>
+              As a signed-in customer you can add items to your cart, save
+              multiple products, and checkout with your saved addresses in one go.
+            </p>
+            <div className="op-redirect-actions">
+              <Link
+                to={`/product/${productSlug}`}
+                className="btn btn-primary"
+              >
+                Back to Product Page
+              </Link>
+              <Link to="/cart" className="btn btn-secondary">
+                View My Cart
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Guest users: show original legacy order form unchanged ──────────────
   const displayPrice = product.discountedPrice || product.price;
 
   return (
     <div className="order-page">
       <div className="container">
         <div className="order-container">
-          {/* Product Summary */}
+
+          {/* Product Summary — unchanged */}
           <div className="product-summary">
             <h2 className="section-heading">Order Summary</h2>
             <div className="summary-card">
-              <img 
-                src={product.images[0]} 
+              <img
+                src={product.images[0]}
                 alt={product.name}
                 className="summary-image"
               />
@@ -70,7 +108,17 @@ const OrderPage = () => {
               </div>
             </div>
 
-            {/* Important Notes */}
+            {/* Sign-in nudge for guests */}
+            <div className="op-signin-nudge">
+              <p>
+                <Link to={`/login`} state={{ from: { pathname: `/order/${productId}` } }}>
+                  Sign in
+                </Link>{' '}
+                to save your order history, addresses and more.
+              </p>
+            </div>
+
+            {/* Important Notes — unchanged */}
             <div className="order-notes">
               <h3>Important information</h3>
               <ul>
@@ -82,11 +130,12 @@ const OrderPage = () => {
             </div>
           </div>
 
-          {/* Order Form */}
+          {/* Order Form — unchanged */}
           <div className="order-form-section">
             <h2 className="section-heading">Order details</h2>
             <OrderForm product={product} />
           </div>
+
         </div>
       </div>
     </div>

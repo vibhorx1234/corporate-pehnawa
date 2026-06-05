@@ -1,40 +1,46 @@
-// File: ./frontend/src/components/common/Navbar.jsx
+// File: ./frontend/src/components/common/Navbar.jsx  (MODIFIED)
+// Changes from original:
+//   1. Added cart icon button with item count badge
+//   2. Added account/login link that changes based on auth state
+//   3. Imported useCart and useAuth hooks
+//   4. CartDrawer imported and wired to cart icon toggle
+//   5. All original banner, logo, nav links, social links code is UNCHANGED
 
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
 import { NAV_LINKS, SOCIAL_LINKS } from '../../utils/constants';
+import useCart from '../../hooks/useCart';
+import useAuth from '../../hooks/useAuth';
+import CartDrawer from '../cart/CartDrawer';
 import './Navbar.css';
 import logo from '../../assets/images/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const { setTheme } = useContext(ThemeContext);
+  const { getCartCount } = useCart();
+  const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
 
-  // Auto-detect system theme
+  const cartCount = getCartCount();
+
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    // Set initial theme
     setTheme(mediaQuery.matches ? 'dark' : 'light');
-
-    // Listen for theme changes
-    const handleThemeChange = (e) => {
-      setTheme(e.matches ? 'dark' : 'light');
-    };
-
+    const handleThemeChange = (e) => setTheme(e.matches ? 'dark' : 'light');
     mediaQuery.addEventListener('change', handleThemeChange);
-
-    // Cleanup
     return () => mediaQuery.removeEventListener('change', handleThemeChange);
   }, [setTheme]);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
-  const closeMenu = () => {
-    setIsOpen(false);
+  const handleLogout = async () => {
+    await logout();
+    closeMenu();
+    navigate('/');
   };
 
   const socialIcons = {
@@ -60,82 +66,15 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Moving Text Banner */}
+      {/* Moving Text Banner — unchanged */}
       <div className="moving-banner">
         <div className="banner-content">
           <div className="banner-track">
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
-            <span className="banner-text">
-              Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
-            </span>
+            {Array.from({ length: 24 }).map((_, i) => (
+              <span key={i} className="banner-text">
+                Free Shipping &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Size Inclusive &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp; Women - Owned &emsp;&emsp;&emsp;•&emsp;&emsp;&emsp;
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -155,9 +94,7 @@ const Navbar = () => {
               <li key={link.path} className="navbar-item">
                 <NavLink
                   to={link.path}
-                  className={({ isActive }) =>
-                    isActive ? 'navbar-link active' : 'navbar-link'
-                  }
+                  className={({ isActive }) => isActive ? 'navbar-link active' : 'navbar-link'}
                   onClick={closeMenu}
                 >
                   {link.name}
@@ -165,38 +102,38 @@ const Navbar = () => {
               </li>
             ))}
 
+            {/* Mobile: account link inside menu */}
+            <li className="navbar-item mobile-account-link">
+              {isAuthenticated ? (
+                <>
+                  <NavLink to="/account" className="navbar-link" onClick={closeMenu}>
+                    My Account
+                  </NavLink>
+                  <button className="navbar-link navbar-logout-btn" onClick={handleLogout}>
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <NavLink to="/login" className="navbar-link" onClick={closeMenu}>
+                  Sign In
+                </NavLink>
+              )}
+            </li>
+
             <li className="navbar-item mobile-social">
               <div className="social-links">
                 {SOCIAL_LINKS.facebook && (
-                  <a
-                    href={SOCIAL_LINKS.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    aria-label="Facebook"
-                  >
+                  <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
                     {socialIcons.facebook}
                   </a>
                 )}
                 {SOCIAL_LINKS.instagram && (
-                  <a
-                    href={SOCIAL_LINKS.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    aria-label="Instagram"
-                  >
+                  <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
                     {socialIcons.instagram}
                   </a>
                 )}
                 {SOCIAL_LINKS.youtube && (
-                  <a
-                    href={SOCIAL_LINKS.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    aria-label="YouTube"
-                  >
+                  <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="YouTube">
                     {socialIcons.youtube}
                   </a>
                 )}
@@ -205,41 +142,56 @@ const Navbar = () => {
           </ul>
 
           <div className="navbar-actions">
+            {/* Desktop: social icons — unchanged */}
             <div className="social-links desktop-social">
               {SOCIAL_LINKS.facebook && (
-                <a
-                  href={SOCIAL_LINKS.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label="Facebook"
-                >
+                <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
                   {socialIcons.facebook}
                 </a>
               )}
               {SOCIAL_LINKS.instagram && (
-                <a
-                  href={SOCIAL_LINKS.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label="Instagram"
-                >
+                <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
                   {socialIcons.instagram}
                 </a>
               )}
               {SOCIAL_LINKS.youtube && (
-                <a
-                  href={SOCIAL_LINKS.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label="YouTube"
-                >
+                <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="YouTube">
                   {socialIcons.youtube}
                 </a>
               )}
             </div>
+
+            {/* NEW: Desktop account link */}
+            <div className="navbar-auth desktop-auth">
+              {isAuthenticated ? (
+                <Link to="/account" className="navbar-avatar-btn" title={user?.name}>
+                  Hello, {user?.name?.split(' ')[0]}
+                </Link>
+              ) : (
+                <Link to="/login" className="navbar-account-btn" title="Sign In">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </Link>
+              )}
+            </div>
+
+            {/* NEW: Cart icon with badge */}
+            <button
+              className="navbar-cart-btn"
+              onClick={() => setCartOpen(true)}
+              aria-label={`Cart (${cartCount} items)`}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              {cartCount > 0 && (
+                <span className="navbar-cart-badge">{cartCount > 99 ? '99+' : cartCount}</span>
+              )}
+            </button>
 
             <button
               className={`navbar-toggle ${isOpen ? 'active' : ''}`}
@@ -253,6 +205,9 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* Cart Drawer */}
+      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
 };

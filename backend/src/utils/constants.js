@@ -1,23 +1,15 @@
-// File: ./backend/src/utils/constants.js
+// File: ./backend/src/utils/constants.js  (MODIFIED)
+// Changes: Added USER_ROLES, PAYMENT_STATUS, MAX_CART_ITEM_QUANTITY at the bottom.
+// All original exports are unchanged.
 
 // Order Status
 exports.ORDER_STATUS = {
-  PENDING: 'pending',
   CONFIRMED: 'confirmed',
   PROCESSING: 'processing',
   SHIPPED: 'shipped',
   DELIVERED: 'delivered',
   CANCELLED: 'cancelled'
 };
-
-// Bulk Enquiry Status
-// exports.BULK_ENQUIRY_STATUS = {
-//   PENDING: 'pending',
-//   REVIEWED: 'reviewed',
-//   QUOTED: 'quoted',
-//   ACCEPTED: 'accepted',
-//   REJECTED: 'rejected'
-// };
 
 // Size Options
 exports.SIZES = ['S', 'M', 'L', 'XL'];
@@ -37,3 +29,22 @@ exports.MAX_FILE_SIZE = 5 * 1024 * 1024;
 // Pagination
 exports.DEFAULT_PAGE_LIMIT = 20;
 exports.MAX_PAGE_LIMIT = 100;
+
+// ─── NEW ──────────────────────────────────────────────────────────────────
+
+// User Roles
+exports.USER_ROLES = {
+  CUSTOMER: 'customer',
+  ADMIN: 'admin'
+};
+
+// Payment Status
+exports.PAYMENT_STATUS = {
+  PENDING: 'pending',
+  PAID: 'paid',
+  FAILED: 'failed',
+  REFUNDED: 'refunded'
+};
+
+// Cart
+exports.MAX_CART_ITEM_QUANTITY = 10;

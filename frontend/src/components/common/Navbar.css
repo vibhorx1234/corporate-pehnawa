@@ -50,15 +50,18 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
-    transform: translateX(-12%); /* Move by 1/4 since we have 4 copies */
+    transform: translateX(-12%);
+    /* Move by 1/4 since we have 4 copies */
   }
 }
 
 /* Navbar */
 .navbar {
   position: fixed;
-  top: 45px; /* Moved down to accommodate banner (45px banner height) */
+  top: 45px;
+  /* Moved down to accommodate banner (45px banner height) */
   left: 0;
   right: 0;
   background: linear-gradient(135deg, #fff5ed 0%, #ffe8d9 100%);
@@ -178,7 +181,7 @@
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
 }
 
 /* Social Media Links */
@@ -195,26 +198,27 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #dd7351;
-  color: white;
+  background-color: transparent !important;
+  color: #6b4423 !important;
   transition: all 0.3s ease;
   text-decoration: none;
-  box-shadow: 0 2px 4px rgba(205, 109, 60, 0.3);
+  box-shadow: none !important;
 }
 
 [data-theme="dark"] .social-link {
-  background-color: #b8571f;
-  box-shadow: 0 2px 4px rgba(184, 87, 31, 0.4);
+  background-color: transparent;
+  color: #d4a574 !important;
+  box-shadow: none;
 }
 
 .social-link:hover {
-  background-color: #a85a2f;
+  background-color: rgba(107, 68, 35, 0.1) !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(205, 109, 60, 0.4);
 }
 
 [data-theme="dark"] .social-link:hover {
-  background-color: #954a1a;
+  background-color: rgba(201, 168, 130, 0.1) !important;
 }
 
 .social-link svg {
@@ -272,7 +276,7 @@
     line-height: 30px;
     padding-right: 30px;
   }
-  
+
   .banner-track {
     animation: marquee 12s linear infinite;
   }
@@ -341,7 +345,8 @@
 
   .navbar-menu {
     position: fixed;
-    top: calc(30px + 80px); /* Mobile banner (30px) + navbar height (approx 80px) */
+    top: calc(30px + 80px);
+    /* Mobile banner (30px) + navbar height (approx 80px) */
     left: 0;
     right: 0;
     flex-direction: column;
@@ -384,8 +389,154 @@
     font-size: 10px;
     padding-right: 20px;
   }
-  
+
   .banner-track {
     animation: marquee 10s linear infinite;
   }
+}
+
+/* File: ./frontend/src/components/common/Navbar.css  (MODIFIED)
+   Append these rules to the END of your existing Navbar.css.
+   Do NOT replace the file — just paste everything below at the bottom. */
+
+/* ── NEW: Cart button ───────────────────────────────────────────────────── */
+.navbar-cart-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #6b4423;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .navbar-cart-btn {
+  background: transparent;
+  color: #d4a574;
+}
+
+.navbar-cart-btn:hover {
+  color: var(--primary-orange);
+  background: transparent;
+}
+
+.navbar-cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: var(--primary-orange);
+  color: #fff;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── NEW: Account link button ───────────────────────────────────────────── */
+.navbar-account-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  color: #6b4423;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .navbar-account-btn {
+  color: #d4a574;
+  background: rgba(221, 115, 81, 0.15);
+}
+
+.navbar-account-btn:hover {
+  background: transparent;
+  color: var(--primary-orange);
+}
+
+/* ── NEW: Mobile account/logout inside menu ─────────────────────────────── */
+.mobile-account-link {
+  display: none;
+}
+
+.navbar-logout-btn {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  text-align: center;
+  color: #dc2626 !important;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* ── Responsive additions ───────────────────────────────────────────────── */
+@media (max-width: 820px) {
+  .desktop-auth {
+    display: none;
+  }
+
+  .mobile-account-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── AVATAR BUTTON ──────────────────────────────────────────────────────── */
+
+.navbar-avatar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: #6b4423;
+  font-family: 'poppins', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  box-shadow: none;
+  padding: 0;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .navbar-avatar-btn {
+  background: transparent;
+  color: #d4a574;
+  box-shadow: none;
+}
+
+.navbar-avatar-btn:hover {
+  background: transparent;
+  color: var(--primary-orange);
+  transform: none;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .navbar-avatar-btn:hover {
+  background: transparent;
+  color: var(--primary-orange);
 }

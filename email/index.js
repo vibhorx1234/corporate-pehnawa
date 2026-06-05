@@ -48,12 +48,12 @@ app.post('/send-email', async (req, res) => {
     res.status(200).send('Email sent successfully');
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).send('Error sending email');
+    res.status(500).send(`Error sending email: ${error.message}`);
   }
 });
 
 // 8. Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

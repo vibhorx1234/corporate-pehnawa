@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createOrder } from '../../services/orderService';
+import orderService from '../../services/orderService';
 import { validateOrderForm } from '../../utils/validation';
 import CustomizationForm from './CustomizationForm';
 import QRCodeDisplay from './QRCodeDisplay';
@@ -137,7 +137,7 @@ const OrderForm = ({ product }) => {
     try {
       setLoading(true);
       setErrors({});
-      const response = await createOrder(formData);
+      const response = await orderService.createOrder(formData);
 
       setSuccessMessage(`Order placed successfully! Your order number is ${response.data.orderNumber}`);
 

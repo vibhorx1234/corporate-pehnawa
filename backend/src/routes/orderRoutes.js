@@ -1,32 +1,41 @@
+// File: ./backend/src/routes/orderRoutes.js  (MODIFIED)
+// Changes: Added cancellation endpoints POST /:id/cancel and GET /:id/cancellation
+
 const express = require('express');
 const router = express.Router();
 const orderController = require('../controllers/orderController');
+const cancellationController = require('../controllers/cancellationController');
 const multer = require('multer');
 const { logOrderRequest } = require('../middleware/debugMiddleware');
+const { protect, optionalAuth } = require('../middleware/authMiddleware');
 
-// Create multer instance for parsing FormData without file storage
 const upload = multer();
 
-// GET all orders
+// GET /api/orders/my
+router.get('/my', protect, orderController.getMyOrders);
+
+// GET /api/orders
 router.get('/', orderController.getAllOrders);
 
-// GET order by order number
+// GET /api/orders/number/:orderNumber
 router.get('/number/:orderNumber', orderController.getOrderByNumber);
 
-// GET order by ID
-router.get('/:id', orderController.getOrderById);
+// GET /api/orders/:id
+router.get('/:id', optionalAuth, orderController.getOrderById);
 
-// POST create new order (parse FormData but no file upload)
-router.post('/', 
-  upload.none(), // This parses FormData without expecting files
-  logOrderRequest,
-  orderController.createOrder
-);
+// POST /api/orders
+router.post('/', upload.none(), optionalAuth, logOrderRequest, orderController.createOrder);
 
-// PATCH update order status
+// PATCH /api/orders/:id/status
 router.patch('/:id/status', orderController.updateOrderStatus);
 
-// DELETE order
+// POST /api/orders/:id/cancel  — user cancellation
+router.post('/:id/cancel', protect, cancellationController.requestCancellation);
+
+// GET /api/orders/:id/cancellation
+router.get('/:id/cancellation', protect, cancellationController.getCancellationDetails);
+
+// DELETE /api/orders/:id
 router.delete('/:id', orderController.deleteOrder);
 
 module.exports = router;

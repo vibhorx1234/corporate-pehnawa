@@ -1,0 +1,26 @@
+/* File: ./frontend/src/pages/LoginPage.css */
+
+.auth-page-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin-top: -20px;
+  background: var(--bg-primary);
+}
+
+.auth-page-inner {
+  width: 100%;
+  max-width: 480px;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin-top: 0px;
+  background: var(--bg-primary);
+}
