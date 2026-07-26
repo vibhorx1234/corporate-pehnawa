@@ -12,7 +12,7 @@ import { getProductBySlug } from '../services/productService';
 import ProductDetails from '../components/products/ProductDetails';
 import SizeChart from '../components/products/SizeChart';
 import Loader from '../components/common/Loader';
-import { formatPrice, scrollToTop } from '../utils/helpers';
+import { formatPrice, scrollToTop, getImageUrl, getYouTubeEmbedUrl, isYouTubeUrl, getYouTubeThumbnailUrl } from '../utils/helpers';
 import FeaturedProducts from '../components/home/FeaturedProducts';
 import Testimonials from '../components/home/Testimonials';
 import './ProductDetailPage.css';
@@ -22,7 +22,7 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(0);
+  const [selectedMedia, setSelectedMedia] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
 
@@ -80,6 +80,7 @@ const ProductDetailPage = () => {
         <div className="product-detail-container">
 
           {/* Left Side - Image Gallery (Sticky) — unchanged */}
+          {/* Left Side - Image Gallery (Sticky) */}
           <div className="product-gallery">
             <div className="image-thumbnails">
               {product.images.map((image, index) => (
@@ -87,18 +88,68 @@ const ProductDetailPage = () => {
                   key={index}
                   src={image}
                   alt={`${product.name} ${index + 1}`}
-                  className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
-                  onClick={() => setSelectedImage(index)}
+                  className={`thumbnail ${selectedMedia === index ? 'active' : ''}`}
+                  onClick={() => setSelectedMedia(index)}
                 />
               ))}
+
+              {/* Video thumbnail — only if product has a video */}
+              {product.videoUrl && (
+                <div
+                  className={`thumbnail thumbnail--video ${selectedMedia === product.images.length ? 'active' : ''}`}
+                  onClick={() => setSelectedMedia(product.images.length)}
+                >
+                  {/* YouTube can't preview in <video> tag, show a static play badge */}
+                  {isYouTubeUrl(product.videoUrl)
+                    ? (
+                      <>
+                        <img
+                          src={getYouTubeThumbnailUrl(product.videoUrl)}
+                          alt="Video preview"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                        />
+                        <span className="video-play-badge">▶</span>
+                      </>
+                    )
+                    : (
+                      <>
+                        <video src={getImageUrl(product.videoUrl)} muted preload="metadata" />
+                        <span className="video-play-badge">▶</span>
+                      </>
+                    )
+                  }
+                </div>
+              )}
             </div>
 
             <div className="main-image">
-              <img
-                src={product.images[selectedImage]}
-                alt={product.name}
-                className="product-main-img"
-              />
+              {product.videoUrl && selectedMedia === product.images.length ? (
+                isYouTubeUrl(product.videoUrl) ? (
+                  <iframe
+                    key={product.videoUrl}
+                    src={`${getYouTubeEmbedUrl(product.videoUrl)}?autoplay=1`}
+                    className="product-main-img"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={product.name}
+                  />
+                ) : (
+                  <video
+                    key={product.videoUrl}
+                    src={getImageUrl(product.videoUrl)}
+                    controls
+                    autoPlay
+                    className="product-main-img"
+                  />
+                )
+              ) : (
+                <img
+                  src={getImageUrl(product.images[selectedMedia])}
+                  alt={product.name}
+                  className="product-main-img"
+                />
+              )}
+
               {!product.inStock && (
                 <div className="stock-overlay">
                   <span>Out of Stock</span>

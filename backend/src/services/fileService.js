@@ -81,7 +81,10 @@ exports.getMimeType = (filename) => {
     '.png': 'image/png',
     '.gif': 'image/gif',
     '.webp': 'image/webp',
-    '.pdf': 'application/pdf'
+    '.pdf': 'application/pdf',
+    '.mp4': 'video/mp4',
+    '.mov': 'video/quicktime',
+    '.webm': 'video/webm',
   };
   return mimeTypes[ext] || 'application/octet-stream';
 };

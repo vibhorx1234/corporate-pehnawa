@@ -1,44 +1,35 @@
+// File: ./frontend/src/pages/CollectionSubcategoryProducts.jsx
+
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getProductsByCollection } from '../services/productService';
-import { getSubcategoriesByCollection } from '../services/subcategoryService';
+import { useParams, Link } from 'react-router-dom';
+import { getProductsBySubcategory } from '../services/productService';
 import ProductCard from '../components/products/ProductCard';
 import Loader from '../components/common/Loader';
 import { scrollToTop } from '../utils/helpers';
 import './CollectionProducts.css';
 
-const CollectionProducts = () => {
-  const { collectionSlug } = useParams();
-  const navigate = useNavigate();
+const CollectionSubcategoryProducts = () => {
+  const { collectionSlug, subcategory } = useParams();
   const [products, setProducts] = useState([]);
   const [collection, setCollection] = useState(null);
+  const [subcategoryData, setSubcategoryData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     scrollToTop();
-    checkAndLoad();
-  }, [collectionSlug]);
+    fetchProducts();
+  }, [collectionSlug, subcategory]);
 
-  const checkAndLoad = async () => {
+  const fetchProducts = async () => {
     try {
       setLoading(true);
-
-      // Always check subcategories first, regardless of how the user arrived here
-      const subRes = await getSubcategoriesByCollection(collectionSlug);
-
-      if (subRes.data.length > 0) {
-        // Redirect — replace so back button doesn't loop back here
-        navigate(`/collections/${collectionSlug}/subcategories`, { replace: true });
-        return;
-      }
-
-      // No subcategories — load products directly, as before
-      const response = await getProductsByCollection(collectionSlug);
+      const response = await getProductsBySubcategory(collectionSlug, subcategory);
       setProducts(response.data);
       setCollection(response.collection);
+      setSubcategoryData(response.subcategory);
     } catch (err) {
-      setError('Failed to load collection');
+      setError('Failed to load products');
       console.error(err);
     } finally {
       setLoading(false);
@@ -56,15 +47,19 @@ const CollectionProducts = () => {
           <span className="breadcrumb-separator">/</span>
           <Link to="/collections" className="breadcrumb-link">Collections</Link>
           <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-current">{collection?.name}</span>
+          <Link to={`/collections/${collectionSlug}/subcategories`} className="breadcrumb-link">
+            {collection?.name}
+          </Link>
+          <span className="breadcrumb-separator">/</span>
+          <span className="breadcrumb-current">{subcategoryData?.name}</span>
         </nav>
 
-        {collection && (
-          <div className="collection-header">
-            <h1 className="collection-title">{collection.name}</h1>
-            <p className="collection-description">{collection.description}</p>
-          </div>
-        )}
+        <div className="collection-header">
+          <h1 className="collection-title">{subcategoryData?.name}</h1>
+          {subcategoryData?.description && (
+            <p className="collection-description">{subcategoryData.description}</p>
+          )}
+        </div>
 
         {products.length > 0 ? (
           <div className="products-grid">
@@ -74,9 +69,9 @@ const CollectionProducts = () => {
           </div>
         ) : (
           <div className="no-products">
-            <p>No products available in this collection yet.</p>
-            <Link to="/collections" className="btn btn-primary">
-              Browse Other Collections
+            <p>No products available in this subcategory yet.</p>
+            <Link to={`/collections/${collectionSlug}/subcategories`} className="btn btn-primary">
+              Back to {collection?.name || 'Collection'}
             </Link>
           </div>
         )}
@@ -85,4 +80,4 @@ const CollectionProducts = () => {
   );
 };
 
-export default CollectionProducts;
+export default CollectionSubcategoryProducts;

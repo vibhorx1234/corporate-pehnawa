@@ -35,6 +35,16 @@ export const getProductsByCollection = async (collectionSlug) => {
   }
 };
 
+// Get products by collection + subcategory (real Subcategory model, not tags)
+export const getProductsBySubcategory = async (collectionSlug, subcategorySlug) => {
+  try {
+    const response = await api.get(`${API_ENDPOINTS.products}/collection/${collectionSlug}/subcategory/${subcategorySlug}`);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // Get product by slug
 export const getProductBySlug = async (slug) => {
   try {

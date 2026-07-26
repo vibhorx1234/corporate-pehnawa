@@ -31,10 +31,20 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   }],
+  videoUrl: {
+    type: String,
+    default: null,
+  },
   collection: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Collection',
     required: [true, 'Collection is required']
+  },
+  subcategory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Subcategory',
+    default: null,
+    required: false
   },
   featured: {
     type: Boolean,
@@ -69,7 +79,7 @@ const productSchema = new mongoose.Schema({
 });
 
 // Create slug from name before saving
-productSchema.pre('save', function(next) {
+productSchema.pre('save', function (next) {
   if (this.isModified('name')) {
     this.slug = this.name
       .toLowerCase()

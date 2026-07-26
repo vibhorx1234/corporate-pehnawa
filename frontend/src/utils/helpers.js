@@ -83,6 +83,12 @@ export const isValidImageFile = (file, maxSize = 5 * 1024 * 1024) => {
   return validTypes.includes(file.type) && file.size <= maxSize;
 };
 
+// Check if file is valid video
+export const isValidVideoFile = (file, maxSize = 50 * 1024 * 1024) => {
+  const validTypes = ['video/mp4', 'video/quicktime', 'video/webm'];
+  return validTypes.includes(file.type) && file.size <= maxSize;
+};
+
 // Format file size
 export const formatFileSize = (bytes) => {
   if (bytes === 0) return '0 Bytes';
@@ -90,4 +96,34 @@ export const formatFileSize = (bytes) => {
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+};
+
+// Convert any YouTube URL to embed URL
+export const getYouTubeEmbedUrl = (url) => {
+  if (!url) return null;
+  // Already an embed URL
+  if (url.includes('youtube.com/embed/')) return url;
+  // youtu.be/VIDEO_ID
+  const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+  if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+  // youtube.com/watch?v=VIDEO_ID
+  const watchMatch = url.match(/[?&]v=([^?&]+)/);
+  if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  return null;
+};
+
+// Check if a URL is a YouTube link
+export const isYouTubeUrl = (url) => {
+  if (!url) return false;
+  return url.includes('youtube.com') || url.includes('youtu.be');
+};
+
+// Get YouTube thumbnail image URL from any YouTube URL
+export const getYouTubeThumbnailUrl = (url) => {
+  if (!url) return null;
+  const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+  if (shortMatch) return `https://img.youtube.com/vi/${shortMatch[1]}/hqdefault.jpg`;
+  const watchMatch = url.match(/[?&]v=([^?&]+)/);
+  if (watchMatch) return `https://img.youtube.com/vi/${watchMatch[1]}/hqdefault.jpg`;
+  return null;
 };

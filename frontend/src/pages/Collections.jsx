@@ -1,5 +1,3 @@
-// File: ./frontend/src/pages/Collections.jsx
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllCollections } from '../services/collectionService';
@@ -36,15 +34,10 @@ const Collections = () => {
   return (
     <div className="collections-page">
       <div className="container">
-        {/* Page Header */}
         <div className="page-header">
           <h1 className="page-title">Our Collections</h1>
-          {/* <p className="page-subtitle">
-            For people who believe workwear can be stylish, comfortable, & rooted in culture.
-          </p> */}
         </div>
 
-        {/* Collections Grid */}
         <div className="collections-grid">
           {collections.map((collection) => (
             <Link
@@ -63,9 +56,7 @@ const Collections = () => {
                   <div className="collection-content">
                     <h2 className="collection-titlee">{collection.name}</h2>
                     <p className="collection-desc">{collection.description}</p>
-                    <span className="collection-link">
-                      View Collection →
-                    </span>
+                    <span className="collection-link">View Collection →</span>
                   </div>
                 </div>
               </div>

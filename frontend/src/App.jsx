@@ -28,6 +28,8 @@ import AdminLayout from './components/admin/AdminLayout';
 import Home from './pages/Home';
 import Collections from './pages/Collections';
 import CollectionProducts from './pages/CollectionProducts';
+import CollectionSubcategoryProducts from './pages/CollectionSubcategoryProducts';
+import CategoriesPage from './pages/CategoriesPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import OrderPage from './pages/OrderPage';
 import Blog from './pages/Blog';
@@ -102,7 +104,9 @@ function App() {
                       <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/collections" element={<Collections />} />
+                        <Route path="/collections/:collectionSlug/subcategories" element={<CategoriesPage />} />
                         <Route path="/collections/:collectionSlug" element={<CollectionProducts />} />
+                        <Route path="/collections/:collectionSlug/:subcategory" element={<CollectionSubcategoryProducts />} />
                         <Route path="/product/:productSlug" element={<ProductDetailPage />} />
                         <Route path="/order/:productId" element={<OrderPage />} />
                         <Route path="/blog" element={<Blog />} />

@@ -1,44 +1,32 @@
+// File: ./frontend/src/pages/CategoriesPage.jsx
+
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getProductsByCollection } from '../services/productService';
+import { useParams, Link } from 'react-router-dom';
 import { getSubcategoriesByCollection } from '../services/subcategoryService';
-import ProductCard from '../components/products/ProductCard';
 import Loader from '../components/common/Loader';
 import { scrollToTop } from '../utils/helpers';
 import './CollectionProducts.css';
 
-const CollectionProducts = () => {
+const CategoriesPage = () => {
   const { collectionSlug } = useParams();
-  const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
   const [collection, setCollection] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     scrollToTop();
-    checkAndLoad();
+    fetchSubcategories();
   }, [collectionSlug]);
 
-  const checkAndLoad = async () => {
+  const fetchSubcategories = async () => {
     try {
       setLoading(true);
-
-      // Always check subcategories first, regardless of how the user arrived here
-      const subRes = await getSubcategoriesByCollection(collectionSlug);
-
-      if (subRes.data.length > 0) {
-        // Redirect — replace so back button doesn't loop back here
-        navigate(`/collections/${collectionSlug}/subcategories`, { replace: true });
-        return;
-      }
-
-      // No subcategories — load products directly, as before
-      const response = await getProductsByCollection(collectionSlug);
-      setProducts(response.data);
+      const response = await getSubcategoriesByCollection(collectionSlug);
+      setSubcategories(response.data);
       setCollection(response.collection);
     } catch (err) {
-      setError('Failed to load collection');
+      setError('Failed to load categories');
       console.error(err);
     } finally {
       setLoading(false);
@@ -66,15 +54,37 @@ const CollectionProducts = () => {
           </div>
         )}
 
-        {products.length > 0 ? (
-          <div className="products-grid">
-            {products.map((product) => (
-              <ProductCard key={product._id} product={product} />
-            ))}
-          </div>
-        ) : (
+        <div className="subcategories-grid">
+          {subcategories.map((sub) => (
+            <Link
+              key={sub._id}
+              to={`/collections/${collectionSlug}/${sub.slug}`}
+              className="subcategory-tile"
+            >
+              <div className="subcategory-image-wrapper">
+                <img
+                  src={sub.thumbnail}
+                  alt={sub.name}
+                  className="subcategory-image"
+                  loading="lazy"
+                />
+                <div className="subcategory-overlay">
+                  <div className="subcategory-content">
+                    <h2 className="subcategory-titlee">{sub.name}</h2>
+                    {/* {sub.description && (
+                      <p className="subcategory-desc">{sub.description}</p>
+                    )} */}
+                    <span className="subcategory-link">View →</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {subcategories.length === 0 && (
           <div className="no-products">
-            <p>No products available in this collection yet.</p>
+            <p>No categories available yet.</p>
             <Link to="/collections" className="btn btn-primary">
               Browse Other Collections
             </Link>
@@ -85,4 +95,4 @@ const CollectionProducts = () => {
   );
 };
 
-export default CollectionProducts;
+export default CategoriesPage;

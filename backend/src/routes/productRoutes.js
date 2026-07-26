@@ -10,6 +10,8 @@ router.get('/', productController.getAllProducts);
 // GET products by collection slug
 router.get('/collection/:collectionSlug', productController.getProductsByCollection);
 
+router.get('/collection/:collectionSlug/subcategory/:subcategorySlug', productController.getProductsBySubcategory);
+
 // GET product by slug
 router.get('/slug/:slug', productController.getProductBySlug);
 

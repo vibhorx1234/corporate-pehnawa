@@ -62,6 +62,45 @@ exports.getProductsByCollection = async (req, res) => {
   }
 };
 
+// Get products by collection slug + subcategory slug
+exports.getProductsBySubcategory = async (req, res) => {
+  try {
+    const Collection = require('../models/Collection');
+    const Subcategory = require('../models/Subcategory');
+
+    const collection = await Collection.findOne({ slug: req.params.collectionSlug });
+    if (!collection) {
+      return res.status(404).json({ success: false, message: 'Collection not found' });
+    }
+
+    const subcategory = await Subcategory.findOne({
+      collection: collection._id,
+      slug: req.params.subcategorySlug
+    });
+    if (!subcategory) {
+      return res.status(404).json({ success: false, message: 'Subcategory not found' });
+    }
+
+    const products = await Product.find({
+      collection: collection._id,
+      subcategory: subcategory._id
+    })
+      .populate('collection', 'name slug')
+      .populate('subcategory', 'name slug')
+      .sort({ order: 1, createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      collection,
+      subcategory,
+      data: products
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error fetching products', error: error.message });
+  }
+};
+
 // Get single product by slug
 exports.getProductBySlug = async (req, res) => {
   try {

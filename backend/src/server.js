@@ -64,6 +64,7 @@ const cartRoutes = require('./routes/cartRoutes');
 const addressRoutes = require('./routes/addressRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
+const subcategoryRoutes = require('./routes/subcategoryRoutes');
 
 const app = express();
 connectDB();
@@ -103,6 +104,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/addresses', addressRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/subcategories', subcategoryRoutes);
 
 app.get('/api/health', (req, res) => {
   res.status(200).json({

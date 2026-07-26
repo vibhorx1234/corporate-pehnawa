@@ -23,6 +23,12 @@ exports.SIZE_TYPE = {
 // Allowed Image Types
 exports.ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
 
+// Allowed Video Types
+exports.ALLOWED_VIDEO_TYPES = ['video/mp4', 'video/quicktime', 'video/webm'];
+
+// Max Video File Size (50MB)
+exports.MAX_VIDEO_FILE_SIZE = 50 * 1024 * 1024;
+
 // Max File Size (5MB)
 exports.MAX_FILE_SIZE = 5 * 1024 * 1024;
 
