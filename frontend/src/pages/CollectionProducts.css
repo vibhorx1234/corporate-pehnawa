@@ -130,10 +130,22 @@
 /* Products Grid */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-xl);
   padding: 0 var(--spacing-lg);
   grid-auto-rows: 1fr;
+
+  /* Default: 2 or fewer products */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Exactly 3 products (3rd child exists, gets overridden below if 4th exists too) */
+.products-grid:has(> :nth-child(3)) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 4 or more products */
+.products-grid:has(> :nth-child(4)) {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* Product Card Wrapper - Ensures uniform size */
