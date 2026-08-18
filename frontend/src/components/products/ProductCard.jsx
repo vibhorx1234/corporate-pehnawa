@@ -19,8 +19,11 @@ const ProductCard = ({ product }) => {
           loading="lazy"
         />
         <div className="product-badges">
+          {/* {discount > 0 && (
+            <span className="product-badge discount-badgee">-{discount}%</span>
+          )} */}
           {discount > 0 && (
-            <span className="product-badge discount-badge">-{discount}%</span>
+            <span className="product-badge discount-badgee">RAKHI SALE</span>
           )}
         </div>
         {!product.inStock && (
@@ -38,11 +41,11 @@ const ProductCard = ({ product }) => {
         
         <div className="product-pricing">
           <span className="product-price">{formatPrice(displayPrice)}</span>
-          {/* {product.discountedPrice && (
+          {product.discountedPrice && (
             <span className="product-original-price">
               {formatPrice(product.price)}
             </span>
-          )} */}
+          )}
         </div>
       </div>
     </Link>

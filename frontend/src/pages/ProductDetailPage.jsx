@@ -5,6 +5,8 @@
 //      (Add to Cart / Buy Now are handled internally inside ProductDetails)
 //   3. All original image gallery, breadcrumb, dropdown sections, layout UNCHANGED
 //   4. SizeChart modal wiring is unchanged
+//   5. Added discount badge (RAKHI SALE) on top-right of main image,
+//      computed via calculateDiscount() same as ProductCard.jsx
 
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
@@ -12,7 +14,15 @@ import { getProductBySlug } from '../services/productService';
 import ProductDetails from '../components/products/ProductDetails';
 import SizeChart from '../components/products/SizeChart';
 import Loader from '../components/common/Loader';
-import { formatPrice, scrollToTop, getImageUrl, getYouTubeEmbedUrl, isYouTubeUrl, getYouTubeThumbnailUrl } from '../utils/helpers';
+import {
+  formatPrice,
+  scrollToTop,
+  getImageUrl,
+  getYouTubeEmbedUrl,
+  isYouTubeUrl,
+  getYouTubeThumbnailUrl,
+  calculateDiscount,
+} from '../utils/helpers';
 import FeaturedProducts from '../components/home/FeaturedProducts';
 import Testimonials from '../components/home/Testimonials';
 import './ProductDetailPage.css';
@@ -52,6 +62,9 @@ const ProductDetailPage = () => {
   if (error) return <div className="error-message">{error}</div>;
   if (!product) return <div className="error-message">Product not found</div>;
 
+  // Same discount calculation used in ProductCard.jsx
+  const discount = calculateDiscount(product.price, product.discountedPrice);
+
   return (
     <div className="product-detail-page">
       <div className="container">
@@ -80,7 +93,6 @@ const ProductDetailPage = () => {
         <div className="product-detail-container">
 
           {/* Left Side - Image Gallery (Sticky) — unchanged */}
-          {/* Left Side - Image Gallery (Sticky) */}
           <div className="product-gallery">
             <div className="image-thumbnails">
               {product.images.map((image, index) => (
@@ -123,6 +135,11 @@ const ProductDetailPage = () => {
             </div>
 
             <div className="main-image">
+              {/* Discount badge — top right corner of main image */}
+              {discount > 0 && (
+                <span className="product-badge discount-badge">RAKHI SALE</span>
+              )}
+
               {product.videoUrl && selectedMedia === product.images.length ? (
                 isYouTubeUrl(product.videoUrl) ? (
                   <iframe
