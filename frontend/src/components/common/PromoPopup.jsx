@@ -4,8 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import './PromoPopup.css';
 
-const MOBILE_POSTER = 'https://i.postimg.cc/hG7DP1cv/Rakhi-Poster-1.png';
-const DESKTOP_POSTER = 'https://i.postimg.cc/JhBr45Mh/Rakhi-Poster-2.png';
+const MOBILE_POSTER = 'https://i.postimg.cc/6ppGvfvd/Rakhi-Poster-1.webp';
+const DESKTOP_POSTER = 'https://i.postimg.cc/g226ZHZy/Rakhi-Poster-2.webp';
 
 const PromoPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
