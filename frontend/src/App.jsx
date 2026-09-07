@@ -101,7 +101,7 @@ function App() {
                 path="*"
                 element={
                   <div className="app">
-                    <PromoPopup />
+                    {/* <PromoPopup /> */}
                     <Navbar />
                     <main className="main-content">
                       <Routes>
