@@ -137,8 +137,11 @@ const ProductDetailPage = () => {
             <div className="main-image">
               {/* Discount badge — top right corner of main image */}
               {discount > 0 && (
-                <span className="product-badge discount-badge">RAKHI SALE</span>
+                <span className="product-badge discount-badgee">-{discount}%</span>
               )}
+              {/* {discount > 0 && (
+                <span className="product-badge discount-badge">RAKHI SALE</span>
+              )} */}
 
               {product.videoUrl && selectedMedia === product.images.length ? (
                 isYouTubeUrl(product.videoUrl) ? (

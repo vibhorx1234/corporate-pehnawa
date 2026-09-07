@@ -19,12 +19,12 @@ const ProductCard = ({ product }) => {
           loading="lazy"
         />
         <div className="product-badges">
-          {/* {discount > 0 && (
-            <span className="product-badge discount-badgee">-{discount}%</span>
-          )} */}
           {discount > 0 && (
-            <span className="product-badge discount-badgee">RAKHI SALE</span>
+            <span className="product-badge discount-badgee">-{discount}%</span>
           )}
+          {/* {discount > 0 && (
+            <span className="product-badge discount-badgee">RAKHI SALE</span>
+          )} */}
         </div>
         {!product.inStock && (
           <div className="product-overlay">
