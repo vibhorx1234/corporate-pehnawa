@@ -85,7 +85,7 @@ npm start
 
 ## 📧 Contact
 
-For support or queries, please contact: [your-email@example.com]
+For support or queries, please contact: [youremail@example.com]
 
 ## 📄 License
 
