@@ -1,28 +1,29 @@
 import React, { useEffect, useRef } from 'react';
 import './TrendingReels.css';
 
+const shorts = [
+  {
+    id: 1,
+    videoId: 'h2Kg3_D9gdI',
+  },
+  {
+    id: 2,
+    videoId: 'pWLcc3rsh5U',
+  },
+  {
+    id: 3,
+    videoId: 'sQssF7nz-m0',
+  }
+];
+
 const TrendingReels = () => {
   const videoRefs = useRef([]);
 
-  const shorts = [
-    {
-      id: 1,
-      videoId: 'h2Kg3_D9gdI',
-    },
-    {
-      id: 2,
-      videoId: 'pWLcc3rsh5U',
-    },
-    {
-      id: 3,
-      videoId: 'sQssF7nz-m0',
-    }
-  ];
-
   useEffect(() => {
+    const currentRefs = videoRefs.current;
     const observers = [];
 
-    videoRefs.current.forEach((iframe, index) => {
+    currentRefs.forEach((iframe, index) => {
       if (!iframe) return;
 
       const observer = new IntersectionObserver(
@@ -46,7 +47,7 @@ const TrendingReels = () => {
 
     return () => {
       observers.forEach((observer, index) => {
-        if (videoRefs.current[index]) {
+        if (currentRefs[index]) {
           observer.disconnect();
         }
       });
