@@ -32,6 +32,8 @@ const sendEmailInternal = async (toEmail, subject, content, attachments = null) 
   }
 };
 
+exports.sendEmailInternal = sendEmailInternal;
+
 const buildItemsTable = (order) => {
   // New flow: items array present and populated
   const items = order.items && order.items.length > 0 ? order.items : null;

@@ -5,45 +5,8 @@ dotenv.config();
 
 const Contact = require('../models/Contact');
 
-const EMAIL_API_ENDPOINT = 'https://corporate-pehnawa.vercel.app/send-email';
+const { sendEmailInternal } = require('../services/emailService');
 
-/**
- * Helper function to send an email using the external API endpoint.
- * @param {string} toEmail - The recipient's email address.
- * @param {string} subject - The subject of the email.
- * @param {string} content - The HTML content of the email.
- */
-const sendEmailViaApi = async (toEmail, subject, content) => {
-  const requestBody = {
-    toEmail: toEmail,
-    subject: subject,
-    content: content
-  };
-
-  try {
-    console.log(`Sending email to ${toEmail} via external API...`);
-    
-    const response = await fetch(EMAIL_API_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody)
-    });
-    console.log(requestBody)
-    // Check for HTTP errors (e.g., 400, 500)
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`API returned status ${response.status}: ${errorText}`);
-    }
-
-    console.log(`✅ Email sent successfully to ${toEmail}`);
-    return;
-  } catch (error) {
-    console.error('❌ Error sending email via external API:', error.message);
-    throw error;
-  }
-};
 
 // Send contact form email
 const sendContactEmail = async (contactData) => {
@@ -100,24 +63,24 @@ const sendContactEmail = async (contactData) => {
 
   try {
     console.log('Attempting to send contact emails...');
-    
+
 
     // Send email to admin
-    await sendEmailViaApi(
-  process.env.ADMIN_EMAIL,
-  `New Contact Form Submission: ${contactData.subject || 'No Subject'}`,
-  adminHtmlContent
-);
+    await sendEmailInternal(
+      process.env.ADMIN_EMAIL,
+      `New Contact Form Submission: ${contactData.subject || 'No Subject'}`,
+      adminHtmlContent
+    );
     console.log(`✅ Contact form notification sent to admin`);
-    console.log("------------",contactData)
+    console.log("------------", contactData)
     // Send confirmation email to customer
-    await sendEmailViaApi(
+    await sendEmailInternal(
       contactData.email,
       'Thank you for contacting Corporate Pehnawa',
       customerHtmlContent
     );
     console.log(`✅ Contact confirmation email sent to ${contactData.email}`);
-    
+
     console.log('✅ Contact emails sent successfully');
     return true;
   } catch (error) {
@@ -127,7 +90,7 @@ const sendContactEmail = async (contactData) => {
       name: error.name,
       code: error.code
     });
-    
+
     throw error;
   }
 };
@@ -136,14 +99,14 @@ const sendContactEmail = async (contactData) => {
 exports.createContact = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
-    
+
     // Validate required fields
     if (!name || !email || !message) {
-  return res.status(400).json({
-    success: false,
-    message: 'Name, email, and message are required'
-  });
-}
+      return res.status(400).json({
+        success: false,
+        message: 'Name, email, and message are required'
+      });
+    }
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -153,7 +116,7 @@ exports.createContact = async (req, res) => {
         message: 'Invalid email format'
       });
     }
-    
+
     // Save to database
     const contact = await Contact.create({
       name,
@@ -161,9 +124,9 @@ exports.createContact = async (req, res) => {
       subject,
       message
     });
-    
+
     console.log('✅ Contact saved to database:', contact._id);
-    
+
     // Send emails
     try {
       await sendContactEmail({ name, email, subject, message });
@@ -177,7 +140,7 @@ exports.createContact = async (req, res) => {
         data: contact
       });
     }
-    
+
     res.status(201).json({
       success: true,
       message: 'Your message has been sent successfully. We will get back to you soon!',
@@ -197,7 +160,7 @@ exports.createContact = async (req, res) => {
 exports.getAllContacts = async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });
-    
+
     res.status(200).json({
       success: true,
       count: contacts.length,
@@ -217,14 +180,14 @@ exports.getAllContacts = async (req, res) => {
 exports.getContactById = async (req, res) => {
   try {
     const contact = await Contact.findById(req.params.id);
-    
+
     if (!contact) {
       return res.status(404).json({
         success: false,
         message: 'Contact not found'
       });
     }
-    
+
     res.status(200).json({
       success: true,
       data: contact
@@ -243,14 +206,14 @@ exports.getContactById = async (req, res) => {
 exports.deleteContact = async (req, res) => {
   try {
     const contact = await Contact.findByIdAndDelete(req.params.id);
-    
+
     if (!contact) {
       return res.status(404).json({
         success: false,
         message: 'Contact not found'
       });
     }
-    
+
     res.status(200).json({
       success: true,
       message: 'Contact deleted successfully'
