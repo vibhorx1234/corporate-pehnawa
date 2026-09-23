@@ -15,7 +15,6 @@ import ProductDetails from '../components/products/ProductDetails';
 import SizeChart from '../components/products/SizeChart';
 import Loader from '../components/common/Loader';
 import {
-  formatPrice,
   scrollToTop,
   getImageUrl,
   getYouTubeEmbedUrl,
@@ -37,22 +36,21 @@ const ProductDetailPage = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await getProductBySlug(productSlug);
+        setProduct(response.data);
+      } catch (err) {
+        setError('Failed to load product details');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
     scrollToTop();
     fetchProduct();
   }, [productSlug]);
-
-  const fetchProduct = async () => {
-    try {
-      setLoading(true);
-      const response = await getProductBySlug(productSlug);
-      setProduct(response.data);
-    } catch (err) {
-      setError('Failed to load product details');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const toggleDropdown = (section) => {
     setOpenDropdown(openDropdown === section ? null : section);

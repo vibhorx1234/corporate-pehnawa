@@ -19,22 +19,21 @@ const OrderPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await getProductById(productId);
+        setProduct(response.data);
+      } catch (err) {
+        setError('Failed to load product details');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
     scrollToTop();
     fetchProduct();
   }, [productId]);
-
-  const fetchProduct = async () => {
-    try {
-      setLoading(true);
-      const response = await getProductById(productId);
-      setProduct(response.data);
-    } catch (err) {
-      setError('Failed to load product details');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading || authLoading) return <Loader fullScreen />;
 

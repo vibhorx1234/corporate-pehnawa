@@ -6,7 +6,7 @@ import api from '../../services/api';
 import './ProfileForm.css';
 
 const ProfileForm = () => {
-  const { user, login } = useAuth();
+  const { user } = useAuth();
 
   const [profileData, setProfileData] = useState({ name: user?.name || '', phone: user?.phone || '' });
   const [pwData, setPwData] = useState({ currentPassword: '', newPassword: '', confirmPassword: '' });
@@ -110,7 +110,7 @@ const ProfileForm = () => {
             <div className="pf-field" key={field}>
               <label>
                 {field === 'currentPassword' ? 'Current Password' :
-                 field === 'newPassword' ? 'New Password' : 'Confirm New Password'}
+                  field === 'newPassword' ? 'New Password' : 'Confirm New Password'}
               </label>
               <div className="pf-pw-wrap">
                 <input

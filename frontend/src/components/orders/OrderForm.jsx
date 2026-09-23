@@ -117,11 +117,6 @@ const OrderForm = ({ product }) => {
     }));
   };
 
-  const handleFileChange = (file) => {
-    setFormData(prev => ({
-      ...prev,
-    }));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

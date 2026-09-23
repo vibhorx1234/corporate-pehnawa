@@ -14,7 +14,7 @@ const GoogleAuthSuccess = () => {
     loginWithToken(token)
       .then(() => navigate('/', { replace: true }))
       .catch(() => navigate('/login?error=google_failed'));
-  }, []);
+  }, [loginWithToken, navigate, searchParams]);
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>

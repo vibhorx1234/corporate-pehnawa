@@ -8,8 +8,7 @@ const About = () => {
     scrollToTop();
   }, []);
 
-  // Replace these URLs with your actual image URLs
-  const heroImageUrl = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop';
+
   const ownerImageUrl = 'https://i.postimg.cc/76CyN0KM/radhika.jpg?w=400&h=500&fit=crop';
 
   return (
@@ -31,9 +30,9 @@ const About = () => {
           <h2 className="story-main-title">Our Story</h2>
           <div className="story-layout">
             <div className="story-image-side">
-              <img 
+              <img
                 src={ownerImageUrl}
-                alt="Radhika - Founder of Corporate Pehnawa" 
+                alt="Radhika - Founder of Corporate Pehnawa"
                 className="owner-image"
               />
             </div>

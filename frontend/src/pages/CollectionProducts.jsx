@@ -16,34 +16,27 @@ const CollectionProducts = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const checkAndLoad = async () => {
+      try {
+        setLoading(true);
+        const subRes = await getSubcategoriesByCollection(collectionSlug);
+        if (subRes.data.length > 0) {
+          navigate(`/collections/${collectionSlug}/subcategories`, { replace: true });
+          return;
+        }
+        const response = await getProductsByCollection(collectionSlug);
+        setProducts(response.data);
+        setCollection(response.collection);
+      } catch (err) {
+        setError('Failed to load collection');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
     scrollToTop();
     checkAndLoad();
-  }, [collectionSlug]);
-
-  const checkAndLoad = async () => {
-    try {
-      setLoading(true);
-
-      // Always check subcategories first, regardless of how the user arrived here
-      const subRes = await getSubcategoriesByCollection(collectionSlug);
-
-      if (subRes.data.length > 0) {
-        // Redirect — replace so back button doesn't loop back here
-        navigate(`/collections/${collectionSlug}/subcategories`, { replace: true });
-        return;
-      }
-
-      // No subcategories — load products directly, as before
-      const response = await getProductsByCollection(collectionSlug);
-      setProducts(response.data);
-      setCollection(response.collection);
-    } catch (err) {
-      setError('Failed to load collection');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [collectionSlug, navigate]);
 
   if (loading) return <Loader fullScreen />;
   if (error) return <div className="error-message">{error}</div>;

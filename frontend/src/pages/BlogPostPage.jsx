@@ -14,22 +14,21 @@ const BlogPostPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        setLoading(true);
+        const response = await getBlogBySlug(blogSlug);
+        setBlog(response.data);
+      } catch (err) {
+        setError('Failed to load blog post');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
     scrollToTop();
     fetchBlog();
   }, [blogSlug]);
-
-  const fetchBlog = async () => {
-    try {
-      setLoading(true);
-      const response = await getBlogBySlug(blogSlug);
-      setBlog(response.data);
-    } catch (err) {
-      setError('Failed to load blog post');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) return <Loader fullScreen />;
   if (error) return <div className="error-message">{error}</div>;
@@ -55,7 +54,7 @@ const BlogPostPage = () => {
               <span className="post-category">{blog.category}</span>
             )}
             <h1 className="post-title">{blog.title}</h1>
-            
+
             <div className="post-meta">
               <span className="post-author">By {blog.author}</span>
               <span className="meta-separator">•</span>

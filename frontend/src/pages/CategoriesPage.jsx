@@ -15,23 +15,22 @@ const CategoriesPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const fetchSubcategories = async () => {
+      try {
+        setLoading(true);
+        const response = await getSubcategoriesByCollection(collectionSlug);
+        setSubcategories(response.data);
+        setCollection(response.collection);
+      } catch (err) {
+        setError('Failed to load categories');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
     scrollToTop();
     fetchSubcategories();
   }, [collectionSlug]);
-
-  const fetchSubcategories = async () => {
-    try {
-      setLoading(true);
-      const response = await getSubcategoriesByCollection(collectionSlug);
-      setSubcategories(response.data);
-      setCollection(response.collection);
-    } catch (err) {
-      setError('Failed to load categories');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) return <Loader fullScreen />;
   if (error) return <div className="error-message">{error}</div>;
