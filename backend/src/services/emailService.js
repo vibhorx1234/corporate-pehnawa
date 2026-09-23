@@ -1,28 +1,33 @@
-const EMAIL_API_ENDPOINT = 'https://corporate-pehnawa.vercel.app/send-email';
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 // ─── Internal helper ──────────────────────────────────────────────────────────
 
-const sendEmailViaApi = async (toEmail, subject, content, attachments = null) => {
-  const requestBody = { toEmail, subject, content };
-  if (attachments && attachments.length > 0) requestBody.attachments = attachments;
+const sendEmailInternal = async (toEmail, subject, content, attachments = null) => {
+  const mailOptions = {
+    from: `"Corporate Pehnawa" <${process.env.EMAIL_USER}>`,
+    to: toEmail,
+    subject: subject || 'No Subject',
+    html: content,
+  };
+
+  if (attachments && Array.isArray(attachments)) {
+    mailOptions.attachments = attachments;
+  }
 
   try {
-    console.log(`Sending email to ${toEmail} via external API...`);
-
-    const response = await fetch(EMAIL_API_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(requestBody)
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`API returned status ${response.status}: ${errorText}`);
-    }
-
+    console.log(`Sending email to ${toEmail} natively...`);
+    await transporter.sendMail(mailOptions);
     console.log(`✅ Email sent successfully to ${toEmail}`);
   } catch (error) {
-    console.error('❌ Error sending email via external API:', error.message);
+    console.error('❌ Error sending email natively:', error.message);
     throw error;
   }
 };
@@ -124,7 +129,7 @@ exports.sendOrderConfirmation = async (order) => {
     </div>
   `;
 
-  await sendEmailViaApi(
+  await sendEmailInternal(
     order.email,
     `Order Confirmation - ${order.orderNumber}`,
     htmlContent
@@ -172,7 +177,7 @@ exports.sendOrderNotificationToAdmin = async (order) => {
     </div>
   `;
 
-  await sendEmailViaApi(
+  await sendEmailInternal(
     process.env.ADMIN_EMAIL,
     `🛒 New Order Received - ${order.orderNumber}`,
     htmlContent
@@ -228,7 +233,7 @@ exports.sendOrderStatusUpdate = async (order) => {
     </div>
   `;
 
-  await sendEmailViaApi(
+  await sendEmailInternal(
     order.email,
     `${emoji} Order Status Update - ${order.orderNumber}`,
     htmlContent
@@ -270,7 +275,7 @@ exports.sendPasswordResetEmail = async (toEmail, resetUrl, userName) => {
     </div>
   `;
 
-  await sendEmailViaApi(
+  await sendEmailInternal(
     toEmail,
     '🔑 Reset Your Password — Corporate Pehnawa',
     htmlContent
@@ -314,7 +319,7 @@ exports.sendCancellationConfirmation = async (order) => {
     </div>
   `;
 
-  await sendEmailViaApi(
+  await sendEmailInternal(
     order.email,
     `❌ Order Cancelled — Refund of ₹${cancellation.refundAmount?.toLocaleString('en-IN')} Initiated — ${order.orderNumber}`,
     htmlContent
@@ -352,7 +357,7 @@ exports.sendCancellationNotificationToAdmin = async (order) => {
     </div>
   `;
 
-  await sendEmailViaApi(
+  await sendEmailInternal(
     process.env.ADMIN_EMAIL,
     `🔴 Cancellation Request — Refund ₹${cancellation.refundAmount?.toLocaleString('en-IN')} to ${cancellation.upiId} — ${order.orderNumber}`,
     htmlContent
@@ -392,7 +397,7 @@ exports.sendPaymentConfirmation = async (order) => {
     </div>
   `;
 
-  await sendEmailViaApi(
+  await sendEmailInternal(
     order.email,
     `✅ Payment Confirmed — Order ${order.orderNumber}`,
     htmlContent
