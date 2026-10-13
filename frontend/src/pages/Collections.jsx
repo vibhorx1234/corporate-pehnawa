@@ -55,6 +55,7 @@ const Collections = () => {
                 <div className="collection-overlay">
                   <div className="collection-content">
                     <h2 className="collection-titlee">{collection.name}</h2>
+                    <p className="collection-desc">{collection.desc1}</p>
                     <p className="collection-desc">{collection.description}</p>
                     <span className="collection-link">View Collection →</span>
                   </div>
