@@ -187,6 +187,16 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+.collection-desc1 {
+  font-family: "aptos-bold";
+  font-style: italic;
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
 .collection-desc {
   font-family: "aptos-bold";
   font-size: var(--text-base);
