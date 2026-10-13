@@ -142,7 +142,9 @@
 
 .story-image-side {
   position: sticky;
-  top: 100px;
+  top: 150px;
+  align-self: start;
+  height: fit-content;
 }
 
 .owner-image {
@@ -153,6 +155,8 @@
   box-shadow: 0 8px 24px rgba(255, 102, 0, 0.2);
   object-fit: cover;
   aspect-ratio: 3/4;
+  display: block;
+  max-height: calc(100vh - 200px);
 }
 
 [data-theme="dark"] .owner-image {

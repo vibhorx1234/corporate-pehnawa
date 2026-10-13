@@ -135,7 +135,7 @@ const ProductDetailPage = () => {
             <div className="main-image">
               {/* Discount badge — top right corner of main image */}
               {discount > 0 && (
-                <span className="product-badge discount-badgee">-{discount}%</span>
+                <span className="discount-badge">-{discount}%</span>
               )}
               {/* {discount > 0 && (
                 <span className="product-badge discount-badge">RAKHI SALE</span>
