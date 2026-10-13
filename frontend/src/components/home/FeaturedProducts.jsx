@@ -44,7 +44,7 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="products-gridd">
-          {products.slice(0, 8).map((product) => (
+          {products.slice(0, 9).map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
         </div>
