@@ -66,6 +66,7 @@ exports.validateCollection = [
     .notEmpty().withMessage('Collection name is required')
     .isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
   body('description').trim().notEmpty().withMessage('Description is required'),
+  body('desc1').trim().notEmpty().withMessage('Small Description is required'),
   body('thumbnail').trim().notEmpty().withMessage('Thumbnail is required')
 ];
 

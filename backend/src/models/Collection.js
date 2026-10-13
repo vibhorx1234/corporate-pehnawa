@@ -20,6 +20,11 @@ const collectionSchema = new mongoose.Schema({
     required: [true, 'Collection description is required'],
     trim: true
   },
+  desc1: {
+    type: String,
+    required: [true, 'Small description is required'],
+    trim: true
+  },
   thumbnail: {
     type: String,
     required: [true, 'Collection thumbnail is required']
