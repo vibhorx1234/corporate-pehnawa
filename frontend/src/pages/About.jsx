@@ -38,7 +38,7 @@ const About = () => {
             </div>
             <div className="story-text-side">
               <p>
-                Hi, I'm Radhika, a 21-year-old who once worked a typical 9–5 job and realised how limited corporate wear could be. The clothes looked formal, but they didn't feel like us — no comfort, no expression, no joy. I wanted to change that.
+                I started Corporate Pehnawa at the age of 21, right after my first corporate job in 2025, where I realised how limited corporate wear could be. The clothes looked formal, but they didn't feel like us — no comfort, no expression, no joy. I wanted to change that.
               </p>
               <p>
                 With no background in fashion or design, I started learning everything from scratch — from fabrics and stitching to fits and finishes. Out of that journey, Corporate Pehnawa was born: a homegrown brand inspired by modern workwear, comfort, and the everyday beauty of Jaipur.
