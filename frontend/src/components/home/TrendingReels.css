@@ -1,72 +1,132 @@
-/* Trending Reels Section */
+/* ==========================================================
+   Trending Reels – infinite auto carousel
+   ========================================================== */
+
 .trending-reels-section {
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
   background-color: var(--bg-secondary); /* Same as collections */
+  overflow: hidden;
+
+  /* Size of one reel card. Everything (header + carousel + CTA) is sized
+     so the whole section fits in one screen without scrolling.
+     Make the reels bigger/smaller by changing the 52vh value. */
+  --reel-height: clamp(260px, 52vh, 480px);
+  --reel-width: calc(var(--reel-height) * 9 / 16);
+  --reel-gap: var(--spacing-lg);
 }
 
 .trending-reels-header {
   text-align: center;
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-lg);
 }
 
-.trending-reels-subtitle {
-  font-size: var(--text-lg);
-  color: var(--text-secondary);
-  margin-top: var(--spacing-sm);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+/* ---------- Carousel ---------- */
+.reels-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* room for hover lift + shadow so they don't get clipped */
+  padding: var(--spacing-md) 0;
+
+  /* soft fade on left & right edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
 }
 
-.trending-reels-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-3xl);
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+.reels-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  /* --reels-duration is set from React (speed control) */
+  animation: reels-scroll var(--reels-duration, 24s) linear infinite;
+}
+
+/* pause while hovering */
+.reels-track:hover {
+  animation-play-state: paused;
+}
+
+/* Track holds two identical loops, so moving by -50% = seamless restart */
+@keyframes reels-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* padding (not gap) keeps the -50% maths exact */
+.reel-item {
+  flex: 0 0 auto;
+  width: var(--reel-width);
+  padding-right: var(--reel-gap);
+  box-sizing: content-box;
 }
 
 .reel-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 177.78%; /* 9:16 aspect ratio for vertical videos */
+  height: var(--reel-height);
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all var(--transition-base);
-  background-color: var(--bg-primary);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  background-color: #000;
 }
 
 .reel-wrapper:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Thumbnail (poster) + autoplaying video ---------- */
+.reel-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crops the 4:3 thumbnail into 9:16 */
+  display: block;
+  user-select: none;
 }
 
 .reel-video {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   border: none;
   border-radius: var(--radius-lg);
 }
 
-/* CTA Button */
+/* ---------- CTA Button ---------- */
 .trending-reels-cta {
   font-family: "aptos-bold";
   text-align: center;
+  margin-top: var(--spacing-md);
 }
 
 .btn-instagram {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 600;
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: var(--spacing-sm) var(--spacing-lg);
   background-color: var(--primary-orange);
   color: var(--primary-white);
   text-decoration: none;
@@ -84,53 +144,29 @@
 }
 
 .btn-instagram svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .trending-reels-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
-  }
-
-  .trending-reels-section {
-    padding: var(--spacing-2xl) 0;
-  }
-}
-
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .trending-reels-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-  }
-
   .trending-reels-section {
-    padding: var(--spacing-2xl) 0;
+    --reel-height: clamp(240px, 50vh, 400px);
+    --reel-gap: var(--spacing-md);
   }
 
   .trending-reels-header {
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .trending-reels-subtitle {
-    font-size: var(--text-base);
+    margin-bottom: var(--spacing-md);
   }
 
   .btn-instagram {
-    font-size: var(--text-base);
-    padding: var(--spacing-sm) var(--spacing-lg);
-  }
-
-  .btn-instagram svg {
-    width: 20px;
-    height: 20px;
+    font-size: var(--text-sm, 0.9rem);
   }
 }
 
-@media (max-width: 480px) {
-  .trending-reels-grid {
-    gap: var(--spacing-sm);
+/* ---------- Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .reels-track {
+    animation-duration: calc(var(--reels-duration, 24s) * 4);
   }
 }
