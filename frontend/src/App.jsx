@@ -60,7 +60,7 @@ import AdminCustomerAnalytics from './pages/admin/AdminCustomerAnalytics';
 
 import GoogleAuthSuccess from './pages/GoogleAuthSuccess';
 
-import PromoPopup from './components/common/PromoPopup';
+// import PromoPopup from './components/common/PromoPopup';
 
 // UTM capture runs once on mount
 const UTMCapture = () => {
@@ -101,7 +101,7 @@ function App() {
                 path="*"
                 element={
                   <div className="app">
-                    <PromoPopup />
+                    {/* <PromoPopup /> */}
                     <Navbar />
                     <main className="main-content">
                       <Routes>
