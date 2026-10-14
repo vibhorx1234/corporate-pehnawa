@@ -1,69 +1,144 @@
-/* Testimonials Section */
+/* ==========================================================
+   Testimonials – infinite auto carousel
+   Card sizes (padding, photo, fonts, gaps) follow the
+   original card design: roomy padding, 200px photo,
+   16px text with 1.6 line-height, quote icon above the photo.
+   ========================================================== */
+
 .testimonials-section {
-  padding: var(--spacing-3xl) 0;
+  /* How many cards are visible on screen at once.
+     Card width = screen width split evenly between them. */
+  --cards-visible: 4;
+  --card-gap: var(--spacing-xl);
+
+  /* Width of the carousel itself. It no longer runs edge to edge:
+     it stays centred and never gets wider than --carousel-max-width.
+     Make it narrower for bigger-looking cards, wider for more room. */
+  --carousel-max-width: 1280px;
+  --carousel-width: min(var(--carousel-max-width), calc(100vw - 2 * var(--spacing-lg)));
+
+  /* card width = carousel width split evenly between the visible cards */
+  --card-width: calc(var(--carousel-width) / var(--cards-visible) - var(--card-gap));
+
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
   background-color: var(--bg-primary);
+  overflow: hidden;
 }
 
 .testimonials-header {
   text-align: center;
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-sm);
 }
 
-.testimonials-subtitle {
-  font-size: var(--text-lg);
-  color: var(--text-secondary);
-  margin-top: var(--spacing-sm);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+/* ---------- Carousel ---------- */
+.testimonials-carousel {
+  position: relative;
+  width: var(--carousel-width);
+  margin: 0 auto;
+  overflow: hidden;
+  /* top room = hover lift, bottom room = hover shadow (so neither is clipped) */
+  padding: var(--spacing-sm) 0 var(--spacing-md);
+
+  /* soft fade on left & right edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 4%,
+    #000 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 4%,
+    #000 96%,
+    transparent 100%
+  );
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-xl);
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+.testimonials-track {
+  display: flex;
+  align-items: stretch; /* all cards share the tallest card's height */
+  width: max-content;
+  will-change: transform;
+  /* --testimonials-duration is set from React (speed control) */
+  animation: testimonials-scroll var(--testimonials-duration, 56s) linear infinite;
 }
 
+/* pause while hovering so people can read */
+.testimonials-track:hover {
+  animation-play-state: paused;
+}
+
+/* Track holds two identical loops, so moving by -50% = seamless restart */
+@keyframes testimonials-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* padding (not gap) keeps the -50% maths exact */
+.testimonial-item {
+  flex: 0 0 auto;
+  width: var(--card-width);
+  padding-right: var(--card-gap);
+  box-sizing: content-box;
+  display: flex;
+}
+
+/* ---------- Card ---------- */
 .testimonial-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  transition: all var(--transition-base);
+  padding: var(--spacing-lg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    border-color var(--transition-base);
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px var(--shadow-color);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px var(--shadow-color);
   border-color: var(--primary-orange);
 }
 
 .quote-icon {
   color: var(--primary-orange);
   opacity: 0.2;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  line-height: 0;
+}
+
+.quote-icon svg {
+  width: 30px;
+  height: 30px;
 }
 
 /* Testimonial Image */
 .testimonial-image-container {
   width: 100%;
-  height: 200px;
-  margin-bottom: var(--spacing-lg);
+  height: 175px;
+  margin-bottom: var(--spacing-md);
   border-radius: var(--radius-md);
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .testimonial-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top; /* keep faces in frame when cropping */
+  display: block;
   transition: transform var(--transition-base);
+  user-select: none;
 }
 
 .testimonial-card:hover .testimonial-image {
@@ -71,11 +146,11 @@
 }
 
 .testimonial-text {
-  font-size: var(--text-base);
+  font-size: 0.875rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-lg);
-  flex-grow: 1;
+  line-height: 1.55;
+  margin: 0 0 var(--spacing-md);
+  flex-grow: 1; /* pushes the author row to the card bottom */
 }
 
 .testimonial-rating {
@@ -88,21 +163,21 @@
 .testimonial-author {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
-  padding-top: var(--spacing-md);
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
   border-top: 1px solid var(--border-color);
 }
 
 .author-avatar {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-full);
   background-color: var(--primary-orange);
   color: var(--primary-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -112,10 +187,18 @@
 }
 
 .author-name {
-  font-size: var(--text-base);
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 4px;
+  margin: 0;
+}
+
+.author-location {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .author-role {
@@ -124,53 +207,57 @@
   margin: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+/* ---------- Responsive: how many cards show at once ----------
+   desktop (1200px+)   : 4 cards  (set at the top: --cards-visible)
+   tablet  (769-1199px): 3 cards
+   large phone (<=768) : 2 cards
+   phone   (<=480)     : 1 card + a peek of the next            */
+@media (max-width: 1199px) {
+  .testimonials-section {
+    --cards-visible: 3;
   }
 }
 
 @media (max-width: 768px) {
   .testimonials-section {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-  }
-
-  .testimonials-header {
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .testimonials-subtitle {
-    font-size: var(--text-base);
+    --cards-visible: 2;
+    --card-gap: var(--spacing-md);
+    padding: var(--spacing-md) 0 var(--spacing-sm);
   }
 
   .testimonial-card {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 
   .testimonial-image-container {
-    height: 180px;
+    height: 145px;
   }
 }
 
 @media (max-width: 480px) {
+  .testimonials-section {
+    --cards-visible: 1.15;
+    --card-gap: var(--spacing-sm);
+  }
+
   .testimonial-text {
-    font-size: var(--text-sm);
+    font-size: 0.85rem;
   }
 
   .author-avatar {
-    width: 40px;
-    height: 40px;
-    font-size: var(--text-lg);
+    width: 36px;
+    height: 36px;
+    font-size: var(--text-base);
   }
 
   .testimonial-image-container {
-    height: 160px;
+    height: 130px;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-track {
+    animation-duration: calc(var(--testimonials-duration, 56s) * 4);
   }
 }

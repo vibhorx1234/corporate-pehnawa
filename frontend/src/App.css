@@ -40,5 +40,5 @@ html::-webkit-scrollbar {
 }
 
 body {
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: clip; /* Prevent horizontal scroll */
 }
