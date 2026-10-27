@@ -59,6 +59,7 @@ const CollectionThumbnails = () => {
                 <div className="collection-overlay">
                   <div className="collection-content">
                     <h3 className="collection-name">{collection.name}</h3>
+                    <p className="collection-desc1">{collection.desc1}</p>
                     <p className="collection-descriptionn">{collection.description}</p>
                     <span className="collection-link">
                       Explore →
